@@ -4,6 +4,8 @@ import { TfiLinkedin, TfiLink, TfiGithub } from "react-icons/tfi";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import Navbar from "./Components/Navbar";
 import AllRoutes from "./Components/AllRoutes";
+import TopNav from "./Components/Navbar/TopNav";
+import Hover from "./Components/Navbar/Hover";
 
 function App() {
   
@@ -11,7 +13,8 @@ function App() {
   return (
     <div>
       
-      <Navbar/>
+      {/* <Navbar/> */}
+      <TopNav />
       <AllRoutes/>
       
     </div>
