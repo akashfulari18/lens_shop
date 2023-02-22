@@ -1,6 +1,6 @@
 import { Heading, Box, Button, Text, Stack, VStack } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import EmptyCartMessage from "../Components/EmptyCartMessage";
 import CartProduct from "../Components/CartProduct";
 import Bill from "../Components/Bill";
@@ -11,6 +11,7 @@ export default function Cart() {
 	const isAuth = useSelector((state) => state.auth.isAuth);
 	const user = useSelector((state) => state.auth.user);
 	const cartProducts = user?.cart;
+	const navigate = useNavigate();
 	const [isCouponApplied, setIsCouponApplied] = useState(true);
 	const discount = 0.6;
 
@@ -24,8 +25,8 @@ export default function Cart() {
 
 	return (
 		<Stack
-			padding="10px 100px"
-			flexDirection="row"
+			paddingLeft={["50px", "50px", "100px", "100px"]}
+			paddingRight={["50px", "50px", "100px", "100px"]}
 			gap="30px"
 			justifyContent="space-between"
 			flexDirection={["column", "column", "column", "row"]}
@@ -55,14 +56,16 @@ export default function Cart() {
 					<Text fontSize={["sm", "lg", "lg"]} fontWeight="bold">
 						COOL STYLES
 					</Text>
-					<Text>Extra 60% OFF on Net Amout!</Text>
+					<Text>Extra 60% OFF on Net Amount!</Text>
 				</Box>
 				<CouponBox
 					isCouponApplied={isCouponApplied}
 					discountAmount={getCartPrice(user.cart) * discount}
 					setIsCouponApplied={setIsCouponApplied}
 				/>
-				<Button>Proceed To Checkout</Button>
+				<Button onClick={() => navigate("/checkout")} colorScheme="teal">
+					Proceed To Checkout
+				</Button>
 			</VStack>
 		</Stack>
 	);
