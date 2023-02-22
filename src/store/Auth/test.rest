@@ -1,0 +1,10 @@
+###
+PATCH https://lesn-shop-server.onrender.com/users/1
+Content-Type: application/json
+
+{
+	"cart": [{}]
+}
+
+###
+GET https://lesn-shop-server.onrender.com/users/1
