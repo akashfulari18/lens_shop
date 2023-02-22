@@ -25,7 +25,6 @@ export default function Cart() {
 	return (
 		<Stack
 			padding="10px 100px"
-			flexDirection="row"
 			gap="30px"
 			justifyContent="space-between"
 			flexDirection={["column", "column", "column", "row"]}
