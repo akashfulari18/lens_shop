@@ -262,7 +262,7 @@ const TopNav = () => {
             bg="#FBF9F7"
             fontFamily="sans-serif"
             h="65px"
-            w=""
+            w="100%"
             position="relative"
           >
             <Hover />
