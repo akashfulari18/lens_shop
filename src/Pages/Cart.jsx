@@ -64,7 +64,20 @@ export default function Cart() {
 					discountAmount={getCartPrice(user.cart) * discount}
 					setIsCouponApplied={setIsCouponApplied}
 				/>
-				<Button onClick={() => navigate("/checkout")} colorScheme="teal">
+				<Button
+					onClick={() =>
+						navigate("/checkout", {
+							state: {
+								cartPrice: getCartPrice(user.cart),
+								isCouponApplied,
+								discount,
+								cartProducts,
+								user,
+							},
+						})
+					}
+					colorScheme="teal"
+				>
 					Proceed To Checkout
 				</Button>
 			</VStack>

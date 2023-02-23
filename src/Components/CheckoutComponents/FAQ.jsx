@@ -12,7 +12,7 @@ import {
 
 export default function FAQ() {
 	return (
-		<VStack marginTop="50px" alignItems="stretch">
+		<VStack marginTop="50px" alignItems="stretch" padding="10px 100px">
 			<Stack direction={["column", "column", "column", "row"]}>
 				<Box border="1px solid grey" padding="10px" flex="1">
 					<Text fontWeight="bold" color="#009999">

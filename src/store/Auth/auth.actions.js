@@ -2,6 +2,8 @@ import { UPDATE_USER } from "./auth.actionTypes";
 import axios from "axios";
 
 export function updateUser(user) {
+	// when user login
+	// when cart item qty changes
 	return {
 		type: "UPDATE_USER",
 		payload: { user },
