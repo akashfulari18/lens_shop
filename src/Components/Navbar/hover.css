@@ -1,5 +1,5 @@
 .MainMenu{
-    height: 60%;
+    height: 100%;
     position: sticky; 
     z-index: 10;
     top: 0;  
@@ -27,14 +27,15 @@
     font-size: 90%;
     cursor: pointer;
     font-family:Arial, Helvetica, sans-serif;
+    border-radius: 2px solid black;
 }
-.MainMenu>ul>li:hover{
+/* .MainMenu>ul>li:hover{
     color: black;
     padding-bottom: 13px;
     border-bottom: solid 2px black;
-}
+} */
 .SubMenu_1{
-   display: none;  
+   display: none; 
 }
 .SubMenu_2{
     height: 20%;
@@ -60,7 +61,9 @@
    position:absolute;
    top:25px;
    width:100%;
-   height:300px;margin-top: 16px;
+   height:auto;
+   margin-top: 16px;
+   padding-right: 20px;
    /* background-color: aqua;   */
 }
 .Men_menu{
@@ -191,6 +194,7 @@
     display: none;
 }
 /* 2nd List */
+
 .Computer_WomenMenu{
     margin-top: 35px;
     margin-left: 18px;
@@ -303,7 +307,7 @@
     position:absolute;
     top:40px;
     width:100%;
-    /* height:300px; */
+    height:300px;
     margin-top: 16px;
     margin-left: -420px;
     /* background-color: aqua;   */
@@ -394,7 +398,7 @@
     border-bottom: 2px solid #CCCCCC;
     height: 5px;
     width: 85%;
-    margin-left: 18.5%;
+    margin-left: 150px;
 }
 .hr_Line2   {
     border-bottom: 2px solid #CCCCCC;
@@ -412,7 +416,7 @@
     border-bottom: 2px solid #CCCCCC;
     height: 5px;
     width: 83%;
-    margin-left: -20%;
+    margin-left: 100px;
 }
 
 .sunGlasses_SubMenu_1{
@@ -424,19 +428,19 @@
      margin: auto;
      display: flex;
      margin-top: 15px;
-     margin-left: -550px;
+     margin-left: 70px;
      padding-top: 12px;
      padding-left: 220px;
      padding-right: 40px;
      font-weight: lighter;
-     justify-content: space-between;
+     justify-content: space-around;
      /* background-color: red; */
   }
   .sunGlasses_SubMenu_3{
      height: 80%;
      width:80%;
      margin: auto; 
-     margin-left: -550px; 
+     /* margin-left: -550px;  */
      /* background-color: pink; */
   }
  .MainMenu>ul>li:hover .sunGlasses_SubMenu_1{
@@ -444,10 +448,10 @@
     position:absolute;
     top:40px;
     width:100%;
-    height:300px;
+    height:400px;
     margin-top: 16px;
-    /* margin-left: -500px; */
-    /* background-color: aqua;   */
+    margin-left: -550px;
+    background-color: rgb(251, 251, 251);  
  }
  .sunGlasses_Men_menu{
      margin-top: 32px;
@@ -563,7 +567,7 @@
     width:120%;
     height:418px;
     margin-left: -70%;
-    /* background-color: aqua;   */
+    background-color:   white;  
  }
  .eyeText_mainMenu_1{
     display: flex;
@@ -610,7 +614,7 @@
     width:120%;
     height:418px;
     margin-left: -84.5%;
-    /* background-color: aqua;   */
+    background-color: white;  
  }
  .store_mainMenu_1{
      display: flex;   

@@ -8,10 +8,12 @@ const root_reducer = combineReducers({
 	auth: authReducer,
 });
 
-const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 
 export const store = legacy_createStore(root_reducer, composeEnhancers(applyMiddleware(thunk)));
 
-store.subscribe((param) => {
-	console.log(store.getState().auth.user.cart);
-});
+
+
+
+
