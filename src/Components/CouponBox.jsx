@@ -1,9 +1,9 @@
 import { Button, VStack, Box, HStack, Text } from "@chakra-ui/react";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
+import CouponDrawer from "./CouponDrawer";
 
 export default function CouponBox({ isCouponApplied, discountAmount, setIsCouponApplied }) {
 	const openModal = (event) => {};
-	
+
 	if (isCouponApplied == false) {
 		return (
 			<HStack justifyContent="space-between" padding="15px">
@@ -13,9 +13,7 @@ export default function CouponBox({ isCouponApplied, discountAmount, setIsCoupon
 					</Text>
 					<Text>Check available offers</Text>
 				</VStack>
-				<Button onClick={openModal}>
-					<ArrowForwardIcon />
-				</Button>
+				<CouponDrawer setIsCouponApplied={setIsCouponApplied}/>
 			</HStack>
 		);
 	}
