@@ -29,24 +29,28 @@ export default function CartProduct({ product, user }) {
 			width="100%"
 			border="1px solid black"
 			justifyContent="space-between"
-			alignItems="center"
+			alignItems={["stretch", "stretch", "stretch", "center"]}
 			padding="20px"
 			margin="auto"
 			borderRadius="25px"
 		>
-			<Image src={image_url} width="200px" />
+			<Image src={image_url} width="200px" margin="auto" />
 			<VStack flex="1" alignItems="strech">
-				<HStack justifyContent="space-between" fontSize="xl">
+				<HStack justifyContent="space-between" fontSize={["lg", "lg", "lg", "xl"]}>
 					<Text>{brand_name}</Text>
 					<Text>Rs. {price}</Text>
 				</HStack>
 				<hr />
-				<HStack justifyContent="space-between" fontSize="lg">
+				<HStack justifyContent="space-between" fontSize={["md", "md", "md", "lg"]}>
 					<Text>Final Price</Text>
 					<Text>Rs. {price * qty}</Text>
 				</HStack>
 				<hr />
-				<HStack justifyContent="space-between" alignItems="center">
+				<Stack
+					justifyContent="space-between"
+					alignItems="center"
+					direction={["column", "row", "row", "row"]}
+				>
 					<Text>Quantity</Text>
 					<HStack border="1px solid grey" borderRadius="20px">
 						<Button
@@ -70,7 +74,7 @@ export default function CartProduct({ product, user }) {
 						</Button>
 					</HStack>
 					<Button onClick={handleDeleteProduct}>Delete</Button>
-				</HStack>
+				</Stack>
 			</VStack>
 		</Stack>
 	);
