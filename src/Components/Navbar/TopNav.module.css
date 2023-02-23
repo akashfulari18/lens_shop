@@ -32,9 +32,11 @@
         /* color: #00BAC6; */
         /* color: #CCCCCC; */
     /* } */
-    /* .tn_div_2{
-        display: none;
-    } */
+    .tn_div_1{
+        position: sticky; 
+        top: 0;
+        z-index: 10;
+    }
     .hrLine{
         border-bottom: 2px solid #18CFA8;
         height: 5px;
