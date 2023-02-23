@@ -162,9 +162,9 @@ Navigate("/product")
         <li>
             KIDS GLASSES
             <div className='SubMenu_1'>
-                {/* <div className='SubMenu_2'>
-                </div> */}
-                {/* <div className='SubMenu_3'> */}
+                <div className='SubMenu_2'>
+                </div>
+                <div className='SubMenu_3'>
                     <div className="kids_Section">
                         <div className="image_1">
                             <img className="img_1" src="https://static1.lenskart.com/media/desktop/img/May22/glasses.jpg" alt="kidsIcon_1" />
@@ -179,7 +179,7 @@ Navigate("/product")
                             <div>Sun Glasses</div>
                         </div>
                     </div>
-                {/* </div> */}
+                </div>
             </div>
         </li>
         <li>
@@ -252,7 +252,7 @@ Navigate("/product")
                     <p>Our Top Pics</p>
                     <p>Shape</p>
                     <p>Collection</p>
-                    <p>Brands</p>
+                    {/* <p>Brands</p> */}
                     <hr />
             </div>
             <div className="hr_Line4"></div>

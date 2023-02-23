@@ -25,13 +25,12 @@ export default function Cart() {
 
 	return (
 		<Stack
-
 			paddingLeft={["50px", "50px", "100px", "100px"]}
 			paddingRight={["50px", "50px", "100px", "100px"]}
-
 			gap="30px"
 			justifyContent="space-between"
 			flexDirection={["column", "column", "column", "row"]}
+			marginBottom="50px"
 		>
 			<VStack gap="15px" alignItems="stretch" justifyContent="flex-start" flexGrow="1">
 				<Text fontSize="3xl">Cart {`(${cartProducts.length} items)`}</Text>
@@ -65,7 +64,20 @@ export default function Cart() {
 					discountAmount={getCartPrice(user.cart) * discount}
 					setIsCouponApplied={setIsCouponApplied}
 				/>
-				<Button onClick={() => navigate("/checkout")} colorScheme="teal">
+				<Button
+					onClick={() =>
+						navigate("/checkout", {
+							state: {
+								cartPrice: getCartPrice(user.cart),
+								isCouponApplied,
+								discount,
+								cartProducts,
+								user,
+							},
+						})
+					}
+					colorScheme="teal"
+				>
 					Proceed To Checkout
 				</Button>
 			</VStack>

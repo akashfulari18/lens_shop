@@ -1,11 +1,17 @@
 import { Box, Divider, Grid, GridItem, Heading, Image } from "@chakra-ui/react";
 import React from "react";
+import TopNav from "../../Components/Navbar/TopNav";
 import CaptionCarousel from "./Home-Carousel";
+import Dropdown from "./Home-Dropdown";
 import Slideshow1, { Slideshow2, Slideshow3 } from "./Home-Slideshow";
+
 
 const Home = () => {
   return (
+    <>
+    <TopNav/>
     <div>
+      <Dropdown />
       <CaptionCarousel />
       <Image
         mt={"-50px"}
@@ -284,6 +290,7 @@ const Home = () => {
         src="https://static1.lenskart.com/media/desktop/img/Aug21/25-Aug/whatsapp.png"
       />
     </div>
+    </>
   );
 };
 

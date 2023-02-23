@@ -7,7 +7,13 @@ export default function Bill({ cartPrice, isCouponApplied, discount }) {
 	const totalPayable = netAmount + tax;
 
 	return (
-		<VStack alignItems="strech" border="1px solid black" borderRadius="20px" padding="15px">
+		<VStack
+			alignItems="strech"
+			border="1px solid black"
+			borderRadius="20px"
+			padding="15px"
+			width="100%"
+		>
 			<HStack justifyContent="space-between">
 				<Text>Total Price</Text>
 				<Text>Rs. {cartPrice}</Text>
@@ -37,5 +43,3 @@ export default function Bill({ cartPrice, isCouponApplied, discount }) {
 		</VStack>
 	);
 }
-
-
