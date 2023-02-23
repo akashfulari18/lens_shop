@@ -8,8 +8,14 @@ import Home from "../Pages/Home/Home";
 import PageNotFound from "./PageNotFound";
 import Cart from "../Pages/Cart";
 import Checkout from "../Pages/Checkout";
+
+import AddProduct from '../Pages/Admin/AddProduct'
+import AdminAddProduct from '../Pages/Admin/AdminAddProduct'
+
+
 import SignupCard from "../Pages/Signup-Login/Signuppage";
 import Loginpage from "../Pages/Signup-Login/Loginpage";
+
 
 const AllRoutes = () => {
   return (
@@ -20,14 +26,20 @@ const AllRoutes = () => {
         <Route path="/login" element={<Loginpage />}></Route>
         <Route path="/computer_glasses"></Route>
         <Route path="/kids_glasses"></Route>
-        <Route path="/admin_dashboard" element={<Dashboard />}></Route>
-        <Route path="/admin_users" element={<Users />}></Route>
-        <Route path="/admin_product" element={<AdminProducts />}></Route>
-        <Route path="/admin_settings" element={<AdminSetting />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/checkout" element={<Checkout />}></Route>
-        <Route path="*" element={<PageNotFound />}></Route>
-      </Routes>
+
+        <Route path='/admin_dashboard' element={<Dashboard/>}></Route>
+            <Route path='/admin_users' element={<Users/>}></Route>
+            <Route path='/admin_product' element={<AdminProducts/>}></Route>
+            <Route path='/admin_settings' element={<AdminSetting/>}></Route>
+            <Route path='/addProduct' element={<AdminAddProduct/>}></Route>
+            <Route path="/cart" element={<Cart />}></Route>
+				    <Route path="/checkout" element={<Checkout />}></Route>
+            <Route path='*' element={<PageNotFound/>}></Route>
+           
+        </Routes>
+
+
+
     </div>
   );
 };
