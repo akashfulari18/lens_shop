@@ -127,7 +127,7 @@ export default function AdminProducts({ children }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }}  backgroundColor={"white"} pt="1rem">
+      <Box ml={{ base: 0, md: 60 }}  backgroundColor={"white"} pt="10rem">
         {children}
 
         <Flex p="4"

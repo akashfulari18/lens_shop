@@ -676,14 +676,14 @@ const TopNav = () => {
                     ) : (
                       <Box>
                         <Link
-                          to="/login"
+                          href="/login"
                           fontWeight={"400"}
                           fontSize="13px"
                           mr={"10px"}
                         >
                           Sign In
                         </Link>
-                        <Link to="/signup" fontWeight={"400"} fontSize="13px">
+                        <Link href="/signup" fontWeight={"400"} fontSize="13px">
                           Sign Up
                         </Link>
                       </Box>
@@ -705,7 +705,11 @@ const TopNav = () => {
                     src="https://static.lenskart.com/media/desktop/img/cart.png"
                     alt="icon"
                   ></Image>
-                  <Text ml="15%">Cart</Text>
+                  <Text ml="15%">
+                  <Link href="/cart">
+                    Cart
+                  </Link>
+                    </Text>
                 </Box>
               </Box>
             </Box>
