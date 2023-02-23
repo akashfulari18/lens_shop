@@ -2,7 +2,7 @@ import { Heading, VStack, HStack, Stack, Text, Image, Button } from "@chakra-ui/
 import { updateProductQty, deleteProduct } from "../store/Auth/auth.actions";
 import { useDispatch } from "react-redux";
 
-export default function CartProduct({ product, user }) {
+export default function CartProduct({ product, user, flexDirection }) {
 	const {
 		brand_name,
 		image_url,
@@ -25,7 +25,9 @@ export default function CartProduct({ product, user }) {
 
 	return (
 		<Stack
-			direction={["column", "column", "column", "row"]}
+			direction={
+				flexDirection === undefined ? ["column", "column", "column", "row"] : flexDirection
+			}
 			width="100%"
 			border="1px solid black"
 			justifyContent="space-between"

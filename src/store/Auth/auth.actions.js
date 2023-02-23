@@ -4,10 +4,12 @@ import { LOGIN_USER } from "./auth.actionTypes";
 import { LOGOUT_USER } from "./auth.actionTypes";
 
 export function updateUser(user) {
+
   return {
     type: UPDATE_USER,
     payload: { user },
   };
+
 }
 
 export function loginUser() {
