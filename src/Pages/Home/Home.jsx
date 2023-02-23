@@ -1,11 +1,13 @@
 import { Box, Divider, Grid, GridItem, Heading, Image } from "@chakra-ui/react";
 import React from "react";
 import CaptionCarousel from "./Home-Carousel";
+import Dropdown from "./Home-Dropdown";
 import Slideshow1, { Slideshow2, Slideshow3 } from "./Home-Slideshow";
 
 const Home = () => {
   return (
     <div>
+      <Dropdown />
       <CaptionCarousel />
       <Image
         mt={"-50px"}
