@@ -13,6 +13,8 @@ import Home from "../Pages/Home/Home";
 import PageNotFound from './PageNotFound'
 import Cart from "../Pages/Cart";
 import Checkout from "../Pages/Checkout";
+import AddProduct from '../Pages/Admin/AddProduct'
+import AdminAddProduct from '../Pages/Admin/AdminAddProduct'
 
 
 const AllRoutes = () => {
@@ -27,6 +29,7 @@ const AllRoutes = () => {
             <Route path='/admin_users' element={<Users/>}></Route>
             <Route path='/admin_product' element={<AdminProducts/>}></Route>
             <Route path='/admin_settings' element={<AdminSetting/>}></Route>
+            <Route path='/addProduct' element={<AdminAddProduct/>}></Route>
             <Route path="/cart" element={<Cart />}></Route>
 				    <Route path="/checkout" element={<Checkout />}></Route>
             <Route path='*' element={<PageNotFound/>}></Route>
