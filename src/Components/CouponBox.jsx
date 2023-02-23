@@ -6,7 +6,7 @@ export default function CouponBox({ isCouponApplied, discountAmount, setIsCoupon
 
 	if (isCouponApplied == false) {
 		return (
-			<HStack justifyContent="space-between" padding="15px">
+			<HStack justifyContent="space-between" padding="15px" border="1px solid black" borderRadius="20px">
 				<VStack alignItems="stretch">
 					<Text fontWeight="bold" fontSize="lg">
 						Apply Coupon
@@ -19,7 +19,7 @@ export default function CouponBox({ isCouponApplied, discountAmount, setIsCoupon
 	}
 	if (isCouponApplied == true) {
 		return (
-			<HStack justifyContent="space-between" padding="15px">
+			<HStack justifyContent="space-between" padding="15px" border="1px solid black" borderRadius="20px">
 				<VStack alignItems="stretch">
 					<Text fontWeight="bold" fontSize="lg">
 						Coupon is applied
