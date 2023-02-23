@@ -19,6 +19,7 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  Image,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -29,9 +30,8 @@ import {
   FiBell,
   FiChevronDown,
 } from "react-icons/fi";
+import logo from "../../../public/final-logo.png"
 
-// import { IconType } from 'react-icons';
-// import { ReactText } from 'react';
 import { FaUserCog, FaProductHunt } from "react-icons/fa";
 import axios from "axios";
 import PieChartData from "./PieChartData";
@@ -60,7 +60,7 @@ export default function Dashboard({ children }) {
   };
   let getKidsGlassData = async () => {
    await axios
-      .get(`https://lesn-shop-server.onrender.com/all_kids_eyeglasess`)
+      .get(`https://lesn-shop-server.onrender.com/all_kids_glasses`)
       .then((res) => {
         setKidsGlass(res.data);
       })
@@ -132,7 +132,7 @@ export default function Dashboard({ children }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"white"} h="1500" pt="6rem">
+      <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"white"}  pt="1rem">
         {children}
 
         <Flex
@@ -191,11 +191,13 @@ const SidebarContent = ({ onClose, ...rest }) => {
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
+      zIndex={20}
+
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+        <Image src={logo} h="50px" w="100px" />
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
@@ -264,10 +266,10 @@ const MobileNav = ({ onOpen, ...rest }) => {
     position="fixed"
       top="0"
       w={["100%","100%","85%"]}
-      zIndex={1}
+      zIndex={20}
+      height="8rem"
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 4 }}
-      height="20"
       alignItems="center"
       bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"

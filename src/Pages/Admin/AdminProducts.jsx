@@ -19,6 +19,13 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  Image,
+  Button,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanel,
+  TabPanels,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -29,20 +36,20 @@ import {
   FiBell,
   FiChevronDown,
 } from "react-icons/fi";
+import logo from "../../../public/final-logo.png";
 
-// import { IconType } from 'react-icons';
-// import { ReactText } from 'react';
 import { FaUserCog, FaProductHunt } from "react-icons/fa";
 import axios from "axios";
 import PieChartData from "./PieChartData";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import ComputerGlassPanel from "./ComputerGlassPanel";
+import KidsGlassPanel from "./KidsGlassPanel";
 
 const LinkItems = [
-  { name: "Home", icon: FiHome ,href:"/admin_dashboard" },
-  { name: "Products", icon: FaProductHunt,href:"/admin_product" },
-  { name: "Users", icon: FaUserCog,href:"/admin_users" },
-  { name: "Admin Setting", icon: FiSettings,href:"/admin_settings" },
+  { name: "Home", icon: FiHome, href: "/admin_dashboard" },
+  { name: "Products", icon: FaProductHunt, href: "/admin_product" },
+  { name: "Users", icon: FaUserCog, href: "/admin_users" },
+  { name: "Admin Setting", icon: FiSettings, href: "/admin_settings" },
 ];
 
 export default function AdminProducts({ children }) {
@@ -50,24 +57,31 @@ export default function AdminProducts({ children }) {
   let [computerGlass, setComputerGlass] = useState([]);
   let [kidsGlass, setKidsGlass] = useState([]);
   let [user, setUsers] = useState([]);
- 
-  
-  let getUsersData = async () => {
-    axios.get(`https://lesn-shop-server.onrender.com/users`).then((res) => {
-      setUsers(res.data);
-    });
+
+  let getComputerGlassData = async () => {
+    await axios
+      .get(`https://lesn-shop-server.onrender.com/all_computer_glasses`)
+      .then((res) => {
+        setComputerGlass(res.data);
+      })
+      .catch((e) => console.log(e));
+  };
+  let getKidsGlassData = async () => {
+    await axios
+      .get(`https://lesn-shop-server.onrender.com/all_kids_glasses`)
+      .then((res) => {
+        setKidsGlass(res.data);
+      })
+      .catch((e) => console.log(e));
   };
 
   useEffect(() => {
-   
-    getUsersData();
+    getComputerGlassData();
+    getKidsGlassData();
   }, []);
-   
- 
-  
-  console.log("user", user.length);
 
-  
+  console.log("user", kidsGlass.length);
+
   const BoxStyle = {
     // border:"1px solid red",
     padding: "1rem",
@@ -86,7 +100,6 @@ export default function AdminProducts({ children }) {
     <Box
       minH="100vh"
       bg={useColorModeValue("gray.100", "gray.900")}
-      position="fixed"
       top="0"
       w={"100%"}
     >
@@ -109,14 +122,13 @@ export default function AdminProducts({ children }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"red.200"} h="500">
+      <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"red.100"} pt="1rem">
         {children}
 
         <Flex
           textAlign={"center"}
-         
           width={"100%"}
-          justifyContent="left"
+          justifyContent="space-between"
           gap="2rem"
           flexWrap={"wrap"}
         >
@@ -125,25 +137,51 @@ export default function AdminProducts({ children }) {
 
             <Text style={BoxText}> ({user.length})</Text>
           </Box>
-         
+          <Box>
+            <Button
+              colorScheme={"gray"}
+              variant={"outline"}
+              backgroundColor="purple.300"
+            >
+              Add New Product
+            </Button>
+          </Box>
         </Flex>
 
-       
+        <Box mt={4}>
+          <Tabs colorScheme={"green"}>
+            <TabList>
+              <Tab>Computer Glasses </Tab>
+              <Tab>Kids eye Glasses</Tab>
+              
+            </TabList>
+
+            <TabPanels>
+              <TabPanel>
+                <ComputerGlassPanel/>
+              </TabPanel>
+              <TabPanel>
+                <KidsGlassPanel/>
+              </TabPanel>
+             
+            </TabPanels>
+          </Tabs>
+        </Box>
       </Box>
     </Box>
   );
 }
 
 const SidebarContent = ({ onClose, ...rest }) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
-
-    const goTo=(addr)=>{
-          navigate(addr)
-    }
+  const goTo = (addr) => {
+    navigate(addr);
+  };
 
   return (
     <Box
+      top="0"
       transition="3s ease"
       bg={useColorModeValue("white", "gray.900")}
       borderRight="1px"
@@ -151,22 +189,19 @@ const SidebarContent = ({ onClose, ...rest }) => {
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
+      zIndex={20}
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+          <Image src={logo} h="50px" w="100px" />
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        
         <NavItem key={link.name} icon={link.icon}>
-          <Text onClick={()=>goTo(link.href)}>
-            {link.name}
-            </Text>
+          <Text onClick={() => goTo(link.href)}>{link.name}</Text>
         </NavItem>
-        
       ))}
     </Box>
   );
@@ -209,11 +244,29 @@ const NavItem = ({ icon, children, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
+  const [admin, setAdmin] = useState([]);
+  let getAdminData = async () => {
+    axios
+      .get(`https://lesn-shop-server.onrender.com/admin`)
+      .then((res) => {
+        let ad = res?.data[0];
+        setAdmin(ad);
+      })
+      .catch((e) => console.log(e));
+  };
+  useEffect(() => {
+    getAdminData();
+  }, []);
+
   return (
     <Flex
+      position="fixed"
+      top="0"
+      w={["100%", "100%", "85%"]}
+      zIndex={20}
+      height="8rem"
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 4 }}
-      height="20"
       alignItems="center"
       bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
@@ -239,12 +292,6 @@ const MobileNav = ({ onOpen, ...rest }) => {
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
-        />
         <Flex alignItems={"center"}>
           <Menu>
             <MenuButton
@@ -252,20 +299,15 @@ const MobileNav = ({ onOpen, ...rest }) => {
               transition="all 0.3s"
               _focus={{ boxShadow: "none" }}
             >
-              <HStack>
-                <Avatar
-                  size={"sm"}
-                  src={
-                    "https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                  }
-                />
+              <HStack mr={{ base: "0", md: "6rem" }}>
+                <Avatar size={"sm"} name={admin.name} />
                 <VStack
                   display={{ base: "none", md: "flex" }}
                   alignItems="flex-start"
                   spacing="1px"
                   ml="2"
                 >
-                  <Text fontSize="sm">Justina Clark</Text>
+                  <Text fontSize="sm">{admin.name}</Text>
                   <Text fontSize="xs" color="gray.600">
                     Admin
                   </Text>
@@ -281,7 +323,6 @@ const MobileNav = ({ onOpen, ...rest }) => {
             >
               <MenuItem>Profile</MenuItem>
               <MenuItem>Settings</MenuItem>
-              <MenuItem>Billing</MenuItem>
               <MenuDivider />
               <MenuItem>Sign out</MenuItem>
             </MenuList>

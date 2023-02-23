@@ -19,6 +19,7 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  Image,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -29,9 +30,9 @@ import {
   FiBell,
   FiChevronDown,
 } from "react-icons/fi";
+import logo from "../../../public/final-logo.png"
 
-// import { IconType } from 'react-icons';
-// import { ReactText } from 'react';
+
 import { FaUserCog, FaProductHunt } from "react-icons/fa";
 import axios from "axios";
 import PieChartData from "./PieChartData";
@@ -85,7 +86,7 @@ export default function Users({ children }) {
     <Box
       minH="100vh"
       bg={useColorModeValue("gray.100", "gray.900")}
-      position="fixed"
+      // position="fixed"
       top="0"
       w={"100%"}
     >
@@ -108,7 +109,7 @@ export default function Users({ children }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"red.200"} h="700">
+      <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"red.200"}  pt="1rem">
         {children}
 
         <Flex
@@ -156,6 +157,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
   return (
     <Box
+    top="0"
       transition="3s ease"
       bg={useColorModeValue("white", "gray.900")}
       borderRight="1px"
@@ -163,11 +165,12 @@ const SidebarContent = ({ onClose, ...rest }) => {
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
+      zIndex={20}
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+        <Image src={logo} h="50px" w="100px" />
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
@@ -221,11 +224,29 @@ const NavItem = ({ icon, children, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
+  const [admin,setAdmin] = useState([])
+  let getAdminData=async()=>{
+    axios.get(`https://lesn-shop-server.onrender.com/admin`)
+    .then((res)=>{
+       let ad=res?.data[0]
+      setAdmin(ad)
+    })
+    .catch(e=>console.log(e))
+  }
+  useEffect(()=>{
+    getAdminData()
+
+  },[])
+
   return (
     <Flex
+    position="fixed"
+      top="0"
+      w={["100%","100%","85%"]}
+      zIndex={20}
+      height="8rem"
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 4 }}
-      height="20"
       alignItems="center"
       bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
@@ -251,12 +272,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
-        />
+        
         <Flex alignItems={"center"}>
           <Menu>
             <MenuButton
@@ -264,12 +280,12 @@ const MobileNav = ({ onOpen, ...rest }) => {
               transition="all 0.3s"
               _focus={{ boxShadow: "none" }}
             >
-              <HStack>
+              <HStack mr={{base:"0",md:"6rem"}}>
                 <Avatar
                   size={"sm"}
-                  src={
-                    "https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                  }
+                  
+                  name={admin.name}
+                  
                 />
                 <VStack
                   display={{ base: "none", md: "flex" }}
@@ -277,7 +293,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                   spacing="1px"
                   ml="2"
                 >
-                  <Text fontSize="sm">Justina Clark</Text>
+                  <Text fontSize="sm">{admin.name}</Text>
                   <Text fontSize="xs" color="gray.600">
                     Admin
                   </Text>
@@ -293,7 +309,6 @@ const MobileNav = ({ onOpen, ...rest }) => {
             >
               <MenuItem>Profile</MenuItem>
               <MenuItem>Settings</MenuItem>
-              <MenuItem>Billing</MenuItem>
               <MenuDivider />
               <MenuItem>Sign out</MenuItem>
             </MenuList>
