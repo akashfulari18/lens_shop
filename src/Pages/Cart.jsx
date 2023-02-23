@@ -25,8 +25,10 @@ export default function Cart() {
 
 	return (
 		<Stack
+
 			paddingLeft={["50px", "50px", "100px", "100px"]}
 			paddingRight={["50px", "50px", "100px", "100px"]}
+
 			gap="30px"
 			justifyContent="space-between"
 			flexDirection={["column", "column", "column", "row"]}
