@@ -30,7 +30,8 @@ import {
   FiBell,
   FiChevronDown,
 } from "react-icons/fi";
-import logo from "../../../public/final-logo.png"
+import logo from "../../assets/final-logo.png";
+
 
 
 import { FaUserCog, FaProductHunt } from "react-icons/fa";
