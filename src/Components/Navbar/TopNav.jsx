@@ -568,7 +568,6 @@ import {
   Image,
   Box,
   HStack,
-  Link,
   Avatar,
   Heading,
   Flex,
@@ -611,6 +610,7 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { AuthContext } from "../../Pages/Signup-Login/AuthContext";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../store/Auth/auth.actions";
+import { Link } from "react-router-dom";
 // import { AuthContext } from "../../ContextApi/AuthContext";
 
 const TopNav = () => {
@@ -624,17 +624,20 @@ const TopNav = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className={Styles.tn_div_1} style={{ width: "100%" }}>
-      <div className={Styles.tn_div_2} style={{ width: "100%" }}>
+    <div className={Styles.tn_div_1}
+    //  style={{ width: "100%" }}
+     >
+      <div className={Styles.tn_div_2} >
         <Box bg="#FFFFFF" mt="0.5%">
           <Box display="flex" p="0% 1.5%">
             <Box w="14%" cursor="pointer" ml="-1%" bg="">
+              <Link to='/'>
               <Image
                 w="100%"
                 h="100%"
                 src="https://static.lenskart.com/media/desktop/img/site-images/main_logo.svg"
                 alt="Lenskart"
-              />
+              /></Link>
             </Box>
             <Box width="10%" ml="5%" bg="">
               <Image

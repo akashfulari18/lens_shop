@@ -191,11 +191,14 @@ export default function Loginpage() {
           dispatch(loginUser());
           console.log(data[i]);
           break;
+
         } else if (
           localStorage.getItem("email") === email &&
           localStorage.getItem("password") === Password
         ) {
           navigate("/admin_dashboard");
+
+       
         }
       }
       setload(false);

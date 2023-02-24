@@ -17,6 +17,18 @@ import SignupCard from "../Pages/Signup-Login/Signuppage";
 import Loginpage from "../Pages/Signup-Login/Loginpage";
 
 
+
+
+
+
+
+import CompGlasses from "../Pages/Products/CompGlasses"
+import KidsGlasses from "../Pages/Products/KidsGlasses"
+import CompSingleProduct from "../Pages/Products/CompSingleProduct";
+import KidsSingleProduct from "../Pages/Products/KidsSingleProduct";
+
+
+
 const AllRoutes = () => {
   return (
     <div>
@@ -24,8 +36,10 @@ const AllRoutes = () => {
         <Route path="/" element={<Home />}></Route>
         <Route path="/signup" element={<SignupCard />}></Route>
         <Route path="/login" element={<Loginpage />}></Route>
-        <Route path="/computer_glasses"></Route>
-        <Route path="/kids_glasses"></Route>
+        <Route path="/all_computer_glasses" element={<CompGlasses />}></Route>
+        <Route path="/all_computer_glasses/:id" element={<CompSingleProduct />}></Route>
+        <Route path="/all_kids_glasses" element={<KidsGlasses />}></Route>
+        <Route path="/all_kids_glasses/:id" element={<KidsSingleProduct />}></Route>
 
         <Route path='/admin_dashboard' element={<Dashboard/>}></Route>
             <Route path='/admin_users' element={<Users/>}></Route>
@@ -35,7 +49,9 @@ const AllRoutes = () => {
             <Route path="/cart" element={<Cart />}></Route>
 				    <Route path="/checkout" element={<Checkout />}></Route>
             <Route path='*' element={<PageNotFound/>}></Route>
-           
+            <Route path='/test/:id' element={<Test/>}></Route>
+    
+    
         </Routes>
 
 

@@ -7,9 +7,6 @@ import AllRoutes from "./Components/AllRoutes";
 import { useState } from "react";
 import Dashboard from "./Pages/Admin/Dashboard";
 
-import Hover from "./Components/Navbar/Hover";
-import Footer from "./Components/Footer/Footer";
-
 
 function App() {
  
@@ -21,7 +18,7 @@ function App() {
      
 
       <AllRoutes/>
-      <Footer />
+
     </div>
   );
 }
