@@ -612,6 +612,7 @@ import { AuthContext } from "../../Pages/Signup-Login/AuthContext";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../store/Auth/auth.actions";
 // import { AuthContext } from "../../ContextApi/AuthContext";
+
 const TopNav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = React.useRef();
@@ -667,7 +668,7 @@ const TopNav = () => {
                     {isAuth ? (
                       <Flex>
                         <Text mr={"10px"} fontWeight={"bold"} fontSize={"15px"}>
-                          {user.firstname}
+                          {localStorage.getItem("name")}
                         </Text>
                         <Link to="/" onClick={() => dispatch(logoutUser())}>
                           Logout
@@ -683,7 +684,12 @@ const TopNav = () => {
                         >
                           Sign In
                         </Link>
-                        <Link href="/signup" fontWeight={"400"} fontSize="13px">
+                        <Link
+                          // onClick={onOpen}
+                          href="/signup"
+                          fontWeight={"400"}
+                          fontSize="13px"
+                        >
                           Sign Up
                         </Link>
                       </Box>
@@ -706,10 +712,8 @@ const TopNav = () => {
                     alt="icon"
                   ></Image>
                   <Text ml="15%">
-                  <Link href="/cart">
-                    Cart
-                  </Link>
-                    </Text>
+                    <Link href="/cart">Cart</Link>
+                  </Text>
                 </Box>
               </Box>
             </Box>

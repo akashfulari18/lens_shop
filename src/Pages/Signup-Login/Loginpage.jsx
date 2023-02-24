@@ -179,25 +179,31 @@ export default function Loginpage() {
     try {
       let res = await fetch(`https://lesn-shop-server.onrender.com/users`);
       let data = await res.json();
-      // console.log(data);
+      console.log(data);
       let Auth = false;
       for (let i in data) {
         if (data[i].email === email && data[i].Password === Password) {
           Auth = true;
+          console.log(data[i].firstname);
+          localStorage.setItem("name", data[i].firstname);
           // loginUser(data[i].name);
           dispatch(updateUser(data[i]));
           dispatch(loginUser());
           console.log(data[i]);
           break;
+        } else if (
+          localStorage.getItem("email") === email &&
+          localStorage.getItem("password") === Password
+        ) {
+          navigate("/admin_dashboard");
         }
       }
       setload(false);
       if (Auth == false) {
         alert("Please enter right email or password!");
       } else {
-        // alert("Login Successfull!");
-
-        // navigate("/");
+        alert("Login Successfull!");
+        navigate("/");
       }
       console.log(Auth);
     } catch (error) {

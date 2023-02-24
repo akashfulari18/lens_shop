@@ -41,6 +41,7 @@ function AuthContextProvider({ children }) {
   const logoutUser = () => {
     alert("User logged out Successfull!!");
     setIsAuth(false);
+    // localStorage.clear()
   };
 
   return (

@@ -99,24 +99,25 @@ var dummyUser = {
 const init = {
   isLoading: false,
   isError: false,
-  isAuth: true,
+  // isAuth: false,
+  isAuth: localStorage.getItem("name") || false,
   token: localStorage.getItem("token") || undefined,
   user: dummyUser, //default null
 };
 
 export const reducer = (state = init, { type, payload }) => {
   switch (type) {
-	case LOGIN_USER: 
-	return {
-		...state,
-		isAuth: true
-	}
-	case LOGOUT_USER: 
-	return {
-		...state,
-		isAuth: false,
-		user: null
-	}
+    case LOGIN_USER:
+      return {
+        ...state,
+        isAuth: true,
+      };
+    case LOGOUT_USER:
+      return {
+        ...state,
+        isAuth: false,
+        user: null,
+      };
     case UPDATE_USER:
       return {
         ...state,
