@@ -1,5 +1,6 @@
 import { Box, Divider, Grid, GridItem, Heading, Image } from "@chakra-ui/react";
 import React from "react";
+import Footer from "../../Components/Footer/Footer";
 import TopNav from "../../Components/Navbar/TopNav";
 import CaptionCarousel from "./Home-Carousel";
 import Dropdown from "./Home-Dropdown";
@@ -290,6 +291,7 @@ const Home = () => {
         src="https://static1.lenskart.com/media/desktop/img/Aug21/25-Aug/whatsapp.png"
       />
     </div>
+    <Footer />
     </>
   );
 };

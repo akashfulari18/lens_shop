@@ -39,7 +39,7 @@ export default function PaymentProcess() {
 					margin="0px 10px"
 					_selected={{ backgroundColor: "#888" }}
 					isDisabled={tabs[0]["isDisabled"]}
-					margin="0px"
+					// margin="0px"
 				>
 					<Bullet text="1" /> {tabs[0]["name"]}
 				</Tab>
@@ -49,7 +49,7 @@ export default function PaymentProcess() {
 					margin="0px 10px"
 					_selected={{ backgroundColor: "#888" }}
 					isDisabled={tabs[1]["isDisabled"]}
-					margin="0px"
+					// margin="0px"
 				>
 					<Bullet text="2" /> {tabs[1]["name"]}
 				</Tab>
@@ -59,7 +59,7 @@ export default function PaymentProcess() {
 					margin="0px 10px"
 					_selected={{ backgroundColor: "#888" }}
 					isDisabled={tabs[2]["isDisabled"]}
-					margin="0px"
+					// margin="0px"
 				>
 					<Bullet text="3" />
 					{tabs[2]["name"]}
