@@ -1,0 +1,7 @@
+export const APP_LOADING = "APP_LOADING";
+export const APP_ERROR = "APP_ERROR";
+
+export const GET_COMP_PRODUCTS = "GET_COMP_PRODUCTS";
+export const GET_KIDS_PRODUCTS = "GET_KIDS_PRODUCTS";
+export const ADD_PROUCT_TO_WISH = "ADD_PROUCT_TO_WISH";
+export const TOGGLE_LIKE = "TOGGLE_LIKE";

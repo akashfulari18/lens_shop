@@ -45,6 +45,7 @@ export default function PaymentProcess() {
 			border="1px solid black"
 			borderRadius="30px"
 		>
+
 			<Progress hasStripe value={progress} mb="5%" mx="5%" isAnimated></Progress>
 
 			{step === 0 ? (
@@ -59,6 +60,8 @@ export default function PaymentProcess() {
 					>
 						Phone & Email
 					</Text>
+
+
 					<ContactForm setContactInfo={setContactInfo} />
 				</>
 			) : step === 1 ? (

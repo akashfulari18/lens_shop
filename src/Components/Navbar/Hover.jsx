@@ -2,21 +2,21 @@ import React from "react";
 import  './hover.css'
 import { Avatar,Wrap,WrapItem, Image,Heading,Box,Button,Text} from '@chakra-ui/react'
 import { AiOutlineRight } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Hover() {
-    const Navigate=useNavigate();
-const change=()=>{
-Navigate("/product")
+//     const Navigate=useNavigate();
+// const change=()=>{
+// Navigate("/product")
 
 
-}
+// }
 
   return (  
     
     <div className='MainMenu'>
       <ul>
-        <li onClick={change}>EYEGLASSES   
+        <li>EYEGLASSES   
           <div className='SubMenu_1'>
             <div className='SubMenu_2'>
                     <div>SELECT CATEGORY</div>
@@ -111,8 +111,8 @@ Navigate("/product")
             </div>
           </div>
         </li>
-        <li>
-            COMPUTER GLASSES
+        <li><Link to='/all_computer_glasses'>
+            COMPUTER GLASSES</Link>
             <div className='SubMenu_1'>
                 <div className='SubMenu_2' >
                         <div>SELECT CATEGORY</div>
@@ -159,8 +159,8 @@ Navigate("/product")
                 </div>
             </div>
         </li>
-        <li>
-            KIDS GLASSES
+        <li><Link to='/all_kids_glasses'>
+            KIDS GLASSES</Link>
             <div className='SubMenu_1'>
                 <div className='SubMenu_2'>
                 </div>
