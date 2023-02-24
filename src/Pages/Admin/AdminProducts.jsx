@@ -26,6 +26,8 @@ import {
   Tab,
   TabPanel,
   TabPanels,
+  Input,
+  InputLeftAddon,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -38,7 +40,7 @@ import {
 } from "react-icons/fi";
 import logo from "../../assets/final-logo.png";
 
-import { FaUserCog, FaProductHunt } from "react-icons/fa";
+import { FaUserCog, FaProductHunt,FaSearch } from "react-icons/fa";
 import axios from "axios";
 import PieChartData from "./PieChartData";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -127,7 +129,7 @@ export default function AdminProducts({ children }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }}  backgroundColor={"white"} pt="10rem">
+      <Box ml={{ base: 0, md: 60 }}  backgroundColor={"white"} pt="5rem">
         {children}
 
         <Flex p="4"
@@ -147,6 +149,10 @@ export default function AdminProducts({ children }) {
             >
               Add New Product
             </Button>
+          </Box>
+          <Box>
+            <FaSearch/>
+            <Input type={"text"} />
           </Box>
         </Flex>
 
@@ -246,27 +252,27 @@ const NavItem = ({ icon, children, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
-  const [admin, setAdmin] = useState([]);
-  let getAdminData = async () => {
-    axios
-      .get(`https://lesn-shop-server.onrender.com/admin`)
-      .then((res) => {
-        let ad = res?.data[0];
-        setAdmin(ad);
-      })
-      .catch((e) => console.log(e));
-  };
-  useEffect(() => {
-    getAdminData();
-  }, []);
+  const [admin,setAdmin] = useState([])
+  let getAdminData=async()=>{
+    axios.get(`https://lesn-shop-server.onrender.com/admin`)
+    .then((res)=>{
+       let ad=res?.data[0]
+      setAdmin(ad)
+    })
+    .catch(e=>console.log(e))
+  }
+  useEffect(()=>{
+    getAdminData()
+
+  },[])
 
   return (
     <Flex
-      position="fixed"
+    position="fixed"
       top="0"
-      w={["100%", "100%", "85%"]}
+      w={["100%","100%","80%"]}
       zIndex={20}
-      height="8rem"
+      height={20}
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 4 }}
       alignItems="center"
@@ -290,10 +296,11 @@ const MobileNav = ({ onOpen, ...rest }) => {
         fontFamily="monospace"
         fontWeight="bold"
       >
-        Logo
+       <Image src={logo} h="50px" w="100px" />
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
+        
         <Flex alignItems={"center"}>
           <Menu>
             <MenuButton
@@ -301,8 +308,13 @@ const MobileNav = ({ onOpen, ...rest }) => {
               transition="all 0.3s"
               _focus={{ boxShadow: "none" }}
             >
-              <HStack mr={{ base: "0", md: "6rem" }}>
-                <Avatar size={"sm"} name={admin.name} />
+              <HStack mr={{base:"0",md:"6rem"}}>
+                <Avatar
+                  size={"sm"}
+                  
+                  name={admin.name}
+                  
+                />
                 <VStack
                   display={{ base: "none", md: "flex" }}
                   alignItems="flex-start"

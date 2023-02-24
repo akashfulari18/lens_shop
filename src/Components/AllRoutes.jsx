@@ -15,6 +15,11 @@ import AdminAddProduct from '../Pages/Admin/AdminAddProduct'
 
 import SignupCard from "../Pages/Signup-Login/Signuppage";
 import Loginpage from "../Pages/Signup-Login/Loginpage";
+import Test from "../Pages/test";
+
+
+
+
 
 
 const AllRoutes = () => {
@@ -35,7 +40,9 @@ const AllRoutes = () => {
             <Route path="/cart" element={<Cart />}></Route>
 				    <Route path="/checkout" element={<Checkout />}></Route>
             <Route path='*' element={<PageNotFound/>}></Route>
-           
+            <Route path='/test/:id' element={<Test/>}></Route>
+    
+    
         </Routes>
 
 

@@ -37,6 +37,8 @@ import { FaUserCog, FaProductHunt } from "react-icons/fa";
 import axios from "axios";
 import PieChartData from "./PieChartData";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getComputerGlassData, getKidsData } from "../../store/Product/product.actions";
 
 const LinkItems = [
   { name: "Home", icon: FiHome, href: "/admin_dashboard" },
@@ -46,51 +48,27 @@ const LinkItems = [
 ];
 
 export default function Dashboard({ children }) {
+
+
+  const {kids , compGlassData } = useSelector(store=>store.product)
+
+  const dispatch = useDispatch()
   const { isOpen, onOpen, onClose } = useDisclosure();
-  let [computerGlass, setComputerGlass] = useState([]);
-  let [kidsGlass, setKidsGlass] = useState([]);
-  let [user, setUsers] = useState([]);
-
-  let getComputerGlassData = async () => {
-   await axios
-      .get(`https://lesn-shop-server.onrender.com/all_computer_glasses`)
-      .then((res) => {
-        setComputerGlass(res.data);
-      })
-      .catch(e=>console.log(e))
-  };
-  let getKidsGlassData = async () => {
-   await axios
-      .get(`https://lesn-shop-server.onrender.com/all_kids_glasses`)
-      .then((res) => {
-        setKidsGlass(res.data);
-      })
-      .catch(e=>console.log(e))
-  };
-  let getUsersData = async () => {
-   await axios.get(`https://lesn-shop-server.onrender.com/users`).then((res) => {
-      setUsers(res?.data)
-    })
-    .catch(e=>console.log(e))
-  };
-
 
   useEffect(() => {
-    getComputerGlassData();
-    getKidsGlassData();
-    getUsersData();
- 
+    dispatch(getKidsData())
+    dispatch(getComputerGlassData())
   }, []);
 
   const data = [
     ["Product Category", "Total"],
-    [ "Computer Glasses", computerGlass.length] ,
-    [ "Kids Glasses", kidsGlass.length ],
+    [ "Computer Glasses", compGlassData?.length] ,
+    [ "Kids Glasses", kids?.length ],
   ];
 
   // console.log("computerGlass", computerGlass.length);
-  // console.log("kids", kidsGlass.length);
-  // console.log("user", user.length);
+  // console.log("kids", kids.length);
+  // console.log("comp", compGlassData.length);
   // console.log("admin", admin);
 
   const BoxStyle = {
@@ -133,7 +111,7 @@ export default function Dashboard({ children }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"white"}  pt="1rem">
+      <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"white"}  pt="5rem">
         {children}
 
         <Flex
@@ -145,19 +123,19 @@ export default function Dashboard({ children }) {
           flexWrap={"wrap"}
          
         >
-          <Flex gap="2rem" justifyContent={"center"} m="auto" flexWrap="wrap">
+          <Flex gap="2rem" justifyContent={"center"} m="auto" flexWrap="wrap" mt="2rem">
           <Box style={BoxStyle}>
             <Text>Computer Glasses</Text>
 
-            <Text style={BoxText}> ({computerGlass.length})</Text>
+            <Text style={BoxText}> ({compGlassData?.length})</Text>
           </Box>
           <Box style={BoxStyle}>
             <Text>Kids eyeGlasses</Text>
-            <Text style={BoxText}> ({computerGlass.length})</Text>
+            <Text style={BoxText}> ({kids?.length})</Text>
           </Box>
           <Box style={BoxStyle}>
             <Text>Total Products</Text>
-            <Text style={BoxText}> ({computerGlass.length+kidsGlass.length})</Text>
+            <Text style={BoxText}> ({compGlassData.length+kids.length})</Text>
           </Box>
           </Flex>
 
@@ -184,7 +162,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
   };
   return (
     <Box
-    top={0}
+    // top={0}
       transition="3s ease"
       bg={useColorModeValue("white", "gray.900")}
       borderRight="1px"
@@ -192,7 +170,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
-      zIndex={20}
+      // zIndex={20}
 
       {...rest}
     >
@@ -266,9 +244,9 @@ const MobileNav = ({ onOpen, ...rest }) => {
     <Flex
     position="fixed"
       top="0"
-      w={["100%","100%","85%"]}
+      w={["100%","100%","80%"]}
       zIndex={20}
-      height="8rem"
+      height={20}
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 4 }}
       alignItems="center"
@@ -292,7 +270,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
         fontFamily="monospace"
         fontWeight="bold"
       >
-        Logo
+       <Image src={logo} h="50px" w="100px" />
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>

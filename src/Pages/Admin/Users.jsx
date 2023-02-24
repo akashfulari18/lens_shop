@@ -76,6 +76,7 @@ export default function Users({ children }) {
     color: "#fff",
     width: "200px",
     boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+    
   };
 
   const BoxText = {
@@ -110,7 +111,7 @@ export default function Users({ children }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"red.200"}  pt="1rem">
+      <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"red.200"} h={"100vh"}  pt="6rem">
         {children}
 
         <Flex
@@ -119,6 +120,7 @@ export default function Users({ children }) {
           justifyContent="left"
           gap="2rem"
           flexWrap={"wrap"}
+          // borderBottomColor="2px solid gray"
         >
           <Box style={BoxStyle}>
             <Text>Total Users</Text>
@@ -130,7 +132,7 @@ export default function Users({ children }) {
 
         <Box>
          
-      <Flex mt="2rem">
+      <Flex mt="2rem" justifyContent={"center" } flexWrap="wrap" gap="1rem" borderTop={"2px solid gray"} pt="2rem">
 
           {
             user.map((item)=>(
@@ -226,6 +228,7 @@ const NavItem = ({ icon, children, ...rest }) => {
 
 const MobileNav = ({ onOpen, ...rest }) => {
   const [admin,setAdmin] = useState([])
+  const navigate = useNavigate()
   let getAdminData=async()=>{
     axios.get(`https://lesn-shop-server.onrender.com/admin`)
     .then((res)=>{
@@ -243,9 +246,9 @@ const MobileNav = ({ onOpen, ...rest }) => {
     <Flex
     position="fixed"
       top="0"
-      w={["100%","100%","85%"]}
+      w={["100%","100%","80%"]}
       zIndex={20}
-      height="8rem"
+      height={20}
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 4 }}
       alignItems="center"
@@ -269,7 +272,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
         fontFamily="monospace"
         fontWeight="bold"
       >
-        Logo
+       <Image src={logo} h="50px" w="100px" />
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
@@ -311,7 +314,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
               <MenuItem>Profile</MenuItem>
               <MenuItem>Settings</MenuItem>
               <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
+              <MenuItem onClick={()=>navigate("/")}>Sign out</MenuItem>
             </MenuList>
           </Menu>
         </Flex>

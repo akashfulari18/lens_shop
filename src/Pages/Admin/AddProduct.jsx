@@ -114,7 +114,8 @@ const Form3 = ({productDetails,setProductDetails}) => {
             Image
           </FormLabel>
           <Input id="image_url" value={productDetails.image_url} onChange={(e)=>setProductDetails({...productDetails,image_url:e.target.value})} placeholder="Image " />
-      </FormControl> <FormControl>
+      </FormControl> 
+      <FormControl>
       <FormLabel htmlFor="price" fontWeight={'normal'}>
             Price
           </FormLabel>

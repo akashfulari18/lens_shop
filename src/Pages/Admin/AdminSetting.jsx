@@ -20,6 +20,9 @@ import {
   MenuItem,
   MenuList,
   Image,
+  Stack,
+  Center,
+  Heading,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -38,7 +41,7 @@ import { FaUserCog, FaProductHunt } from "react-icons/fa";
 import axios from "axios";
 import PieChartData from "./PieChartData";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import admin_bg from "../../assets/bg_admin.jpg"
 
 const LinkItems = [
   { name: "Home", icon: FiHome ,href:"/admin_dashboard" },
@@ -50,12 +53,12 @@ const LinkItems = [
 export default function AdminSetting({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
  
-  let [user, setUsers] = useState([]);
+  let [admin, setAdmin] = useState([]);
  
   
   let getUsersData = async () => {
-    axios.get(`https://lesn-shop-server.onrender.com/users`).then((res) => {
-      setUsers(res.data);
+    axios.get(`https://lesn-shop-server.onrender.com/admin`).then((res) => {
+      setAdmin(res.data[0]);
     });
   };
 
@@ -66,26 +69,13 @@ export default function AdminSetting({ children }) {
    
  
   
-  console.log("user", user.length);
+  console.log("admin", admin);
 
   
-  const BoxStyle = {
-    // border:"1px solid red",
-    padding: "1rem",
-    backgroundColor: "rgb(173 76 211 / 92%)",
-    color: "#fff",
-    width: "200px",
-    boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-  };
-
-  const BoxText = {
-    fontSize: "1.5rem",
-    fontWeight: "700",
-    color: "black",
-  };
+  
   return (
     <Box
-      minH="100vh"
+      // minH="80vh"
       bg={useColorModeValue("gray.100", "gray.900")}
   
       top="0"
@@ -110,24 +100,62 @@ export default function AdminSetting({ children }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"red.200"} pt="1rem">
+      <Box ml={{ base: 0, md: 60 }} p="4"  pt="4rem">
         {children}
 
-        <Flex
-          textAlign={"center"}
-         
-          width={"100%"}
-          justifyContent="left"
-          gap="2rem"
-          flexWrap={"wrap"}
-        >
-          <Box style={BoxStyle}>
-            <Text>Total Users</Text>
-
-            <Text style={BoxText}> ({user.length})</Text>
-          </Box>
-         
+        <Center py={6}>
+      <Box
+        maxW={'270px'}
+        w={'full'}
+        bg={useColorModeValue('white', 'gray.800')}
+        boxShadow={'2xl'}
+        rounded={'md'}
+        overflow={'hidden'}>
+        <Image
+          h={'120px'}
+          w={'full'}
+          src={
+            admin_bg
+          }
+          objectFit={'cover'}
+        />
+        <Flex justify={'center'} mt={-12}>
+          <Avatar
+            size={'xl'}
+           name={admin.name}
+            alt={'Author'}
+            css={{
+              border: '2px solid white',
+            }}
+          />
         </Flex>
+
+        <Box p={6}>
+          <Stack spacing={0} align={'center'} mb={5}>
+            <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
+              {admin.name}
+            </Heading>
+            <Text color={'gray.500'}>Admin</Text>
+          </Stack>
+
+          <Stack direction={'row'} justify={'center'} spacing={6}>
+            <Stack spacing={0} align={'center'}>
+              <Text fontSize={'sm'} color={'gray.500'}>
+                Contact
+              </Text>
+              <Text fontWeight={600}>{admin.contact}</Text>
+           
+              <Text fontSize={'sm'} color={'gray.500'}>
+                Email
+              </Text>
+              <Text fontWeight={600}>{admin.email}</Text>
+            </Stack>
+          </Stack>
+
+          
+        </Box>
+      </Box>
+    </Center>
 
        
       </Box>
@@ -230,10 +258,10 @@ const MobileNav = ({ onOpen, ...rest }) => {
   return (
     <Flex
     position="fixed"
-      top="0"
-      w={["100%","100%","85%"]}
+      top="0" 
+      w={["100%","100%","80%"]}
       zIndex={20}
-      height="8rem"
+      height={20}
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 4 }}
       alignItems="center"
@@ -257,7 +285,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
         fontFamily="monospace"
         fontWeight="bold"
       >
-        Logo
+       <Image src={logo} h="50px" w="100px" />
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
