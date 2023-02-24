@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import { Avatar, AvatarBadge, AvatarGroup } from "@chakra-ui/react";
 
@@ -7,9 +7,10 @@ const SingleUser = ({ item }) => {
   console.log(item);
   return (
     <div>
+      <Stack s>
       <Flex
         boxShadow='rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px'
-        w="400px"
+        w="300px"
         borderRadius={5}
         backgroundColor={"gray.300"}
         justifyContent={"center"}
@@ -18,16 +19,17 @@ const SingleUser = ({ item }) => {
         p="1rem"
       >
         
-          
+
         <Avatar name={fullname}>
           <AvatarBadge boxSize="1.25em" bg={item.isAuth?"green.400":"red.400"} />
         </Avatar>
         <Box>
           <Text fontWeight={"600"} fontSize={"2xl"}>{item.firstname}{" "}{item.lastname} </Text> 
-        <Text>{item.email}</Text>
+          <Text>{item.email}</Text>
         </Box>
 
       </Flex>
+          </Stack>
     </div>
   );
 };

@@ -189,6 +189,8 @@ export default function Loginpage() {
           dispatch(loginUser());
           console.log(data[i]);
           break;
+        }else if(localStorage.email==email ){
+          navigate("/admin_dashboard")
         }
       }
       setload(false);

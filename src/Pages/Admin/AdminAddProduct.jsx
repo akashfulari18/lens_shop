@@ -111,7 +111,7 @@ export default function AdminAddProduct({ children }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"white"} pt="10rem" >
+      <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"white"} pt="5rem" >
         {children}
 
         <AddProduct/>
@@ -200,97 +200,97 @@ const NavItem = ({ icon, children, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
-  const [admin,setAdmin] = useState([])
-  let getAdminData=async()=>{
-    axios.get(`https://lesn-shop-server.onrender.com/admin`)
-    .then((res)=>{
-       let ad=res?.data[0]
-      setAdmin(ad)
-    })
-    .catch(e=>console.log(e))
-  }
-  useEffect(()=>{
-    getAdminData()
-
-  },[])
-
-  return (
-    <Flex
-    position="fixed"
-      top="0"
-      w={["100%","100%","85%"]}
-      zIndex={20}
-      height="8rem"
-      ml={{ base: 0, md: 60 }}
-      px={{ base: 4, md: 4 }}
-      alignItems="center"
-      bg={useColorModeValue("white", "gray.900")}
-      borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-      justifyContent={{ base: "space-between", md: "flex-end" }}
-      {...rest}
-    >
-      <IconButton
-        display={{ base: "flex", md: "none" }}
-        onClick={onOpen}
-        variant="outline"
-        aria-label="open menu"
-        icon={<FiMenu />}
-      />
-
-      <Text
-        display={{ base: "flex", md: "none" }}
-        fontSize="2xl"
-        fontFamily="monospace"
-        fontWeight="bold"
+    const [admin,setAdmin] = useState([])
+    let getAdminData=async()=>{
+      axios.get(`https://lesn-shop-server.onrender.com/admin`)
+      .then((res)=>{
+         let ad=res?.data[0]
+        setAdmin(ad)
+      })
+      .catch(e=>console.log(e))
+    }
+    useEffect(()=>{
+      getAdminData()
+  
+    },[])
+  
+    return (
+      <Flex
+      position="fixed"
+        top="0"
+        w={["100%","100%","80%"]}
+        zIndex={20}
+        height={20}
+        ml={{ base: 0, md: 60 }}
+        px={{ base: 4, md: 4 }}
+        alignItems="center"
+        bg={useColorModeValue("white", "gray.900")}
+        borderBottomWidth="1px"
+        borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+        justifyContent={{ base: "space-between", md: "flex-end" }}
+        {...rest}
       >
-        Logo
-      </Text>
-
-      <HStack spacing={{ base: "0", md: "6" }}>
-        
-        <Flex alignItems={"center"}>
-          <Menu>
-            <MenuButton
-              py={2}
-              transition="all 0.3s"
-              _focus={{ boxShadow: "none" }}
-            >
-              <HStack mr={{base:"0",md:"6rem"}}>
-                <Avatar
-                  size={"sm"}
-                  
-                  name={admin.name}
-                  
-                />
-                <VStack
-                  display={{ base: "none", md: "flex" }}
-                  alignItems="flex-start"
-                  spacing="1px"
-                  ml="2"
-                >
-                  <Text fontSize="sm">{admin.name}</Text>
-                  <Text fontSize="xs" color="gray.600">
-                    Admin
-                  </Text>
-                </VStack>
-                <Box display={{ base: "none", md: "flex" }}>
-                  <FiChevronDown />
-                </Box>
-              </HStack>
-            </MenuButton>
-            <MenuList
-              bg={useColorModeValue("white", "gray.900")}
-              borderColor={useColorModeValue("gray.200", "gray.700")}
-            >
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>
-              <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
-            </MenuList>
-          </Menu>
-        </Flex>
-      </HStack>
-    </Flex>
-  );
-};
+        <IconButton
+          display={{ base: "flex", md: "none" }}
+          onClick={onOpen}
+          variant="outline"
+          aria-label="open menu"
+          icon={<FiMenu />}
+        />
+  
+        <Text
+          display={{ base: "flex", md: "none" }}
+          fontSize="2xl"
+          fontFamily="monospace"
+          fontWeight="bold"
+        >
+         <Image src={logo} h="50px" w="100px" />
+        </Text>
+  
+        <HStack spacing={{ base: "0", md: "6" }}>
+          
+          <Flex alignItems={"center"}>
+            <Menu>
+              <MenuButton
+                py={2}
+                transition="all 0.3s"
+                _focus={{ boxShadow: "none" }}
+              >
+                <HStack mr={{base:"0",md:"6rem"}}>
+                  <Avatar
+                    size={"sm"}
+                    
+                    name={admin.name}
+                    
+                  />
+                  <VStack
+                    display={{ base: "none", md: "flex" }}
+                    alignItems="flex-start"
+                    spacing="1px"
+                    ml="2"
+                  >
+                    <Text fontSize="sm">{admin.name}</Text>
+                    <Text fontSize="xs" color="gray.600">
+                      Admin
+                    </Text>
+                  </VStack>
+                  <Box display={{ base: "none", md: "flex" }}>
+                    <FiChevronDown />
+                  </Box>
+                </HStack>
+              </MenuButton>
+              <MenuList
+                bg={useColorModeValue("white", "gray.900")}
+                borderColor={useColorModeValue("gray.200", "gray.700")}
+              >
+                <MenuItem>Profile</MenuItem>
+                <MenuItem>Settings</MenuItem>
+                <MenuDivider />
+                <MenuItem>Sign out</MenuItem>
+              </MenuList>
+            </Menu>
+          </Flex>
+        </HStack>
+      </Flex>
+    );
+  };

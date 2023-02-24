@@ -99,7 +99,7 @@ var dummyUser = {
 const init = {
   isLoading: false,
   isError: false,
-  isAuth: true,
+  isAuth: false,
   token: localStorage.getItem("token") || undefined,
   user: dummyUser, //default null
 };
