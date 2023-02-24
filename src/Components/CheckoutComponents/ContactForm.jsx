@@ -8,13 +8,17 @@ import {
 	Button,
 	Text,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ContactForm({ setContactInfo }) {
 	const [isGuest, setIsGuest] = useState("Yes");
 	const [phone, setPhone] = useState("");
-	const [email, setEmail] = useState("");
+	const [email, setEmail] = useState(null);
 	const [error, setError] = useState(null);
+
+	useEffect(() => {
+		handleContactSubmission();
+	}, [phone, email]);
 
 	const handleContactSubmission = (event) => {
 		const contactInfo = {
@@ -24,15 +28,21 @@ export default function ContactForm({ setContactInfo }) {
 		};
 		if (isGuest == "Yes") {
 			if (isValidPhone(phone) == true) {
+				console.log("it is valid phone number", Math.random());
+				setError(null);
 				setContactInfo(contactInfo);
 			} else {
 				setError("Invalid phone number");
+				setContactInfo(null);
 			}
 		} else if (isGuest == "No") {
 			if (isValidPhone(phone) == true || isValidEmail(email) == true) {
+				console.log("it is valid phone number", Math.random());
+				setError(null);
 				setContactInfo(contactInfo);
 			} else {
 				setError("Invalid phone or email");
+				setContactInfo(null);
 			}
 		}
 	};
@@ -77,15 +87,6 @@ export default function ContactForm({ setContactInfo }) {
 					<Radio value={"No"}>Continue with the account</Radio>
 				</VStack>
 			</RadioGroup>
-			<Button
-				backgroundColor="orange"
-				boderRadius="10px"
-				color="white"
-				fontSize="lg"
-				onClick={handleContactSubmission}
-			>
-				Continue
-			</Button>
 		</VStack>
 	);
 }

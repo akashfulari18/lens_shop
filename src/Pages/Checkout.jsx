@@ -19,9 +19,7 @@ export default function Checkout(props) {
 				padding={["10px 50px", "10px 50px", "10px 50px", "10px 100px"]}
 			>
 				<VStack
-					border="1px solid black"
-					borderRadius="15px"
-					width={["100%", "100%", "100%", "55%"]}
+					width={["100%", "100%", "100%", "59%"]}
 					minHeight="100vh"
 				>
 					<Heading fontWeight="bold" padding="10px" fontSize="2xl" color="#009999">
@@ -30,8 +28,6 @@ export default function Checkout(props) {
 					<PaymentProcess />
 				</VStack>
 				<VStack
-					// border="1px solid black"
-					borderRadius="15px"
 					width={["100%", "100%", "100%", "40%"]}
 					minHeight="100vh"
 				>
