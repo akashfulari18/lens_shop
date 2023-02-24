@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import ValueValidator from "./ValueValidator";
 import PaymentCard from "./PaymentCard";
+import PaymentGateway from "./PaymentGateway";
 import { useState } from "react";
 
 export default function PaymentOptions() {
@@ -54,19 +55,19 @@ export default function PaymentOptions() {
 						<PaymentCard />
 					</TabPanel>
 					<TabPanel height="100%">
-						<p>{paymentOptions[1]}</p>
+						<PaymentGateway gateway={paymentOptions[1]} />
 					</TabPanel>
 					<TabPanel height="100%">
-						<p>{paymentOptions[2]}</p>
+						<PaymentGateway gateway={paymentOptions[2]} />
 					</TabPanel>
 					<TabPanel height="100%">
-						<p>{paymentOptions[3]}</p>
+						<PaymentGateway gateway={paymentOptions[3]} />
 					</TabPanel>
 					<TabPanel height="100%">
-						<p>{paymentOptions[4]}</p>
+						<PaymentGateway gateway={paymentOptions[4]} />
 					</TabPanel>
 					<TabPanel height="100%">
-						<p>{paymentOptions[5]}</p>
+						<PaymentGateway gateway={paymentOptions[5]} />
 					</TabPanel>
 				</TabPanels>
 			</HStack>
