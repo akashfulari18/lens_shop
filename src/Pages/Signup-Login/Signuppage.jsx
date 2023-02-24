@@ -191,9 +191,11 @@ export default function SignupCard() {
         }),
       });
       let data = await res.json();
-      console.log(data);
+      console.log("data", data);
       setload(false);
       alert("Signup Successfull!");
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", Password);
       navigate("/login");
     } catch (error) {
       setload(false);
@@ -325,3 +327,156 @@ export default function SignupCard() {
     </Flex>
   );
 }
+
+// export default function SignupCard() {
+//   // const { isOpen, onOpen, onClose } = useDisclosure();
+
+//   const initialRef = React.useRef(null);
+//   const finalRef = React.useRef(null);
+
+//   const [Password, setPassword] = useState("");
+//   const [firstname, setFirstname] = useState("");
+//   const [lastname, setLastname] = useState("");
+//   const [email, setemail] = useState("");
+//   const [contact, setContact] = useState("");
+
+//   const [load, setload] = useState(false);
+//   const navigate = useNavigate();
+
+//   const postdata = async () => {
+//     setload(true);
+//     try {
+//       let res = await fetch(`https://lesn-shop-server.onrender.com/users`, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//           firstname,
+//           lastname,
+//           email,
+//           Password,
+//           contact,
+//           isAuth: false,
+//           cart: [],
+//           wishlist: [],
+//         }),
+//       });
+//       let data = await res.json();
+//       console.log(data);
+//       setload(false);
+//       alert("Signup Successfull!");
+//       navigate("/login");
+//     } catch (error) {
+//       setload(false);
+//       console.log(error);
+//     }
+
+//     setFirstname("");
+//     setLastname("");
+//     setemail("");
+//     setPassword("");
+//     setContact("");
+//   };
+
+//   return (
+//     <>
+//       {/* <Button onClick={onOpen}>Open Modal</Button> */}
+//       {/* <Button ml={4} ref={finalRef}>
+//         I'll receive focus on close
+//       </Button> */}
+
+//       <Modal
+//         initialFocusRef={initialRef}
+//         finalFocusRef={finalRef}
+//         isOpen={isOpen}
+//         onClose={onClose}
+//       >
+//         <ModalOverlay />
+//         <ModalContent>
+//           <ModalHeader>Create your account</ModalHeader>
+//           <ModalCloseButton />
+//           <ModalBody pb={6}>
+//             <FormControl isRequired>
+//               {/* <FormLabel>Enter First Name</FormLabel> */}
+//               <Input
+//                 ref={initialRef}
+//                 value={firstname}
+//                 onChange={(e) => setFirstname(e.target.value)}
+//                 type="text"
+//                 placeholder="First name"
+//               />
+//             </FormControl>
+
+//             <FormControl mt={4} isRequired>
+//               {/* <FormLabel>Last name</FormLabel> */}
+//               <Input
+//                 placeholder="Last name"
+//                 value={lastname}
+//                 onChange={(e) => setLastname(e.target.value)}
+//                 type="text"
+//               />
+//             </FormControl>
+
+//             <FormControl mt={4} isRequired>
+//               {/* <FormLabel>Last name</FormLabel> */}
+//               <Input
+//                 placeholder="Password"
+//                 value={Password}
+//                 onChange={(e) => setPassword(e.target.value)}
+//                 type="password"
+//               />
+//             </FormControl>
+
+//             <FormControl mt={4} isRequired>
+//               {/* <FormLabel>Last name</FormLabel> */}
+//               <Input
+//                 placeholder="Contact"
+//                 value={contact}
+//                 onChange={(e) => setContact(e.target.value)}
+//                 type="string"
+//               />
+//             </FormControl>
+
+//             <Stack spacing={10} pt={2}>
+//               {load ? (
+//                 <Button isLoading colorScheme="green" variant="solid">
+//                   Email
+//                 </Button>
+//               ) : (
+//                 <Button
+//                   onClick={postdata}
+//                   loadingText="Submitting"
+//                   size="md"
+//                   bg={"green.600"}
+//                   color={"white"}
+//                   _hover={{
+//                     bg: "green.700",
+//                   }}
+//                 >
+//                   Sign up
+//                 </Button>
+//               )}
+//             </Stack>
+
+//             <Stack>
+//               <Text align={"center"} fontSize={"sm"}>
+//                 Already a user?{" "}
+//                 <Link color={"green"} to="/login">
+//                   Login
+//                 </Link>
+//               </Text>
+//             </Stack>
+//           </ModalBody>
+
+//           <ModalFooter>
+//             <Button colorScheme="blue" mr={3}>
+//               Save
+//             </Button>
+//             <Button onClick={onClose}>Cancel</Button>
+//           </ModalFooter>
+//         </ModalContent>
+//       </Modal>
+//     </>
+//   );
+// }

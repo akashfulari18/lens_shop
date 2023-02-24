@@ -4,25 +4,24 @@ import { LOGIN_USER } from "./auth.actionTypes";
 import { LOGOUT_USER } from "./auth.actionTypes";
 
 export function updateUser(user) {
-
   return {
     type: UPDATE_USER,
     payload: { user },
   };
-
 }
 
 export function loginUser() {
-	return {
-	  type: LOGIN_USER
-	}
-  }
+  return {
+    type: LOGIN_USER,
+  };
+}
 
-  export function logoutUser() {
-	return {
-	  type: LOGOUT_USER
-	}
-  }
+export function logoutUser() {
+  localStorage.clear();
+  return {
+    type: LOGOUT_USER,
+  };
+}
 
 export function updateProductQty(product, user, qty) {
   for (let productInCart of user.cart) {
