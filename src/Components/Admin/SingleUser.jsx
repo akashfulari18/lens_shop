@@ -7,10 +7,10 @@ const SingleUser = ({ item }) => {
   console.log(item);
   return (
     <div>
-      <Stack s>
+      <Stack >
       <Flex
         boxShadow='rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px'
-        w="300px"
+        maxW="350px"
         borderRadius={5}
         backgroundColor={"gray.300"}
         justifyContent={"center"}

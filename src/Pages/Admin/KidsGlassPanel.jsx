@@ -74,8 +74,7 @@ const [prod,setProd] = useState({})
         <Th style={headingStyle} >Brand Name</Th>
         <Th style={headingStyle} >Price</Th>
         <Th style={headingStyle} >Product Image</Th>
-
-        <Th fontSize={"1rem"}>Delete Product</Th>
+        <Th style={headingStyle}>Delete Product</Th>
       </Tr>
     </Thead>
     <Tbody>
