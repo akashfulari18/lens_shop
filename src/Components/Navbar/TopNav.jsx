@@ -571,6 +571,13 @@ import {
   Avatar,
   Heading,
   Flex,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
 } from "@chakra-ui/react";
 import Styles from "./TopNav.module.css";
 import Hover from "./Hover";
@@ -584,7 +591,7 @@ import {
   PopoverBody,
 } from "@chakra-ui/react";
 
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { TriangleDownIcon } from "@chakra-ui/icons";
 
 import {
@@ -614,8 +621,14 @@ import { Link } from "react-router-dom";
 // import { AuthContext } from "../../ContextApi/AuthContext";
 
 const TopNav = () => {
+  // drawer
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  //modal
+  // const { IsOpen, OnOpen, OnClose } = useDisclosure();
+
   const firstField = React.useRef();
+  const navigate = useNavigate();
 
   // const { firstname, isAuth, logoutUser } = useContext(AuthContext);
 
@@ -624,20 +637,23 @@ const TopNav = () => {
   const dispatch = useDispatch();
 
   return (
+
     <div className={Styles.tn_div_1}
-    //  style={{ width: "100%" }}
+     style={{ width: "100%" }}
      >
       <div className={Styles.tn_div_2} >
+
         <Box bg="#FFFFFF" mt="0.5%">
           <Box display="flex" p="0% 1.5%">
             <Box w="14%" cursor="pointer" ml="-1%" bg="">
-              <Link to='/'>
-              <Image
-                w="100%"
-                h="100%"
-                src="https://static.lenskart.com/media/desktop/img/site-images/main_logo.svg"
-                alt="Lenskart"
-              /></Link>
+              <Link to="/">
+                <Image
+                  w="100%"
+                  h="100%"
+                  src="https://static.lenskart.com/media/desktop/img/site-images/main_logo.svg"
+                  alt="Lenskart"
+                />
+              </Link>
             </Box>
             <Box width="10%" ml="5%" bg="">
               <Image
@@ -680,19 +696,16 @@ const TopNav = () => {
                     ) : (
                       <Box>
                         <Link
-                          href="/login"
+                          to="/login"
                           fontWeight={"400"}
                           fontSize="13px"
                           mr={"10px"}
                         >
                           Sign In
                         </Link>
-                        <Link
-                          // onClick={onOpen}
-                          href="/signup"
-                          fontWeight={"400"}
-                          fontSize="13px"
-                        >
+
+                        <Link to="/signup" fontWeight={"400"} fontSize="13px">
+
                           Sign Up
                         </Link>
                       </Box>
@@ -715,7 +728,7 @@ const TopNav = () => {
                     alt="icon"
                   ></Image>
                   <Text ml="15%">
-                    <Link href="/cart">Cart</Link>
+                    <Link to="/cart">Cart</Link>
                   </Text>
                 </Box>
               </Box>
@@ -1016,6 +1029,27 @@ const TopNav = () => {
             </DrawerHeader>
           </DrawerContent>
         </Drawer>
+      </div>
+
+      <div>
+        {/* <Button onClick={OnOpen}>Open Modal</Button> */}
+
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Modal Title</ModalHeader>
+            <ModalCloseButton />
+
+            <ModalBody>{/* <Lorem count={2} /> */}</ModalBody>
+
+            <ModalFooter>
+              <Button colorScheme="blue" mr={3} onClick={onClose}>
+                Close
+              </Button>
+              <Button variant="ghost">Secondary Action</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </div>
     </div>
   );

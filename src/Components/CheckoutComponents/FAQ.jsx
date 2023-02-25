@@ -8,11 +8,13 @@ import {
 	AccordionButton,
 	AccordionPanel,
 	AccordionIcon,
+	Heading,
 } from "@chakra-ui/react";
 
 export default function FAQ() {
 	return (
 		<VStack marginTop="50px" alignItems="stretch" padding="10px 100px">
+			<Heading>FAQ</Heading>
 			<Stack direction={["column", "column", "column", "row"]}>
 				<Box border="1px solid grey" padding="10px" flex="1">
 					<Text fontWeight="bold" color="#009999">

@@ -6,7 +6,7 @@ export default function CartProduct({ product, user, flexDirection }) {
 	const {
 		brand_name,
 		image_url,
-		prices: [{ price }],
+		price,
 		qty,
 	} = product;
 	const { id: userId } = user;
