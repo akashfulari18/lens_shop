@@ -19,15 +19,10 @@ import Loginpage from "../Pages/Signup-Login/Loginpage";
 
 
 
-
-
-
 import CompGlasses from "../Pages/Products/CompGlasses"
 import KidsGlasses from "../Pages/Products/KidsGlasses"
 import CompSingleProduct from "../Pages/Products/CompSingleProduct";
 import KidsSingleProduct from "../Pages/Products/KidsSingleProduct";
-
-
 
 const AllRoutes = () => {
   return (
@@ -49,7 +44,8 @@ const AllRoutes = () => {
             <Route path="/cart" element={<Cart />}></Route>
 				    <Route path="/checkout" element={<Checkout />}></Route>
             <Route path='*' element={<PageNotFound/>}></Route>
-            {/* <Route path='/test/:id' element={<Test/>}></Route> */}
+
+
     
     
         </Routes>
