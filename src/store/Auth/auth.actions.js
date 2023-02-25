@@ -1,4 +1,4 @@
-import { UPDATE_USER } from "./auth.actionTypes";
+import { ADD_TO_CART, UPDATE_USER } from "./auth.actionTypes";
 import axios from "axios";
 import { LOGIN_USER } from "./auth.actionTypes";
 import { LOGOUT_USER } from "./auth.actionTypes";
@@ -20,6 +20,28 @@ export function logoutUser() {
   localStorage.clear();
   return {
     type: LOGOUT_USER,
+  };
+}
+
+// export const addToCart = async(id,product)=>{
+//   let res = await axios.patch(`https://lesn-shop-server.onrender.com/users/${id}`)
+// }
+export function addProductToCart(user, product) {
+  product.qty=1;
+  user.cart.push(product);
+  return async function (dispatch) {
+    let response = await axios({
+      method: "patch",
+      baseURL: "https://lesn-shop-server.onrender.com",
+      url: "/users/" + user.id,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        cart: user.cart,
+      },
+    });
+    dispatch(updateUser(response.data));
   };
 }
 
@@ -54,7 +76,7 @@ export function deleteProduct(product, user) {
     temp.push(productInCart);
   }
   user.cart = temp;
-  console.log(temp);
+  // console.log(temp);
   return async function (dispatch) {
     let response = await axios({
       method: "patch",

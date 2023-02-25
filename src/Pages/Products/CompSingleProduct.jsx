@@ -5,32 +5,80 @@ import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import TopNav from '../../Components/Navbar/TopNav'
+import { useDispatch, useSelector } from 'react-redux'
+import { addProductToCart } from '../../store/Auth/auth.actions'
 
 const CompSingleProduct = () => {
   const [data, setData] = useState({})
+  const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
 //   const navigate = useNavigate()
-  
+  // console.log(user)
   const {id} = useParams()
 //   console.log(id)
-//   const addToCart=()=>{
-//     setData({...data , quntity:1})
-  
-//     fetch('https://easy-pink-bull-shoe.cyclic.app/Cart',{
-//       method:"POST",
-//       headers:{
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(data)
-//     }).then(res=>navigate("/cart"))
-//     .catch(err=>navigate("/cart"))
-//   }
+  const addToCart=()=>{
+    setData({...data , qty:1})
+    dispatch(addProductToCart(user,data))
+  }
+  // console.log(data)
+  // const users=[
+  //   {
+  //     "id": 1,
+  //     "firstname": "akash ",
+  //     "lastname": "fulari",
+  //     "email": "akash@123.gmail.com",
+  //     "password": "akash123",
+  //     "isAuth": false,
+  //     "contact": "9898765743",
+  //     "cart": [
+        
+  //     ],
+  //     "wishlist": [
+        
+  //     ]
+  //   },
+  //   {
+  //     "id": 2,
+  //     "firstname": "akash ",
+  //     "lastname": "fulari",
+  //     "email": "akash@123.gmail.com",
+  //     "password": "akash123",
+  //     "isAuth": true,
+  //     "contact": "9898765743",
+  //     "cart": [
+        
+  //     ],
+  //     "wishlist": [
+        
+  //     ]
+  //   },
+  //   {
+  //     "id": 3,
+  //     "firstname": "akash ",
+  //     "lastname": "fulari",
+  //     "email": "akash@123.gmail.com",
+  //     "password": "akash123",
+  //     "isAuth": false,
+  //     "contact": "9898765743",
+  //     "cart": [
+        
+  //     ],
+  //     "wishlist": [
+        
+  //     ]
+  //   }
+  // ]
+
+  // const item = users.find((item) => item.isAuth === true);
+  // console.log(item)
+
   const fetchSingleProduct=(id)=>{
     axios(`https://lesn-shop-server.onrender.com/all_computer_glasses?id=${id}`)
     // .then(res=>setData(res.data[0]))
     .then(res=>setData(res.data[0]))
      .catch(err=>console.log(err))
   }
-  console.log(data)
+  // console.log(data)
   useEffect(() => {
   fetchSingleProduct(id)
   }, [])
@@ -51,7 +99,7 @@ const CompSingleProduct = () => {
           </Box> */}
           </Flex>
           <Text my="10px" fontWeight={'bold'} fontSize="x-large">₹{data.price}</Text>
-          {/* <Button p={7} m="10px 20px" w="90%" color="white" bgColor="#00bac6" onClick={addToCart}>BUY</Button> */}
+          <Button p={7} m="10px 20px" w="90%" color="white" bgColor="#00bac6" onClick={addToCart}>BUY</Button>
           <Button p={7} m="10px 20px" w="90%">TRY ON</Button>
           <Box position="absolute" top="5px" right="5px"><AiOutlineHeart size={40}/></Box>
           <Select

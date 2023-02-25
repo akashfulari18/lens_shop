@@ -625,7 +625,7 @@ const TopNav = () => {
 
   return (
     <div className={Styles.tn_div_1}
-    //  style={{ width: "100%" }}
+     style={{ width: "100%" }}
      >
       <div className={Styles.tn_div_2} >
         <Box bg="#FFFFFF" mt="0.5%">
@@ -680,7 +680,7 @@ const TopNav = () => {
                     ) : (
                       <Box>
                         <Link
-                          href="/login"
+                          to="/login"
                           fontWeight={"400"}
                           fontSize="13px"
                           mr={"10px"}
@@ -689,7 +689,7 @@ const TopNav = () => {
                         </Link>
                         <Link
                           // onClick={onOpen}
-                          href="/signup"
+                          to="/signup"
                           fontWeight={"400"}
                           fontSize="13px"
                         >
@@ -715,7 +715,7 @@ const TopNav = () => {
                     alt="icon"
                   ></Image>
                   <Text ml="15%">
-                    <Link href="/cart">Cart</Link>
+                    <Link to="/cart">Cart</Link>
                   </Text>
                 </Box>
               </Box>

@@ -5,10 +5,11 @@ import { FaInstagram,FaDove,FaFacebookF } from "react-icons/fa";
 // import './Footer.css'
 import {Text,Image,Box, HStack,Heading,Link } from '@chakra-ui/react';
 const Footer = () => {
+    // pl="95px" pr="95px"
     return(
-        <div>
+        <Box w="90%">
             <Box>
-                <Box w="100%" h="500px" bg="#000042" fontFamily="sans-serif" pl="95px" pr="95px">
+                <Box w="100%" h="auto" bg="#000042" fontFamily="sans-serif" pl="20px" pr="50px">
                     <Box>
                         <Text fontSize="32px" color="#F4F4F4" m="20px 0px 10px" p="0px 0px 15px" fontWeight="medium">Buy The Bext Eyewear From Lenskart</Text>
                     </Box>
@@ -33,7 +34,7 @@ const Footer = () => {
                             <Text>
                                 SUNGLASSES 
                             </Text>
-                            <Text w="150%" h="100%">
+                            <Text w="100%" h="100%">
                                 <AiOutlinePlusCircle size="25px" fontWeight="700"/>
                             </Text>
                         </Box>
@@ -123,7 +124,7 @@ const Footer = () => {
                     </Box>
                 </Box>
             </Box>
-        </div>
+        </Box>
     )
 }
 export default Footer;

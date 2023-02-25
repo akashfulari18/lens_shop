@@ -1,4 +1,4 @@
-import { UPDATE_USER } from "./auth.actionTypes";
+import { ADD_TO_CART, UPDATE_USER } from "./auth.actionTypes";
 import { LOGIN_USER } from "./auth.actionTypes";
 import { LOGOUT_USER } from "./auth.actionTypes";
 
@@ -101,11 +101,11 @@ const init = {
   isError: false,
 
  
-  isAuth: localStorage.getItem("name") || false,
+  isAuth: false,
 
 
   token: localStorage.getItem("token") || undefined,
-  user: dummyUser, //default null
+  user: null, //default null
 };
 
 export const reducer = (state = init, { type, payload }) => {
