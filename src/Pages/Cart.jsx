@@ -14,7 +14,7 @@ export default function Cart() {
 	const navigate = useNavigate();
 	const [isCouponApplied, setIsCouponApplied] = useState(true);
 	const discount = 0.6;
-
+	// console.log(cartProducts,user)
 	if (isAuth == false) {
 		return <Navigate to="/" />;
 	}
@@ -71,8 +71,6 @@ export default function Cart() {
 								cartPrice: getCartPrice(user.cart),
 								isCouponApplied,
 								discount,
-								cartProducts,
-								user,
 							},
 						})
 					}
@@ -88,7 +86,7 @@ export default function Cart() {
 function getCartPrice(cart) {
 	let total = 0;
 	for (let item of cart) {
-		total += item.prices[0].price * item.qty;
+		total += item.price * item.qty;
 	}
 	return total;
 }

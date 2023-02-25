@@ -35,6 +35,7 @@ const AllRoutes = () => {
           element={<CompSingleProduct />}
         ></Route>
         <Route path="/all_kids_glasses" element={<KidsGlasses />}></Route>
+
         <Route
           path="/all_kids_glasses/:id"
           element={<KidsSingleProduct />}
@@ -48,6 +49,7 @@ const AllRoutes = () => {
         <Route path="/checkout" element={<Checkout />}></Route>
         <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
+
     </div>
   );
 };

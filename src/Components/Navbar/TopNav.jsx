@@ -637,11 +637,12 @@ const TopNav = () => {
   const dispatch = useDispatch();
 
   return (
-    <div
-      className={Styles.tn_div_1}
-      //  style={{ width: "100%" }}
-    >
-      <div className={Styles.tn_div_2}>
+
+    <div className={Styles.tn_div_1}
+     style={{ width: "100%" }}
+     >
+      <div className={Styles.tn_div_2} >
+
         <Box bg="#FFFFFF" mt="0.5%">
           <Box display="flex" p="0% 1.5%">
             <Box w="14%" cursor="pointer" ml="-1%" bg="">
@@ -702,7 +703,9 @@ const TopNav = () => {
                         >
                           Sign In
                         </Link>
+
                         <Link to="/signup" fontWeight={"400"} fontSize="13px">
+
                           Sign Up
                         </Link>
                       </Box>
@@ -725,7 +728,7 @@ const TopNav = () => {
                     alt="icon"
                   ></Image>
                   <Text ml="15%">
-                    <Link href="/cart">Cart</Link>
+                    <Link to="/cart">Cart</Link>
                   </Text>
                 </Box>
               </Box>

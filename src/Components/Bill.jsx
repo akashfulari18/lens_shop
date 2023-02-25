@@ -1,10 +1,28 @@
 import { Heading, VStack, HStack, Text } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { updateTotalPayable } from "/src/store/Auth/auth.actions";
 
-export default function Bill({ cartPrice, isCouponApplied, discount }) {
+function getTotals(cartPrice, isCouponApplied, discount) {
 	const couponDiscount = cartPrice * (isCouponApplied ? discount : 0);
 	const netAmount = cartPrice - couponDiscount;
 	const tax = 0.18 * netAmount;
 	const totalPayable = netAmount + tax;
+	return { couponDiscount, netAmount, tax, totalPayable };
+}
+
+export default function Bill({ cartPrice, isCouponApplied, discount }) {
+	const { couponDiscount, netAmount, tax, totalPayable } = getTotals(
+		cartPrice,
+		isCouponApplied,
+		discount,
+	);
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(updateTotalPayable(totalPayable));
+	}, [totalPayable]);
 
 	return (
 		<VStack
