@@ -27,7 +27,7 @@ import { useToast } from "@chakra-ui/react";
 
 export default function PaymentProcess() {
 	const toast = useToast();
-	const [step, setStep] = useState(2);
+	const [step, setStep] = useState(0);
 	const [progress, setProgress] = useState(33.33);
 	const [contactInfo, setContactInfo] = useState(null);
 	const [shippingAddress, setShippingAddress] = useState(null);
@@ -60,8 +60,6 @@ export default function PaymentProcess() {
 					>
 						Phone & Email
 					</Text>
-
-
 					<ContactForm setContactInfo={setContactInfo} />
 				</>
 			) : step === 1 ? (
@@ -139,24 +137,6 @@ export default function PaymentProcess() {
 							Next
 						</Button>
 					</Flex>
-					{/* {step === 2 ? (
-						<Button
-							w="7rem"
-							colorScheme="orange"
-							variant="solid"
-							onClick={() => {
-								toast({
-									title: "Account created.",
-									description: "We've created your account for you.",
-									status: "success",
-									duration: 3000,
-									isClosable: true,
-								});
-							}}
-						>
-							Submit
-						</Button>
-					) : null} */}
 				</Flex>
 			</ButtonGroup>
 		</Box>

@@ -44,7 +44,8 @@ const AllRoutes = () => {
             <Route path="/cart" element={<Cart />}></Route>
 				    <Route path="/checkout" element={<Checkout />}></Route>
             <Route path='*' element={<PageNotFound/>}></Route>
-          
+
+
     
     
         </Routes>

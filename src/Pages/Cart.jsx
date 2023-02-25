@@ -71,8 +71,6 @@ export default function Cart() {
 								cartPrice: getCartPrice(user.cart),
 								isCouponApplied,
 								discount,
-								cartProducts,
-								user,
 							},
 						})
 					}
