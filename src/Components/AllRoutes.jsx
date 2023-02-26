@@ -12,7 +12,7 @@ import AddProduct from "../Pages/Admin/AddProduct";
 import AdminAddProduct from "../Pages/Admin/AdminAddProduct";
 
 import Loginpage from "../Pages/Signup-Login/Loginpage";
-// import SignupCard from "../Pages/Signup-Login/Signuppage";
+
 import { SignupCard } from "../Pages/Signup-Login/Signuppage";
 
 import CompGlasses from "../Pages/Products/CompGlasses";
@@ -20,7 +20,7 @@ import KidsGlasses from "../Pages/Products/KidsGlasses";
 import CompSingleProduct from "../Pages/Products/CompSingleProduct";
 import KidsSingleProduct from "../Pages/Products/KidsSingleProduct";
 import Home from "../Pages/Home/Home";
-import Test from "../Pages/Signup-Login/test";
+import PrivateRoute from "../Pages/Signup-Login/PrivateRoute";
 
 const AllRoutes = () => {
   return (
@@ -29,27 +29,98 @@ const AllRoutes = () => {
         <Route path="/" element={<Home />}></Route>
         <Route path="/signup" element={<SignupCard />}></Route>
         <Route path="/login" element={<Loginpage />}></Route>
-        <Route path="/all_computer_glasses" element={<CompGlasses />}></Route>
+
+        <Route
+          path="/all_computer_glasses"
+          element={
+            <PrivateRoute>
+              <CompGlasses />
+            </PrivateRoute>
+          }
+        ></Route>
         <Route
           path="/all_computer_glasses/:id"
-          element={<CompSingleProduct />}
+          element={
+            <PrivateRoute>
+              <CompSingleProduct />
+            </PrivateRoute>
+          }
         ></Route>
-        <Route path="/all_kids_glasses" element={<KidsGlasses />}></Route>
+        <Route
+          path="/all_kids_glasses"
+          element={
+            <PrivateRoute>
+              <KidsGlasses />
+            </PrivateRoute>
+          }
+        ></Route>
 
         <Route
           path="/all_kids_glasses/:id"
-          element={<KidsSingleProduct />}
+          element={
+            <PrivateRoute>
+              <KidsSingleProduct />
+            </PrivateRoute>
+          }
         ></Route>
-        <Route path="/admin_dashboard" element={<Dashboard />}></Route>
-        <Route path="/admin_users" element={<Users />}></Route>
-        <Route path="/admin_product" element={<AdminProducts />}></Route>
-        <Route path="/admin_settings" element={<AdminSetting />}></Route>
-        <Route path="/addProduct" element={<AdminAddProduct />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/checkout" element={<Checkout />}></Route>
+        <Route
+          path="/admin_dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/admin_users"
+          element={
+            <PrivateRoute>
+              <Users />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/admin_product"
+          element={
+            <PrivateRoute>
+              <AdminProducts />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/admin_settings"
+          element={
+            <PrivateRoute>
+              <AdminSetting />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/addProduct"
+          element={
+            <PrivateRoute>
+              <AdminAddProduct />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <Checkout />
+            </PrivateRoute>
+          }
+        ></Route>
         <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
-
     </div>
   );
 };

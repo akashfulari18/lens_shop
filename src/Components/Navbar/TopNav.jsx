@@ -616,7 +616,11 @@ import { FiMenu } from "react-icons/fi";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { AuthContext } from "../../Pages/Signup-Login/AuthContext";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../../store/Auth/auth.actions";
+import {
+  logoutUser,
+  updateIsAuth,
+  updateIsAuthLogout,
+} from "../../store/Auth/auth.actions";
 import { Link } from "react-router-dom";
 // import { AuthContext } from "../../ContextApi/AuthContext";
 
@@ -634,15 +638,12 @@ const TopNav = () => {
 
   const isAuth = useSelector((store) => store.auth.isAuth);
   const user = useSelector((store) => store.auth.user);
+  // console.log("isAuth",user.isAuth)
   const dispatch = useDispatch();
 
   return (
-
-    <div className={Styles.tn_div_1}
-     style={{ width: "100%" }}
-     >
-      <div className={Styles.tn_div_2} >
-
+    <div className={Styles.tn_div_1} style={{ width: "100%" }}>
+      <div className={Styles.tn_div_2}>
         <Box bg="#FFFFFF" mt="0.5%">
           <Box display="flex" p="0% 1.5%">
             <Box w="14%" cursor="pointer" ml="-1%" bg="">
@@ -687,27 +688,27 @@ const TopNav = () => {
                     {isAuth ? (
                       <Flex>
                         <Text mr={"10px"} fontWeight={"bold"} fontSize={"15px"}>
-                          {localStorage.getItem("name")}
+                          {user?.firstname}
                         </Text>
-                        <Link to="/" onClick={() => dispatch(logoutUser())}>
+                        <Link
+                          to="/"
+                          onClick={() => {
+                            updateIsAuthLogout(user);
+                            dispatch(logoutUser());
+                          }}
+                        >
                           Logout
                         </Link>
                       </Flex>
                     ) : (
-                      <Box>
-                        <Link
-                          to="/login"
-                          fontWeight={"400"}
-                          fontSize="13px"
-                          mr={"10px"}
-                        >
-                          Sign In
-                        </Link>
+                      <Box display={"flex"}>
+                        <Text mr={"10px"}>
+                          <Link to="/login">Sign In</Link>
+                        </Text>
 
-                        <Link to="/signup" fontWeight={"400"} fontSize="13px">
-
-                          Sign Up
-                        </Link>
+                        <Text>
+                          <Link to="/signup">Sign Up</Link>
+                        </Text>
                       </Box>
                     )}
                   </Flex>

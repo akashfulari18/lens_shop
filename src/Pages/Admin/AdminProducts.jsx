@@ -129,7 +129,7 @@ export default function AdminProducts({ children }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }}  backgroundColor={"white"} pt="5rem">
+      <Box ml={{ base: 0, md: 60 }}  backgroundColor={"white"} pt="5rem" >
         {children}
 
         <Flex p="4"
@@ -150,10 +150,10 @@ export default function AdminProducts({ children }) {
               Add New Product
             </Button>
           </Box>
-          <Box>
+          {/* <Box>
             <FaSearch/>
             <Input type={"text"} />
-          </Box>
+          </Box> */}
         </Flex>
 
         <Box mt={4}>
@@ -299,7 +299,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
        <Image src={logo} h="50px" w="100px" />
       </Text>
 
-      <HStack spacing={{ base: "0", md: "6" }}>
+      <HStack spacing={{ base: "0", md: "6" }} mr={["0","0","6rem"]}>
         
         <Flex alignItems={"center"}>
           <Menu>
@@ -308,7 +308,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
               transition="all 0.3s"
               _focus={{ boxShadow: "none" }}
             >
-              <HStack mr={{base:"0",md:"6rem"}}>
+              <HStack >
                 <Avatar
                   size={"sm"}
                   

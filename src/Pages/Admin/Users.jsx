@@ -132,7 +132,7 @@ export default function Users({ children }) {
 
         <Box>
          
-      <Flex mt="2rem" justifyContent={"center" } flexWrap="wrap" gap="1rem" borderTop={"2px solid gray"} pt="2rem">
+      <Flex m="auto" mt="2rem" justifyContent={"center"}  flexWrap="wrap" gap="1rem" borderTop={"2px solid gray"} pt="2rem">
 
           {
             user.map((item)=>(
@@ -275,7 +275,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
        <Image src={logo} h="50px" w="100px" />
       </Text>
 
-      <HStack spacing={{ base: "0", md: "6" }}>
+      <HStack spacing={{ base: "0", md: "6" }} mr={["0","0","3rem"]}>
         
         <Flex alignItems={"center"}>
           <Menu>

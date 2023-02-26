@@ -6,6 +6,7 @@ import {
 	UPDATE_TOTAL_PAYABLE,
 } from "./auth.actionTypes";
 import axios from "axios";
+import { json } from "react-router-dom";
 
 export function updateUser(user) {
 	return {
@@ -21,13 +22,44 @@ export function updateTotalPayable(totalPayable) {
 	};
 }
 
+
+
 export function loginUser() {
+
 	return {
 		type: LOGIN_USER,
 	};
 }
 
+
+export const updateIsAuth =async(user)=>{
+	
+	if(!user?.isAuth){
+		
+		await axios.patch(`https://lesn-shop-server.onrender.com/users/${user.id}`,{...user,isAuth:true}).then((res)=>console.log(res)).catch(e=console.log(e))     
+    }
+
+	// console.log("user",user)
+
+
+  }
+export const updateIsAuthLogout =  async(user)=>{
+	
+	console.log("user",user)
+	if(user?.isAuth){
+		
+		await axios.patch(`https://lesn-shop-server.onrender.com/users/${user.id}`,{...user,isAuth:false}).then((res)=>console.log(res)).catch(e=console.log(e))    
+    }
+
+
+
+  }
+
+
+
+
 export function logoutUser() {
+    
 	localStorage.clear();
 	return {
 		type: LOGOUT_USER,
@@ -100,12 +132,16 @@ export function deleteProduct(product, user) {
 	};
 }
 
+
 export function deleteAllProductsInCart(user) {
 	if (user.orders == undefined) {
 		user.orders = [];
 	}
 	user.orders = [...user.orders, ...user.cart];
 	user.cart = [];
+
+
+
 	return async function (dispatch) {
 		let response = await axios({
 			method: "patch",

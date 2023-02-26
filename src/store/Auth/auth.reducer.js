@@ -1,4 +1,5 @@
 import {
+
 	ADD_TO_CART,
 	UPDATE_USER,
 	LOGIN_USER,
@@ -6,40 +7,46 @@ import {
 	UPDATE_TOTAL_PAYABLE,
 } from "./auth.actionTypes";
 
+const user = JSON.parse(localStorage.getItem("user"));
+
 const init = {
-	isLoading: false,
-	isError: false,
-	isAuth: true, // localStorage.getItem("isAuth")
-	user: getDummyUser(), // null
-	totalPayable: 1000,
+  isLoading: false,
+  isError: false,
+  isAuth: user?.isAuth || false,
+  token: localStorage.getItem("token") || undefined,
+  user: user || null, //default null
+  totalPayable: 1000,
+
 };
 
 export const reducer = (state = init, { type, payload }) => {
-	switch (type) {
-		case LOGIN_USER:
-			return {
-				...state,
-				isAuth: true,
-			};
-		case LOGOUT_USER:
-			return {
-				...state,
-				isAuth: false,
-				user: null,
-			};
-		case UPDATE_USER:
-			return {
-				...state,
-				user: payload.user,
-			};
-		case UPDATE_TOTAL_PAYABLE:
-			return {
-				...state,
-				totalPayable: payload.totalPayable,
-			};
-		default:
-			return state;
-	}
+  switch (type) {
+    case LOGIN_USER:
+      return {
+        ...state,
+        isAuth: true,
+        user: { ...state.user, isAuth: true },
+      };
+    case LOGOUT_USER:
+      localStorage.removeItem("user");
+      return {
+        ...state,
+        isAuth: false,
+        user: null,
+      };
+    case UPDATE_USER:
+      return {
+        ...state,
+        user: payload.user,
+      };
+    case UPDATE_TOTAL_PAYABLE:
+      return {
+        ...state,
+        totalPayable: payload.totalPayable,
+      };
+    default:
+      return state;
+  }
 };
 
 function getDummyUser() {
