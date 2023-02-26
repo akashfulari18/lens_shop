@@ -49,8 +49,22 @@
         margin:10px 0px 0px;
     }
     /* } */
-    @media screen and (max-width:768px) {
+    @media only screen and (max-width:320px) {
     .mobView{
         display: block;
+    }
+    /* .tn_div_1{
+        width: auto;
+    } */
+    .tn_div_2{
+        display: flex;
+        width: 100%;
+    }
+    .searchBox{
+        display: none;
+    }
+    .logo{
+        width: 40%;
+        height: 40px;
     }
     }

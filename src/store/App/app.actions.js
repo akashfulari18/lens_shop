@@ -5,10 +5,11 @@ export const appLoading = ()=>({type:APP_LOADING});
 
 export const appFailure = ()=>({type:APP_ERROR});
 
-export const getCompProducts =()=> async(dispatch)=>{
+export const getCompProducts =(sortBy="")=> async(dispatch)=>{
     dispatch(appLoading());
-    await axios.get(`https://lesn-shop-server.onrender.com/all_computer_glasses`)
+    await axios.get(`https://lesn-shop-server.onrender.com/all_computer_glasses?_sort=price&_order=${sortBy}`)
     .then((res)=>{
+        // console.log(res.data)
         dispatch({type:GET_COMP_PRODUCTS,payload:res.data})
     })
     .catch((e)=>{
@@ -26,3 +27,14 @@ export const getKidsProducts =()=> async(dispatch)=>{
         dispatch(appFailure())
     })
 }
+
+// export const getSortedCompProducts =(sortBy)=> async(dispatch)=>{
+//     dispatch(appLoading());
+//     await axios.get(`https://lesn-shop-server.onrender.com/all_computer_glasses?_sort=price&_order=${sortBy}`)
+//     .then((res)=>{
+//         dispatch({type:GET_COMP_PRODUCTS,payload:res.data})
+//     })
+//     .catch((e)=>{
+//         dispatch(appFailure())
+//     })
+// }

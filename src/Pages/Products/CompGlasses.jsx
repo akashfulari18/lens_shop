@@ -29,8 +29,8 @@ const CompGlasses = () => {
   
     let loader=[1,2,3,4,5,6]
     
-    const addSorttoUrl=(e)=>{
-     
+    const handleSort=(e)=>{
+      dispatch(getCompProducts(e.target.value))
     }
    
     return (
@@ -175,7 +175,7 @@ const CompGlasses = () => {
                   SortBy
                 </Text>
               </Flex>
-              <Select onChange={addSorttoUrl}
+              <Select onChange={handleSort}
                 border="2px"
                 borderRadius="3px"
                 borderColor="black"
@@ -183,8 +183,8 @@ const CompGlasses = () => {
                 p="0px"
               >
                 <option value="">Select</option>
-                <option value="desc">Price : low to high</option>
-                <option value="asc">Price : high to low</option>
+                <option value="asc">Price : low to high</option>
+                <option value="desc">Price : high to low</option>
               </Select>
             </Flex>
           </Flex>
