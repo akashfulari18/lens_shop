@@ -6,16 +6,24 @@ import CartProduct from "../Components/CartProduct";
 import Bill from "../Components/Bill";
 import { useState } from "react";
 import CouponBox from "../Components/CouponBox";
+import { useToast } from "@chakra-ui/react";
 
 export default function Cart() {
 	const isAuth = useSelector((state) => state.auth.isAuth);
 	const user = useSelector((state) => state.auth.user);
 	const cartProducts = user?.cart;
 	const navigate = useNavigate();
-	const [isCouponApplied, setIsCouponApplied] = useState(true);
+	const [isCouponApplied, setIsCouponApplied] = useState(false);
 	const discount = 0.6;
-	// console.log(cartProducts,user)
+	const toast = useToast();
+
 	if (isAuth == false) {
+		toast({
+			title: "Please login to see your cart",
+			status: "warning",
+			duration: 2000,
+			isClosable: true,
+		});
 		return <Navigate to="/" />;
 	}
 
@@ -34,11 +42,11 @@ export default function Cart() {
 		>
 			<VStack gap="15px" alignItems="stretch" justifyContent="flex-start" flexGrow="1">
 				<Text fontSize="3xl">Cart {`(${cartProducts.length} items)`}</Text>
-				<Box>
+				<VStack gap="15px">
 					{cartProducts.map((product) => (
 						<CartProduct key={product.id} product={product} user={user} />
 					))}
-				</Box>
+				</VStack>
 			</VStack>
 			<VStack gap="15px" alignItems="stretch" justifyContent="flex-start" flexGrow="1">
 				<Text fontSize="3xl">Bill Details</Text>

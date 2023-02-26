@@ -54,7 +54,6 @@ export default function Checkout(props) {
 					<Bill {...state} />
 				</VStack>
 			</Stack>
-
 			<FAQ />
 		</>
 	);

@@ -1,6 +1,7 @@
 import { Input, HStack, VStack, Stack, Box, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { Radio, RadioGroup, Text } from "@chakra-ui/react";
 import { useReducer, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const initialAddressInfo = {
 	firstName: "",
@@ -37,6 +38,11 @@ function isValidEmail(string) {
 }
 
 export default function ShippingAdress({ contactInfo, setShippingAddress }) {
+	const user = useSelector((state) => state.auth.user);
+	if (contactInfo.isGuest == "No") {
+		initialAddressInfo.firstName = user.firstname;
+		initialAddressInfo.lastName = user.lastname;
+	}
 	if (isValidPhone(contactInfo.phone)) {
 		initialAddressInfo.phone = contactInfo.phone;
 	} else if (isValidEmail(contactInfo.email)) {
@@ -132,7 +138,7 @@ export default function ShippingAdress({ contactInfo, setShippingAddress }) {
 					type="email"
 					placeholder="Email Address"
 					isRequired={true}
-					width="95%"
+					width={["100%", "100%", "95%", "95%"]}
 					onChange={({ target: { value } }) => dispatch(["email", value])}
 					value={addressInfo.email}
 				/>
