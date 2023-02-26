@@ -66,41 +66,41 @@ const AllRoutes = () => {
         <Route
           path="/admin_dashboard"
           element={
-            <PrivateRoute>
+            // <PrivateRoute>
               <Dashboard />
-            </PrivateRoute>
+            // </PrivateRoute>
           }
         ></Route>
         <Route
           path="/admin_users"
           element={
-            <PrivateRoute>
+            // <PrivateRoute>
               <Users />
-            </PrivateRoute>
+            // </PrivateRoute>
           }
         ></Route>
         <Route
           path="/admin_product"
           element={
-            <PrivateRoute>
+            // <PrivateRoute>
               <AdminProducts />
-            </PrivateRoute>
+            // </PrivateRoute>
           }
         ></Route>
         <Route
           path="/admin_settings"
           element={
-            <PrivateRoute>
+            // <PrivateRoute>
               <AdminSetting />
-            </PrivateRoute>
+            // </PrivateRoute>
           }
         ></Route>
         <Route
           path="/addProduct"
           element={
-            <PrivateRoute>
+            // <PrivateRoute>
               <AdminAddProduct />
-            </PrivateRoute>
+            // </PrivateRoute>
           }
         ></Route>
         <Route
