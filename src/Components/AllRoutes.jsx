@@ -8,7 +8,6 @@ import PageNotFound from "./PageNotFound";
 import Cart from "../Pages/Cart";
 import Checkout from "../Pages/Checkout";
 
-import AddProduct from "../Pages/Admin/AddProduct";
 import AdminAddProduct from "../Pages/Admin/AdminAddProduct";
 
 import Loginpage from "../Pages/Signup-Login/Loginpage";
@@ -30,14 +29,7 @@ const AllRoutes = () => {
         <Route path="/signup" element={<SignupCard />}></Route>
         <Route path="/login" element={<Loginpage />}></Route>
 
-        <Route
-          path="/all_computer_glasses"
-          element={
-            <PrivateRoute>
-              <CompGlasses />
-            </PrivateRoute>
-          }
-        ></Route>
+        <Route path="/all_computer_glasses" element={<CompGlasses />}></Route>
         <Route
           path="/all_computer_glasses/:id"
           element={
@@ -46,14 +38,7 @@ const AllRoutes = () => {
             </PrivateRoute>
           }
         ></Route>
-        <Route
-          path="/all_kids_glasses"
-          element={
-            <PrivateRoute>
-              <KidsGlasses />
-            </PrivateRoute>
-          }
-        ></Route>
+        <Route path="/all_kids_glasses" element={<KidsGlasses />}></Route>
 
         <Route
           path="/all_kids_glasses/:id"
@@ -63,46 +48,11 @@ const AllRoutes = () => {
             </PrivateRoute>
           }
         ></Route>
-        <Route
-          path="/admin_dashboard"
-          element={
-            // <PrivateRoute>
-              <Dashboard />
-            // </PrivateRoute>
-          }
-        ></Route>
-        <Route
-          path="/admin_users"
-          element={
-            // <PrivateRoute>
-              <Users />
-            // </PrivateRoute>
-          }
-        ></Route>
-        <Route
-          path="/admin_product"
-          element={
-            // <PrivateRoute>
-              <AdminProducts />
-            // </PrivateRoute>
-          }
-        ></Route>
-        <Route
-          path="/admin_settings"
-          element={
-            // <PrivateRoute>
-              <AdminSetting />
-            // </PrivateRoute>
-          }
-        ></Route>
-        <Route
-          path="/addProduct"
-          element={
-            // <PrivateRoute>
-              <AdminAddProduct />
-            // </PrivateRoute>
-          }
-        ></Route>
+        <Route path="/admin_dashboard" element={<Dashboard />}></Route>
+        <Route path="/admin_users" element={<Users />}></Route>
+        <Route path="/admin_product" element={<AdminProducts />}></Route>
+        <Route path="/admin_settings" element={<AdminSetting />}></Route>
+        <Route path="/addProduct" element={<AdminAddProduct />}></Route>
         <Route
           path="/cart"
           element={
