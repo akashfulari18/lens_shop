@@ -412,11 +412,12 @@ export default function Loginpage() {
                 <Button
                   onClick={login}
                   size="md"
-                  bg={"gray.300"}
-                  color={"black"}
+                  bg={"green.600"}
+                  color={"white"}
                   borderRadius={"100px"}
                   _hover={{
                     bg: "gray.400",
+                    color: "black",
                   }}
                 >
                   Log in
