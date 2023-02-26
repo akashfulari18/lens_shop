@@ -21,15 +21,15 @@ export default function Paymentgateway({ gateway }) {
 	const [gatewayID, setGatewayID] = useState("");
 	const [gatewayPassword, setGatewayPassword] = useState("");
 	const toast = useToast();
-
 	const totalPayable = useSelector((state) => state.auth.totalPayable);
-
 	const [activeQRCode, setActiveQRCode] = useState(0);
+
 	const qrCodes = [
 		"/src/assets/qr-code-1.png",
 		"/src/assets/qr-code-2.png",
 		"/src/assets/qr-code-3.png",
 	];
+
 	if (gateway == "UPI QR Code") {
 		return (
 			<VStack>
@@ -37,7 +37,7 @@ export default function Paymentgateway({ gateway }) {
 				<Text fontSize="sm" color="grey">
 					Phone Pe / Paytm / Google Pay /
 				</Text>
-				<Image src={qrCodes[activeQRCode]} />
+				<Image src={qrCodes[activeQRCode]} width={["100%", "100%", "50%", "50%"]} />
 				<Button onClick={() => setActiveQRCode((activeQRCode + 1) % qrCodes.length)}>
 					Generate new QR Code
 				</Button>

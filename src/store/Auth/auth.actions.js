@@ -1,6 +1,10 @@
-
-import {ADD_TO_CART, UPDATE_USER, LOGIN_USER, LOGOUT_USER, UPDATE_TOTAL_PAYABLE } from "./auth.actionTypes";
-
+import {
+	ADD_TO_CART,
+	UPDATE_USER,
+	LOGIN_USER,
+	LOGOUT_USER,
+	UPDATE_TOTAL_PAYABLE,
+} from "./auth.actionTypes";
 import axios from "axios";
 
 export function updateUser(user) {
@@ -30,24 +34,23 @@ export function logoutUser() {
 	};
 }
 
-
 export function addProductToCart(user, product) {
-  product.qty=1;
-  user.cart.push(product);
-  return async function (dispatch) {
-    let response = await axios({
-      method: "patch",
-      baseURL: "https://lesn-shop-server.onrender.com",
-      url: "/users/" + user.id,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: {
-        cart: user.cart,
-      },
-    });
-    dispatch(updateUser(response.data));
-  };
+	product.qty = 1;
+	user.cart.push(product);
+	return async function (dispatch) {
+		let response = await axios({
+			method: "patch",
+			baseURL: "https://lesn-shop-server.onrender.com",
+			url: "/users/" + user.id,
+			headers: {
+				"Content-Type": "application/json",
+			},
+			data: {
+				cart: user.cart,
+			},
+		});
+		dispatch(updateUser(response.data));
+	};
 }
 
 export function updateProductQty(product, user, qty) {
@@ -73,37 +76,14 @@ export function updateProductQty(product, user, qty) {
 }
 
 export function deleteProduct(product, user) {
-
-  let temp = [];
-  for (let productInCart of user.cart) {
-    if (productInCart.id == product.id) {
-      continue;
-    }
-    temp.push(productInCart);
-  }
-  user.cart = temp;
-
-  return async function (dispatch) {
-    let response = await axios({
-      method: "patch",
-      baseURL: "https://lesn-shop-server.onrender.com",
-      url: "/users/" + user.id,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: {
-        cart: user.cart,
-      },
-    });
-    dispatch(updateUser(response.data));
-  };
-
-	
-	
-	
-}
-
-export default function deleteAllProductsInCart() {
+	let temp = [];
+	for (let productInCart of user.cart) {
+		if (productInCart.id == product.id) {
+			continue;
+		}
+		temp.push(productInCart);
+	}
+	user.cart = temp;
 	return async function (dispatch) {
 		let response = await axios({
 			method: "patch",
@@ -113,10 +93,32 @@ export default function deleteAllProductsInCart() {
 				"Content-Type": "application/json",
 			},
 			data: {
-				cart: [],
+				cart: user.cart,
 			},
 		});
 		dispatch(updateUser(response.data));
 	};
+}
 
+export function deleteAllProductsInCart(user) {
+	if (user.orders == undefined) {
+		user.orders = [];
+	}
+	user.orders = [...user.orders, ...user.cart];
+	user.cart = [];
+	return async function (dispatch) {
+		let response = await axios({
+			method: "patch",
+			baseURL: "https://lesn-shop-server.onrender.com",
+			url: "/users/" + user.id,
+			headers: {
+				"Content-Type": "application/json",
+			},
+			data: {
+				cart: user.cart,
+				orders: user.orders,
+			},
+		});
+		dispatch(updateUser(response.data));
+	};
 }

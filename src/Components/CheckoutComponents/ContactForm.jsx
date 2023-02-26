@@ -28,7 +28,6 @@ export default function ContactForm({ setContactInfo }) {
 		};
 		if (isGuest == "Yes") {
 			if (isValidPhone(phone) == true) {
-				console.log("it is valid phone number", Math.random());
 				setError(null);
 				setContactInfo(contactInfo);
 			} else {
@@ -37,7 +36,6 @@ export default function ContactForm({ setContactInfo }) {
 			}
 		} else if (isGuest == "No") {
 			if (isValidPhone(phone) == true || isValidEmail(email) == true) {
-				console.log("it is valid phone number", Math.random());
 				setError(null);
 				setContactInfo(contactInfo);
 			} else {
