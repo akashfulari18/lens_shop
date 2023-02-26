@@ -616,7 +616,7 @@ import { FiMenu } from "react-icons/fi";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { AuthContext } from "../../Pages/Signup-Login/AuthContext";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../../store/Auth/auth.actions";
+import { logoutUser, updateIsAuth, updateIsAuthLogout } from "../../store/Auth/auth.actions";
 import { Link } from "react-router-dom";
 // import { AuthContext } from "../../ContextApi/AuthContext";
 
@@ -634,8 +634,10 @@ const TopNav = () => {
 
   const isAuth = useSelector((store) => store.auth.isAuth);
   const user = useSelector((store) => store.auth.user);
+  // console.log("isAuth",user.isAuth)
   const dispatch = useDispatch();
 
+ 
   return (
 
     <div className={Styles.tn_div_1}
@@ -687,9 +689,12 @@ const TopNav = () => {
                     {isAuth ? (
                       <Flex>
                         <Text mr={"10px"} fontWeight={"bold"} fontSize={"15px"}>
-                          {localStorage.getItem("name")}
+                          { user?.firstname}
                         </Text>
-                        <Link to="/" onClick={() => dispatch(logoutUser())}>
+                        <Link to="/" onClick={() => {
+                          updateIsAuthLogout(user)
+                          dispatch(logoutUser())
+                        }}>
                           Logout
                         </Link>
                       </Flex>

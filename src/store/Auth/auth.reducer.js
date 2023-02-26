@@ -1,7 +1,7 @@
 
 
 
-import {ADD_TO_CART, UPDATE_USER, LOGIN_USER, LOGOUT_USER, UPDATE_TOTAL_PAYABLE } from "./auth.actionTypes";
+import { ADD_TO_CART, UPDATE_USER, LOGIN_USER, LOGOUT_USER, UPDATE_TOTAL_PAYABLE } from "./auth.actionTypes";
 
 
 var dummyUser = {
@@ -96,19 +96,14 @@ var dummyUser = {
 	],
 };
 
+const user=JSON.parse(localStorage.getItem("user"))
 const init = {
 
-  isLoading: false,
-  isError: false,
-
- 
-  isAuth: false,
-
-
-  token: localStorage.getItem("token") || undefined,
-  user: null, //default null
-
-	
+	isLoading: false,
+	isError: false,
+	isAuth: user?.isAuth || false,
+	token: localStorage.getItem("token") || undefined,
+	user: user || null, //default null
 	totalPayable: 1000,
 
 };
@@ -119,8 +114,10 @@ export const reducer = (state = init, { type, payload }) => {
 			return {
 				...state,
 				isAuth: true,
+				user:{...state.user,isAuth:true}
 			};
 		case LOGOUT_USER:
+			localStorage.removeItem("user")
 			return {
 				...state,
 				isAuth: false,

@@ -160,8 +160,11 @@ import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, updateUser } from "../../store/Auth/auth.actions";
+import { loginUser, updateIsAuth, updateUser } from "../../store/Auth/auth.actions";
 import { CloseIcon } from "@chakra-ui/icons";
+import axios from "axios";
+
+
 
 export default function Loginpage() {
   const [email, setemail] = useState("");
@@ -171,16 +174,23 @@ export default function Loginpage() {
   const dispatch = useDispatch();
   const isAuth = useSelector((store) => store.auth.isAuth);
 
+  console.log(email,Password)
   // const { isAuth, loginUser, logoutUser } = useContext(AuthContext);
 
   if (isAuth) {
     navigate("/");
   }
+
+  
+  
   const login = async () => {
     setload(true);
 
     try {
       let res = await fetch(`https://lesn-shop-server.onrender.com/users`);
+      let AdRes = await axios.get(`https://lesn-shop-server.onrender.com/admin`);
+      let admin= AdRes?.data[0]
+      // console.log("admin",admin)
       let data = await res.json();
       console.log(data);
       let Auth = false;
@@ -188,17 +198,21 @@ export default function Loginpage() {
         if (data[i].email === email && data[i].Password === Password) {
           Auth = true;
           console.log(data[i].firstname);
-          localStorage.setItem("name", data[i].firstname);
+          // localStorage.setItem("name", data[i].firstname);
+          localStorage.setItem("user",JSON.stringify( data[i]));
           // loginUser(data[i].name);
           dispatch(updateUser(data[i]));
           dispatch(loginUser());
-          console.log(data[i]);
+          // console.log("aasd",data[i]);
+          updateIsAuth(data[i])
           break;
         } else if (
-          localStorage.getItem("email") === email &&
-          localStorage.getItem("password") === Password
+          admin?.email === email &&
+          admin?.password === Password
         ) {
+          
           navigate("/admin_dashboard");
+          return;
         }
       }
       setload(false);

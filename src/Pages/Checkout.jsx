@@ -9,7 +9,7 @@ import FAQ from "../Components/CheckoutComponents/FAQ";
 function getCartPrice(cart) {
 	let total = 0;
 	for (let item of cart) {
-		total += item.prices[0].price * item.qty;
+		total += item.price * item.qty;
 	}
 	return total;
 }

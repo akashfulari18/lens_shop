@@ -12,7 +12,7 @@ import AddProduct from "../Pages/Admin/AddProduct";
 import AdminAddProduct from "../Pages/Admin/AdminAddProduct";
 
 import Loginpage from "../Pages/Signup-Login/Loginpage";
-// import SignupCard from "../Pages/Signup-Login/Signuppage";
+
 import { SignupCard } from "../Pages/Signup-Login/Signuppage";
 
 import CompGlasses from "../Pages/Products/CompGlasses";
@@ -20,7 +20,7 @@ import KidsGlasses from "../Pages/Products/KidsGlasses";
 import CompSingleProduct from "../Pages/Products/CompSingleProduct";
 import KidsSingleProduct from "../Pages/Products/KidsSingleProduct";
 import Home from "../Pages/Home/Home";
-import Test from "../Pages/Signup-Login/test";
+
 
 const AllRoutes = () => {
   return (
