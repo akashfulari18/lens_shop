@@ -582,6 +582,7 @@ import {
 } from "@chakra-ui/react";
 import Styles from "./TopNav.module.css";
 import Hover from "./Hover";
+import final_logo from "../../assets/final-logo.png"
 // import Login from "../Login";
 // import Signup from "../Signup";
 import {
@@ -903,7 +904,7 @@ const TopNav = () => {
                 <Image
                   w="80%"
                   h="100%"
-                  src="/src/assets/final-logo.png"
+                  src={final_logo}
                   alt="Lenskart"
                 />
               </Link>

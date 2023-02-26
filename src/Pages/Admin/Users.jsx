@@ -246,7 +246,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
     <Flex
     position="fixed"
       top="0"
-      w={["100%","100%","80%"]}
+      w={["100%","100%","85%"]}
       zIndex={20}
       height={20}
       ml={{ base: 0, md: 60 }}
