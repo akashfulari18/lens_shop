@@ -897,8 +897,8 @@ const TopNav = () => {
         </Drawer>
       </div>
         <Box bg="#FFFFFF" mt="0.5%">
-          <Box display="flex" p="0% 1.5%">
-            <Box w="14%" cursor="pointer" ml="-1%" bg=""  className={Styles.logo}>
+          <Box display="flex" p="0 2rem">
+            <Box w="14%" cursor="pointer" ml="-0.5" bg=""  className={Styles.logo}>
               <Link to="/">
                 <Image
                   w="80%"
