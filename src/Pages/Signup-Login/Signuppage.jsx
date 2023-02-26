@@ -387,10 +387,16 @@ export const SignupCard = () => {
         }),
       });
       let data = await res.json();
-      console.log("data",data);
+      console.log("data", data);
       setload(false);
-      alert("Signup Successfull!");
-      // <ToastExample />;
+      // alert("Signup Successfull!");
+      toast({
+        title: "Account created.",
+        description: "We've created your account for you.",
+        status: "success",
+        duration: 1500,
+        isClosable: true,
+      });
       localStorage.setItem("email", email);
       localStorage.setItem("password", Password);
       navigate("/login");
