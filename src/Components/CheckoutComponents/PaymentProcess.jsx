@@ -27,7 +27,7 @@ import { useToast } from "@chakra-ui/react";
 
 export default function PaymentProcess() {
 	const toast = useToast();
-	const [step, setStep] = useState(0);
+	const [step, setStep] = useState(2);
 	const [progress, setProgress] = useState(33.33);
 	const [contactInfo, setContactInfo] = useState(null);
 	const [shippingAddress, setShippingAddress] = useState(null);
@@ -45,7 +45,6 @@ export default function PaymentProcess() {
 			border="1px solid black"
 			borderRadius="30px"
 		>
-
 			<Progress hasStripe value={progress} mb="5%" mx="5%" isAnimated></Progress>
 
 			{step === 0 ? (

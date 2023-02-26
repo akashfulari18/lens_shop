@@ -18,7 +18,7 @@ import { useRef, useState } from "react";
 
 export default function CouponDrawer({ setIsCouponApplied }) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const btnRef = useRef();
+	const buttonRef = useRef();
 	const [couponCode, setCouponCode] = useState("");
 	const [submittedCouponCode, setSubmittedCouponCode] = useState("");
 	const [isCouponCodeCorrect, setIsCouponCodeCorrect] = useState(false);
@@ -35,14 +35,14 @@ export default function CouponDrawer({ setIsCouponApplied }) {
 
 	return (
 		<>
-			<Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
+			<Button ref={buttonRef} colorScheme="teal" onClick={onOpen}>
 				<ArrowForwardIcon />
 			</Button>
 			<Drawer
 				isOpen={isOpen}
 				placement="right"
 				onClose={onClose}
-				finalFocusRef={btnRef}
+				finalFocusRef={buttonRef}
 				size="sm"
 			>
 				<DrawerOverlay />

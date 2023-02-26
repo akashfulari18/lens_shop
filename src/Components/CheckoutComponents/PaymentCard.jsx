@@ -56,7 +56,7 @@ export default function PaymentCard() {
 			</HStack>
 			<Input
 				type="number"
-				placeholder="Enter Card Number"
+				placeholder="Card Number (12 digits)"
 				value={cardNumber}
 				onChange={({ target: { value } }) => {
 					if (value.length > 12) {
@@ -68,7 +68,7 @@ export default function PaymentCard() {
 			<HStack justifyContent="space-between" width="100%">
 				<Input
 					type="text"
-					placeholder="Enter Expiry Date"
+					placeholder="Expiry Date (mm/yyyy)"
 					value={cardExpiry}
 					onChange={({ target: { value } }) => {
 						if (
@@ -87,7 +87,7 @@ export default function PaymentCard() {
 				/>
 				<Input
 					type="number"
-					placeholder="Enter CVV Number"
+					placeholder="CVV Number (3 digits)"
 					value={cardCVV}
 					onChange={({ target: { value } }) => {
 						if (value.length > 3) {
