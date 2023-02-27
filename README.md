@@ -24,5 +24,5 @@
   
   <div align=""center>
   <h2>Home page</h2>
-  <img src="https://drive.google.com/file/d/1fbCpMZsYrQbVi4nv8P56FvsXDyJ-88yp/view?usp=share_link" height="470px" width="100%" alter="Image" />
+  
   </div>
