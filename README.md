@@ -24,4 +24,33 @@
   
   <div align=""center>
   <h2>Home page</h2>
+<img src="https://user-images.githubusercontent.com/72221453/221767661-75046f9b-a136-421a-a7f8-db25d95b0619.png"  alt="mockup layout" height="470px" width="100%" />
+
   </div>
+  <h2> 🚀 Features</h2>
+  <ul>
+  
+- Login/Signup User Account
+- Add & Delete poduct to your cart 
+- Sort products 
+- Checkout process
+- Data visualization at admin-dashboard
+- Listing all the products for admin (CRUD)
+- Admin can add the product for their users
+- Check all the users details  
+</ul>
+
+<br />
+
+<table>
+  <tr>
+      <td><img src="https://user-images.githubusercontent.com/72221453/221769874-f2242d15-a9e8-4b1b-bb1c-947681eb4132.png" alt="admin-product" /></td>
+          <td><img  src="https://user-images.githubusercontent.com/72221453/221769891-67b6d56f-b5c5-40a6-9b1f-4ac04c5debf3.png" alt="wishlistcart" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/72221453/221769930-acb71e49-b6fa-4efb-bb3b-ce679d4bba31.png" alt="admin-dashboard" /></td>
+          <td><img src="https://user-images.githubusercontent.com/72221453/221770201-8e7a6fe5-0aad-4781-aa67-1983cc27668e.png" alt="admin-product" /></td>
+  </tr>
+</table>
+
+
