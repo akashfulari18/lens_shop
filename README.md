@@ -24,5 +24,5 @@
   
   <div align=""center>
   <h2>Home page</h2>
-  
+<!--   <img src=""  alt="mockup layout" height="470px" width="100%" /> -->
   </div>
