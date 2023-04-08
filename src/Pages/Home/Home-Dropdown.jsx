@@ -24,6 +24,8 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 
+import {Link as RouterLink} from "react-router-dom"
+
 export default function Dropdown() {
   const { isOpen, onToggle } = useDisclosure();
 
@@ -220,13 +222,13 @@ const MobileNav = () => {
       display={{ md: "none" }}
     >
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
+        <MobileNavItem key={navItem.text} {...navItem} />
       ))}
     </Stack>
   );
 };
 
-const MobileNavItem = ({ label, children, href }) => {
+const MobileNavItem = ({ label,text, children, href }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -245,7 +247,9 @@ const MobileNavItem = ({ label, children, href }) => {
           fontWeight={600}
           color={useColorModeValue("gray.600", "gray.200")}
         >
-          {label}
+          <RouterLink to={href} >
+          {text}
+          </RouterLink>
         </Text>
         {children && (
           <Icon
@@ -287,148 +291,127 @@ const MobileNavItem = ({ label, children, href }) => {
 // }
 
 const NAV_ITEMS = [
-  {
-    label: "https://static1.lenskart.com/media/desktop/img/Apr22/a2.png",
-    text: "Eyeglasses",
-    children: [
-      {
-        label: "Air Light-Weight",
-        subLabel: "Powered Lenses",
-        price: "$1199",
-        href: "#",
-      },
-      {
-        label: "Kids Glasses",
-        subLabel: "Powered Lenses",
-        price: "$3200",
-        href: "#",
-      },
-      {
-        label: "Lens Cleaner",
-        subLabel: "Powered Lenses",
-        price: "$110",
-        href: "#",
-      },
-    ],
-  },
+ 
   {
     label: "https://static1.lenskart.com/media/desktop/img/Apr22/b2.png",
-    text: "Sunglasses",
-    children: [
-      {
-        label: "Air Light-Weight",
-        subLabel: "Powered Lenses",
-        price: "$1199",
-        href: "#",
-      },
-      {
-        label: "Kids Glasses",
-        subLabel: "Powered Lenses",
-        price: "$3200",
-        href: "#",
-      },
-      {
-        label: "Lens Cleaner",
-        subLabel: "Powered Lenses",
-        price: "$110",
-        href: "#",
-      },
-    ],
+    text: "Kids Glasses",
+    href:"/all_kids_glasses",
+    // children: [
+    //   {
+    //     label: "Air Light-Weight",
+    //     subLabel: "Powered Lenses",
+    //     price: "$1199",
+    //     href: "#",
+    //   },
+    //   {
+    //     label: "Kids Glasses",
+    //     subLabel: "Powered Lenses",
+    //     price: "$3200",
+    //     href: "#",
+    //   },
+    //   {
+    //     label: "Lens Cleaner",
+    //     subLabel: "Powered Lenses",
+    //     price: "$110",
+    //     href: "#",
+    //   },
+    // ],
   },
   {
     label: "https://static1.lenskart.com/media/desktop/img/Apr22/d2.png",
     text: "Computer Glasses",
-    children: [
-      {
-        label: "Air Light-Weight",
-        subLabel: "Powered Lenses",
-        price: "$1199",
-        href: "#",
-      },
-      {
-        label: "Kids Glasses",
-        subLabel: "Powered Lenses",
-        price: "$3200",
-        href: "#",
-      },
-      {
-        label: "Lens Cleaner",
-        subLabel: "Powered Lenses",
-        price: "$110",
-        href: "#",
-      },
-    ],
+    href:"/all_computer_glasses",
+    // children: [
+    //   {
+    //     label: "Air Light-Weight",
+    //     subLabel: "Powered Lenses",
+    //     price: "$1199",
+    //     href: "#",
+    //   },
+    //   {
+    //     label: "Kids Glasses",
+    //     subLabel: "Powered Lenses",
+    //     price: "$3200",
+    //     href: "#",
+    //   },
+    //   {
+    //     label: "Lens Cleaner",
+    //     subLabel: "Powered Lenses",
+    //     price: "$110",
+    //     href: "#",
+    //   },
+    // ],
   },
-  {
-    label: "https://static1.lenskart.com/media/desktop/img/Apr22/d.png",
-    text: "Contact Lences",
-    children: [
-      {
-        label: "Air Light-Weight",
-        subLabel: "Powered Lenses",
-        price: "$1199",
-        href: "#",
-      },
-      {
-        label: "Kids Glasses",
-        subLabel: "Powered Lenses",
-        price: "$3200",
-        href: "#",
-      },
-      {
-        label: "Lens Cleaner",
-        subLabel: "Powered Lenses",
-        price: "$110",
-        href: "#",
-      },
-    ],
-  },
-  {
-    label: "https://static1.lenskart.com/media/desktop/img/Apr22/e2.png",
-    text: "Power Sunglasses",
-    children: [
-      {
-        label: "Air Light-Weight",
-        subLabel: "Powered Lenses",
-        price: "$1199",
-        href: "#",
-      },
-      {
-        label: "Kids Glasses",
-        subLabel: "Powered Lenses",
-        price: "$3200",
-        href: "#",
-      },
-      {
-        label: "Lens Cleaner",
-        subLabel: "Powered Lenses",
-        price: "$110",
-        href: "#",
-      },
-    ],
-  },
-  {
-    label: "https://static1.lenskart.com/media/desktop/img/June22/prog11.jpg",
-    text: "Progressive Lenses",
-    children: [
-      {
-        label: "Air Light-Weight",
-        subLabel: "Powered Lenses",
-        price: "$1199",
-        href: "#",
-      },
-      {
-        label: "Kids Glasses",
-        subLabel: "Powered Lenses",
-        price: "$3200",
-        href: "#",
-      },
-      {
-        label: "Lens Cleaner",
-        subLabel: "Powered Lenses",
-        price: "$110",
-        href: "#",
-      },
-    ],
-  },
+  // {
+  //   label: "https://static1.lenskart.com/media/desktop/img/Apr22/d.png",
+  //   text: "Contact Lences",
+  //   children: [
+  //     {
+  //       label: "Air Light-Weight",
+  //       subLabel: "Powered Lenses",
+  //       price: "$1199",
+  //       href: "#",
+  //     },
+  //     {
+  //       label: "Kids Glasses",
+  //       subLabel: "Powered Lenses",
+  //       price: "$3200",
+  //       href: "#",
+  //     },
+  //     {
+  //       label: "Lens Cleaner",
+  //       subLabel: "Powered Lenses",
+  //       price: "$110",
+  //       href: "#",
+  //     },
+  //   ],
+  // },
+  // {
+  //   label: "https://static1.lenskart.com/media/desktop/img/Apr22/e2.png",
+  //   text: "Power Sunglasses",
+  //   children: [
+  //     {
+  //       label: "Air Light-Weight",
+  //       subLabel: "Powered Lenses",
+  //       price: "$1199",
+  //       href: "#",
+  //     },
+  //     {
+  //       label: "Kids Glasses",
+  //       subLabel: "Powered Lenses",
+  //       price: "$3200",
+  //       href: "#",
+  //     },
+  //     {
+  //       label: "Lens Cleaner",
+  //       subLabel: "Powered Lenses",
+  //       price: "$110",
+  //       href: "#",
+  //     },
+  //   ],
+  // },
+  // {
+  //   label: "https://static1.lenskart.com/media/desktop/img/June22/prog11.jpg",
+  //   text: "Progressive Lenses",
+  //   children: [
+  //     {
+  //       label: "Air Light-Weight",
+  //       subLabel: "Powered Lenses",
+  //       price: "$1199",
+  //       href: "#",
+  //     },
+  //     {
+  //       label: "Kids Glasses",
+  //       subLabel: "Powered Lenses",
+  //       price: "$3200",
+  //       href: "#",
+  //     },
+  //     {
+  //       label: "Lens Cleaner",
+  //       subLabel: "Powered Lenses",
+  //       price: "$110",
+  //       href: "#",
+  //     },
+  //   ],
+  // },
 ];

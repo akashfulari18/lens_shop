@@ -448,10 +448,11 @@ export const SignupCard = () => {
               <FormControl mt={4} isRequired>
                 {/* <FormLabel>Contact</FormLabel> */}
                 <Input
+                  maxLength={10}
+                  type='tel'
                   placeholder="Mobile*"
                   value={contact}
                   onChange={(e) => setContact(e.target.value)}
-                  type="string"
                 />
               </FormControl>
 

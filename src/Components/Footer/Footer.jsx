@@ -3,7 +3,7 @@ import React from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { FaInstagram, FaDove, FaFacebookF } from "react-icons/fa";
 // import './Footer.css'
-import { Text, Image, Box, HStack, Heading, Link } from "@chakra-ui/react";
+import { Text, Image, Box, HStack, Heading, Link, Flex } from "@chakra-ui/react";
 const Footer = () => {
   // pl="95px" pr="95px"
   return (
@@ -58,30 +58,7 @@ const Footer = () => {
             display="flex"
             gap="27%"
           >
-            <Box display="flex" gap="200%" cursor="pointer">
-              <Text>SUNGLASSES</Text>
-              <Text w="100%" h="100%">
-                <AiOutlinePlusCircle size="25px" fontWeight="700" />
-              </Text>
-            </Box>
-            <Box display="flex" gap="200%" cursor="pointer">
-              <Text>EYEGLASSES</Text>
-              <Text>
-                <AiOutlinePlusCircle
-                  _hover={{
-                    background: "red",
-                    color: "teal.500",
-                    border: "1px solid red",
-                  }}
-                />
-              </Text>
-            </Box>
-            <Box display="flex" gap="140%" cursor="pointer">
-              <Text>CONTACTLENSES</Text>
-              <Text>
-                <AiOutlinePlusCircle />
-              </Text>
-            </Box>
+          
           </Box>
           <Box display="flex" gap="8%">
             <Text border="1px" borderColor="gray.200" w="30%"></Text>
@@ -141,10 +118,10 @@ const Footer = () => {
             </Box>
             <Box h="30%" w="25%" bg="" mt="2%" ml="14%">
               <Box display="flex" flexDirection="column" p="5%">
-                <Box display="flex" flexDirection="row" gap="2%" bg="" pl="18%">
+                <Flex flexDirection="row" flexWrap={"wrap"} gap="0.5rem" bg="" pl="18%">
                   <Image src="https://static.lenskart.com/media/desktop/img/play-store.svg"></Image>
                   <Image src="https://static.lenskart.com/media/desktop/img/app-store.svg"></Image>
-                </Box>
+                </Flex>
 
                 <Box
                   color="#FCFCFC"
@@ -160,8 +137,8 @@ const Footer = () => {
             </Box>
           </Box>
           <Box border="1px" borderColor="gray.200" w="100%"></Box>
-          <Box display="flex" gap="16%" mt="2%" cursor="pointer">
-            <Box
+          <Flex  gap="16%" mt="2%" cursor="pointer">
+            <Flex
               color="#FFFFFF"
               fontSize="14px"
               display="flex"
@@ -172,7 +149,7 @@ const Footer = () => {
               <Box>T & C</Box>
               <Box>Privacy</Box>
               <Box>Desclaimer</Box>
-            </Box>
+            </Flex>
             <Box
               color="#FFFFFF"
               display="flex"
@@ -195,7 +172,7 @@ const Footer = () => {
                 <FaDove />
               </Box>
             </Box>
-          </Box>
+          </Flex>
         </Box>
       </Box>
     </Box>

@@ -168,6 +168,7 @@ import {
 } from "../../store/Auth/auth.actions";
 import { CloseIcon } from "@chakra-ui/icons";
 import axios from "axios";
+import {Link as RouterLink} from "react-router-dom"
 
 export default function Loginpage() {
   const [email, setemail] = useState("");
@@ -426,9 +427,9 @@ export default function Loginpage() {
             </Stack>
             <Text>
               New member?{" "}
-              <Link textDecoration={"underline"} href="/signup">
+              <RouterLink textDecoration={"underline"} to="/signup">
                 Create an Account
-              </Link>
+              </RouterLink>
             </Text>
           </Stack>
         </Flex>
