@@ -34,7 +34,8 @@ const NavSearch = () => {
   useEffect(() => {
     if (throttledText === "") {
       setSuggestion([]);
-    } else if (location.pathname === "/") {
+    } else{
+       if (location.pathname === "/") {
       let newSuggestions = allData?.filter((item) =>
         item.brand_name
           .split("")
@@ -47,7 +48,60 @@ const NavSearch = () => {
         // console.log(item.brand_name)
       );
       setSuggestion(newSuggestions);
+    }else if(location.pathname === "/all_computer_glasses"){
+      let newSuggestions = allData?.filter((item) =>
+      item.brand_name
+        .split("")
+        .join("")
+        .trim()
+        .toLowerCase()
+        .includes(throttledText)
+        ? true
+        : false
+      // console.log(item.brand_name)
+    );
+    setSuggestion(newSuggestions);
+    }else if(location.pathname === `/all_computer_glasses/${id}`){
+      let newSuggestions = allData?.filter((item) =>
+      item.brand_name
+        .split("")
+        .join("")
+        .trim()
+        .toLowerCase()
+        .includes(throttledText)
+        ? true
+        : false
+      // console.log(item.brand_name)
+    );
+    setSuggestion(newSuggestions);
+    }else if(location.pathname === "/all_kids_glasses"){
+      let newSuggestions = allData?.filter((item) =>
+      item.brand_name
+        .split("")
+        .join("")
+        .trim()
+        .toLowerCase()
+        .includes(throttledText)
+        ? true
+        : false
+      // console.log(item.brand_name)
+    );
+    setSuggestion(newSuggestions);
+    }else if(location.pathname === `/all_kids_glasses/${id}`){
+      let newSuggestions = allData?.filter((item) =>
+      item.brand_name
+        .split("")
+        .join("")
+        .trim()
+        .toLowerCase()
+        .includes(throttledText)
+        ? true
+        : false
+      // console.log(item.brand_name)
+    );
+    setSuggestion(newSuggestions);
     }
+  }
   }, [throttledText]);
   console.log("suggestions", suggestions);
 

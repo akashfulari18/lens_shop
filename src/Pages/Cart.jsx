@@ -1,6 +1,6 @@
 import { Heading, Box, Button, Text, Stack, VStack } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import EmptyCartMessage from "../Components/EmptyCartMessage";
 import CartProduct from "../Components/CartProduct";
 import Bill from "../Components/Bill";
@@ -13,6 +13,7 @@ export default function Cart() {
 	const user = useSelector((state) => state.auth.user);
 	const cartProducts = user?.cart;
 	const navigate = useNavigate();
+	const location = useLocation()
 	const [isCouponApplied, setIsCouponApplied] = useState(false);
 	const discount = 0.6;
 	const toast = useToast();
@@ -30,8 +31,12 @@ export default function Cart() {
 	if (cartProducts.length == 0) {
 		return <EmptyCartMessage />;
 	}
-
+	console.log(location)
+	function goBack() {
+		window.history.back();
+	  }
 	return (
+		<>
 		<Stack
 			paddingLeft={["50px", "50px", "100px", "100px"]}
 			paddingRight={["50px", "50px", "100px", "100px"]}
@@ -39,7 +44,9 @@ export default function Cart() {
 			justifyContent="space-between"
 			flexDirection={["column", "column", "column", "row"]}
 			marginBottom="50px"
-		>
+			pt={"2rem"}
+		> 
+		<Button onClick={()=>goBack()} border={"1px solid aqua"} backgroundColor={"cyan.400"} color={"white"} m={"auto"}> {"<"} Go Back</Button>
 			<VStack gap="15px" alignItems="stretch" justifyContent="flex-start" flexGrow="1">
 				<Text fontSize="3xl">Cart {`(${cartProducts.length} items)`}</Text>
 				<VStack gap="15px">
@@ -88,6 +95,7 @@ export default function Cart() {
 				</Button>
 			</VStack>
 		</Stack>
+		</>
 	);
 }
 
