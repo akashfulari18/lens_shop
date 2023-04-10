@@ -19,11 +19,11 @@ const NavSearch = () => {
   //console.log(isOpen)
   const throttledText = useThrottle(query, 500);
 
-  console.log("thtext", throttledText);
+  // console.log("thtext", throttledText);
   const { compGlassData } = useSelector((store) => store.product);
   const { kids } = useSelector((store) => store.product);
   const allData = [...compGlassData, ...kids];
-  console.log("allData", allData);
+  // console.log("allData", allData);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -103,7 +103,7 @@ const NavSearch = () => {
     }
   }
   }, [throttledText]);
-  console.log("suggestions", suggestions);
+  // console.log("suggestions", suggestions);
 
   return (
     <div>

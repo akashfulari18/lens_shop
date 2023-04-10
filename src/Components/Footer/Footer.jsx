@@ -60,14 +60,16 @@ const Footer = () => {
           >
           
           </Box>
-          <Box display="flex" gap="8%">
-            <Text border="1px" borderColor="gray.200" w="30%"></Text>
-            <Text border="1px" borderColor="gray.200" w="30%"></Text>
-            <Text border="1px" borderColor="gray.200" w="30%"></Text>
+          <Box display="flex"               flexWrap={"wrap"}
+ gap="8%">
+            <Text border="1px" borderColor="gray.200" w="100%"></Text>
+          
           </Box>
           <Box display="flex" mb="2%">
             <Box
               display="flex"
+              flexWrap={"wrap"}
+
               fontFamily="sans-serif"
               w="60%"
               mt="2%"
@@ -125,12 +127,12 @@ const Footer = () => {
 
                 <Box
                   color="#FCFCFC"
-                  fontSize="14px"
+                  fontSize={{base:"0.6rem",md:"1rem"}}
                   fontFamily=""
                   mt="5%"
                   bg=""
                 >
-                  <Text ml="12">Download Lenskart App to buy</Text>
+                  <Text >Download Lenskart App to buy</Text>
                   <Text ml="4%">Eyeglasses, Sunglasses and Contact Lenses</Text>
                 </Box>
               </Box>
@@ -142,6 +144,7 @@ const Footer = () => {
               color="#FFFFFF"
               fontSize="14px"
               display="flex"
+              flexWrap={"wrap"}
               bg=""
               w="40%"
               gap="8%"
@@ -153,15 +156,19 @@ const Footer = () => {
             <Box
               color="#FFFFFF"
               display="flex"
+              flexWrap={"wrap"}
+
               bg=""
               w="30%"
               gap="10%"
               ml="13%"
               pl="10%"
             >
-              <Box fontSize="18px" fontWeight="bold">
+              <Box fontSize={{base:"0.8rem",md:"1rem"}} fontWeight="bold">
                 FOLLOW US AT
               </Box>
+              <Flex gap={"0.5rem"}>
+
               <Box>
                 <FaFacebookF />
               </Box>
@@ -171,6 +178,7 @@ const Footer = () => {
               <Box>
                 <FaDove />
               </Box>
+              </Flex>
             </Box>
           </Flex>
         </Box>

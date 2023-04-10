@@ -32,7 +32,7 @@ export default function Dropdown() {
   return (
     <Box>
       <Flex
-        bg={"#f5f5f5"}
+        bg={"#fff"}
         // bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
@@ -42,11 +42,16 @@ export default function Dropdown() {
         borderStyle={"solid"}
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
+        position={"fixed"}
+        top={"3rem"}
+        zIndex={13}
+
       >
         <Flex
           flex={{ base: 1, md: "auto" }}
           ml={{ base: -2 }}
           display={{ base: "flex", md: "none" }}
+         
         >
           <IconButton
             onClick={onToggle}
@@ -220,6 +225,9 @@ const MobileNav = () => {
       bg={useColorModeValue("white", "gray.800")}
       p={4}
       display={{ md: "none" }}
+      position={"fixed"}
+      top={"6.9rem"}
+      zIndex={13}
     >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.text} {...navItem} />

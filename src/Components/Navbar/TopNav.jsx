@@ -350,12 +350,12 @@ const TopNav = () => {
             </DrawerContent>
           </Drawer>
         </div>
-        <Box bg="#FFFFFF" mt="0.5%">
+        <Box bg="#FFFFFF" >
           <Box
             display="flex"
             alignItems={"center"}
             justifyContent={"space-between"}
-            p="0 2rem"
+            p="1rem 2rem"
           >
             <Box
               w="10%"
@@ -376,7 +376,7 @@ const TopNav = () => {
                 alt="ph-no"
               ></Image>
             </Box> */}
-            <Box p="0.6%" bg="" w="40%" ml="1%" className={Styles.searchBox}>
+            <Box display={{base:"none",md:"block",lg:"block"}} p="0.6%" bg="" w="40%" ml="1%" className={Styles.searchBox}>
               <NavSearch />
             </Box>
             <Box fontSize="1rem" fontFamily="sans-serif" w="40%">
@@ -473,6 +473,9 @@ const TopNav = () => {
               </Box>
             </Box>
           </Box>
+          <Box margin={"auto"} display={{base:"flex",md:"none",lg:"none"}} border={"1px solid white"} p="0.6%" bg="" w="70%" className={Styles.searchBox}>
+              <NavSearch />
+            </Box>
           <HStack
             fontWeight="bold"
             bg="#FBF9F7"
@@ -480,6 +483,7 @@ const TopNav = () => {
             h="65px"
             w="100%"
             position="relative"
+            display={{base:"none",md:"flex",lg:"flex"}}
           >
             <Hover />
             <Box
@@ -519,6 +523,7 @@ const TopNav = () => {
             </Box>
           </HStack>
         </Box>
+        
       </div>
     </div>
   );
