@@ -14,12 +14,12 @@ export const getKidsData =()=> async(dispatch)=>{
         dispatch({type:types.GET_PRODUCT_ERROR})
     }
 }
-export const getComputerGlassData =()=> async(dispatch)=>{
+export const getComputerGlassData =(getParam)=> async(dispatch)=>{
 
     dispatch({type:types.GET_PRODUCT_LOADING})
 
     try {
-        let data = await getComputerGlassDataAPI()
+        let data = await getComputerGlassDataAPI(getParam)
         // console.log("comp",data)
         dispatch({type:types.GET_COMPUTER_GLASS_DATA_SUCCESS,payload:data})
         

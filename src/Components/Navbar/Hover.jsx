@@ -1,6 +1,6 @@
 import React from "react";
 import  './hover.css'
-import { Avatar,Wrap,WrapItem, Image,Heading,Box,Button,Text} from '@chakra-ui/react'
+import { Avatar,Wrap,WrapItem, Image,Heading,Box,Button,Text, Flex} from '@chakra-ui/react'
 import { AiOutlineRight } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -16,103 +16,9 @@ function Hover() {
     
     <div className='MainMenu'>
       <ul>
-        <li>EYEGLASSES   
-          <div className='SubMenu_1'>
-            <div className='SubMenu_2'>
-                    <div>SELECT CATEGORY</div>
-                    <p>Our Top Pics</p>
-                    <p>Frame Type</p>
-                    <p>Collection</p>
-                    <p>Brands</p>
-            </div>
-            <div className="hr_Line"></div>
-            <div className='SubMenu_3'>
-                <Wrap direction="column" >
-                    <WrapItem display="flex">
-                        <Avatar mt="20px"name='Dan Abrahmov' src='https://static.lenskart.com/media/desktop/img/men_pic.png' alt="men"/>
-                        <div className="Men_menu">Men</div>
-                        <div className="Greater_icon_men">
-                        <AiOutlineRight size="10px"/>
-                        </div>
-                        <div className="Heading_1">CLASSIC EYE-GLASSES
-                            <p>Starting From ₹ <span>1199</span></p>
-                        </div>
-                        <div className="Greater_icon_men_2">
-                        <AiOutlineRight/>
-                        </div>
-                        <div className="nextPara_1">
-                            <div className="subPara_1"> New Arrivals</div>
-                            <div className="subPara_1">Best Seller</div>
-                            <div className="subPara_1">Lenskart BLU lenses</div>
-                            <div className="subPara_1">Trending</div>
-                            <div className="subPara_1">Tinted Eyeglasses</div>
-                            <div className="subPara_1">Computer Eyeglasses</div>
-                            <div className="subPara_1">Progressive Eyeglasses</div>
-                        </div>
-                    </WrapItem>
-                    <WrapItem>
-                        <Avatar mt="-130px"name='Kola Tioluwani' src='https://static.lenskart.com/media/desktop/img/women_pic.png' alt="women"/>
-                        <div className="Women_menu">Women</div>
-                        <div className="Greater_icon_women">
-                        <AiOutlineRight/>
-                        </div>
-                        <div className="Heading_2">PREMIUM EYE-GLASSES
-                            <p>Starting From ₹ <span>3000</span></p>
-                        </div>
-                        <p className="via">
-                        </p>
-                        <div className="Greater_icon_women_2">
-                            <AiOutlineRight/>
-                        </div>
-                        <div className="nextPara_2">
-                            <div className="subPara_2">Rectangle Frames</div>
-                            <div className="subPara_2">Wayfarer Frames</div>
-                            <div className="subPara_2">Round Frames</div>
-                            <div className="subPara_2">Aviator Frames</div>
-                            <div className="subPara_2">Cat-Eye Frames</div>
-                            <div className="subPara_2">Rimless Frames</div>
-                            <div className="subPara_2">Half Rim Frames</div>
-                            <div className="subPara_2">Geometric Frames </div>
-                        </div>
-                    </WrapItem>
-                    <WrapItem>
-                        <Avatar mt="-100px"name='Kent Dodds' src='https://static.lenskart.com/media/desktop/img/kid_pic.png' alt="kid"/>
-                        <div className="Kids_menu">Kids</div>
-                        <div className="Greater_icon_kids">
-                        <AiOutlineRight/>
-                        </div>
-                        <div className="Heading_3">COMPUTER EYE-GLASSES
-                            <p>Starting From ₹ <span>1299</span></p>
-                        </div>
-                        <div className="Greater_icon_kids_2">
-                        <AiOutlineRight/>
-                        </div>
-                        <div className="nextPara_3">
-                            <div className="subPara_3">Crystal Clear</div>
-                            <div className="subPara_3">Gradient</div>
-                            <div className="subPara_3">Sleek Steel</div>
-                            <div className="subPara_3">Switch - Magnetic Clips-On</div>
-                            <div className="subPara_3">Air Flex</div>
-                            <div className="subPara_3">Air Wrap</div>
-                            <div className="subPara_3">Classic Acetate</div>
-                            <div className="subPara_3">Series A</div>
-                        </div>
-                        <div className="nextPara_4">
-                            <div className="subPara_4">Vincent Chase</div>
-                            <div className="subPara_4">Lenskart Air</div>
-                            <div className="subPara_4">John Jacobs</div>
-                            <div className="subPara_4">OJOS</div>
-                            <div className="subPara_4">New Balance</div>
-                            <div className="subPara_4">Carrera</div>
-                            <div className="subPara_4">Fossil</div>
-                        </div>
-                    </WrapItem>
-                </Wrap>
-            </div>
-          </div>
-        </li>
+        
         <li><Link to='/all_computer_glasses'>
-            COMPUTER GLASSES</Link>
+           <Text noOfLines={1}> COMPUTER GLASSES</Text></Link>
             <div className='SubMenu_1'>
                 <div className='SubMenu_2' >
                         <div>SELECT CATEGORY</div>
@@ -160,29 +66,29 @@ function Hover() {
             </div>
         </li>
         <li><Link to='/all_kids_glasses'>
-            KIDS GLASSES</Link>
-            <div className='SubMenu_1'>
-                <div className='SubMenu_2'>
-                </div>
-                <div className='SubMenu_3'>
-                    <div className="kids_Section">
-                        <div className="image_1">
-                            <img className="img_1" src="https://static1.lenskart.com/media/desktop/img/May22/glasses.jpg" alt="kidsIcon_1" />
+           <Text> KIDS GLASSES</Text></Link>
+            <Box className='SubMenu_1' pos={"relative"}  >
+                <Box className='SubMenu_2' pos={"absolute"}>
+                </Box>
+                <Box className='SubMenu_3' >
+                    <Flex className="kids_Section" pos={"absolute"} justifyContent={"space-between"} gap={"1.5rem"} backgroundColor={"white"} boxShadow= {"rgba(0, 0, 0, 0.24) 0px 3px 8px"} p={"1rem"}>
+                        <Box w={"32%"}>
+                            <Image w="100%" src="https://static1.lenskart.com/media/desktop/img/May22/glasses.jpg" alt="kidsIcon_1" />
                             <div>Eye Glasses</div>
-                        </div>
-                        <div className="image_2">
-                            <img className="img_2" src="https://static1.lenskart.com/media/desktop/img/May22/computer-glasses.jpg" alt="kidsIcon_2" />
+                        </Box>
+                        <Box w={"32%"}>
+                            <Image  w="100%" src="https://static1.lenskart.com/media/desktop/img/May22/computer-glasses.jpg" alt="kidsIcon_2" />
                             <div>Zero Power Computer Glasses</div>
-                        </div>
-                        <div className="image_3">
-                            <img className="img_3" src="https://static1.lenskart.com/media/desktop/img/May22/Sunnies.jpg" alt="kidsIcon_3" />
+                        </Box>
+                        <Box w={"32%"}>
+                            <Image  w="100%" src="https://static1.lenskart.com/media/desktop/img/May22/Sunnies.jpg" alt="kidsIcon_3" />
                             <div>Sun Glasses</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </Box>
+                    </Flex>
+                </Box>
+            </Box>
         </li>
-        <li>
+        {/* <li>
             CONTACT LENSES
             <div className='contactGlasses_SubMenu_1'>
                 <div className='contactGlasses_SubMenu_2'>
@@ -243,8 +149,8 @@ function Hover() {
                 </Wrap>
                 </div>
             </div>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
             SUN GLASSES
             <div className='sunGlasses_SubMenu_1'>
             <div className='sunGlasses_SubMenu_2'>
@@ -252,7 +158,7 @@ function Hover() {
                     <p>Our Top Pics</p>
                     <p>Shape</p>
                     <p>Collection</p>
-                    {/* <p>Brands</p> */}
+                   
                     <hr />
             </div>
             <div className="hr_Line4"></div>
@@ -317,8 +223,8 @@ function Hover() {
                 </Wrap>
             </div>
           </div>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
             HOME EYE-TEST
             <div className="eyeText_mainMenu">
                 <div className="eyeText_mainMenu_1">
@@ -333,8 +239,8 @@ function Hover() {
                     </div>
                 </div>
             </div>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
             STORE LOCATOR
             <div className="store_mainMenu">
                 <div className="store_mainMenu_1">
@@ -380,7 +286,7 @@ function Hover() {
                     </div>
                 </div>
             </div>
-        </li>
+        </li> */}
       </ul>
     </div>   
   )

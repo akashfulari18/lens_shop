@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, GridItem, Image, Select, Text} from '@chakra-ui/react'
+import { Box, Button, Flex, Grid, GridItem, Image, Select, Text, useToast} from '@chakra-ui/react'
 import {AiOutlineHeart} from 'react-icons/ai'
 import React, { useEffect } from 'react'
 import axios from 'axios'
@@ -12,65 +12,24 @@ const CompSingleProduct = () => {
   const [data, setData] = useState({})
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
-//   const navigate = useNavigate()
+  const toast =useToast()
+  const navigate = useNavigate()
   // console.log(user)
   const {id} = useParams()
 //   console.log(id)
   const addToCart=()=>{
     setData({...data , qty:1})
     dispatch(addProductToCart(user,data))
+    toast({
+      title: 'product has been added to cart.',
+      description: "product has been added successfully",
+      status: 'success',
+      duration: 1000,
+      isClosable: true,
+    })
+    
   }
-  // console.log(data)
-  // const users=[
-  //   {
-  //     "id": 1,
-  //     "firstname": "akash ",
-  //     "lastname": "fulari",
-  //     "email": "akash@123.gmail.com",
-  //     "password": "akash123",
-  //     "isAuth": false,
-  //     "contact": "9898765743",
-  //     "cart": [
-        
-  //     ],
-  //     "wishlist": [
-        
-  //     ]
-  //   },
-  //   {
-  //     "id": 2,
-  //     "firstname": "akash ",
-  //     "lastname": "fulari",
-  //     "email": "akash@123.gmail.com",
-  //     "password": "akash123",
-  //     "isAuth": true,
-  //     "contact": "9898765743",
-  //     "cart": [
-        
-  //     ],
-  //     "wishlist": [
-        
-  //     ]
-  //   },
-  //   {
-  //     "id": 3,
-  //     "firstname": "akash ",
-  //     "lastname": "fulari",
-  //     "email": "akash@123.gmail.com",
-  //     "password": "akash123",
-  //     "isAuth": false,
-  //     "contact": "9898765743",
-  //     "cart": [
-        
-  //     ],
-  //     "wishlist": [
-        
-  //     ]
-  //   }
-  // ]
-
-  // const item = users.find((item) => item.isAuth === true);
-  // console.log(item)
+  
 
   const fetchSingleProduct=(id)=>{
     axios(`https://lesn-shop-server.onrender.com/all_computer_glasses?id=${id}`)
@@ -99,7 +58,7 @@ const CompSingleProduct = () => {
           </Box> */}
           </Flex>
           <Text my="10px" fontWeight={'bold'} fontSize="x-large">₹{data.price}</Text>
-          <Button p={7} m="10px 20px" w="90%" color="white" bgColor="#00bac6" onClick={addToCart}>BUY</Button>
+          <Button p={7} m="10px 20px" w="90%" color="white" bgColor="#00bac6" onClick={()=>{addToCart();navigate('/cart')}}>BUY</Button>
           <Button p={7} m="10px 20px" w="90%">TRY ON</Button>
           <Box position="absolute" top="5px" right="5px"><AiOutlineHeart size={40}/></Box>
           <Select

@@ -9,9 +9,10 @@ export const getKidsDataAPI = async()=>{
     return res?.data
 }
 
-export const getComputerGlassDataAPI = async()=>{
-    let res = await axios.get(`https://lesn-shop-server.onrender.com/all_computer_glasses`)
-    // console.log("comp",res?.data)
+export const getComputerGlassDataAPI = async(getParam)=>{
+    // console.log("comp",getParam)
+    let res = await axios.get(`https://lesn-shop-server.onrender.com/all_computer_glasses`,getParam)
+    console.log("comp",res?.data)
     return res?.data
 }
 

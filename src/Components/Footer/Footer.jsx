@@ -3,7 +3,7 @@ import React from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { FaInstagram, FaDove, FaFacebookF } from "react-icons/fa";
 // import './Footer.css'
-import { Text, Image, Box, HStack, Heading, Link } from "@chakra-ui/react";
+import { Text, Image, Box, HStack, Heading, Link, Flex } from "@chakra-ui/react";
 const Footer = () => {
   // pl="95px" pr="95px"
   return (
@@ -58,39 +58,18 @@ const Footer = () => {
             display="flex"
             gap="27%"
           >
-            <Box display="flex" gap="200%" cursor="pointer">
-              <Text>SUNGLASSES</Text>
-              <Text w="100%" h="100%">
-                <AiOutlinePlusCircle size="25px" fontWeight="700" />
-              </Text>
-            </Box>
-            <Box display="flex" gap="200%" cursor="pointer">
-              <Text>EYEGLASSES</Text>
-              <Text>
-                <AiOutlinePlusCircle
-                  _hover={{
-                    background: "red",
-                    color: "teal.500",
-                    border: "1px solid red",
-                  }}
-                />
-              </Text>
-            </Box>
-            <Box display="flex" gap="140%" cursor="pointer">
-              <Text>CONTACTLENSES</Text>
-              <Text>
-                <AiOutlinePlusCircle />
-              </Text>
-            </Box>
+          
           </Box>
-          <Box display="flex" gap="8%">
-            <Text border="1px" borderColor="gray.200" w="30%"></Text>
-            <Text border="1px" borderColor="gray.200" w="30%"></Text>
-            <Text border="1px" borderColor="gray.200" w="30%"></Text>
+          <Box display="flex"               flexWrap={"wrap"}
+ gap="8%">
+            <Text border="1px" borderColor="gray.200" w="100%"></Text>
+          
           </Box>
           <Box display="flex" mb="2%">
             <Box
               display="flex"
+              flexWrap={"wrap"}
+
               fontFamily="sans-serif"
               w="60%"
               mt="2%"
@@ -141,30 +120,31 @@ const Footer = () => {
             </Box>
             <Box h="30%" w="25%" bg="" mt="2%" ml="14%">
               <Box display="flex" flexDirection="column" p="5%">
-                <Box display="flex" flexDirection="row" gap="2%" bg="" pl="18%">
+                <Flex flexDirection="row" flexWrap={"wrap"} gap="0.5rem" bg="" pl="18%">
                   <Image src="https://static.lenskart.com/media/desktop/img/play-store.svg"></Image>
                   <Image src="https://static.lenskart.com/media/desktop/img/app-store.svg"></Image>
-                </Box>
+                </Flex>
 
                 <Box
                   color="#FCFCFC"
-                  fontSize="14px"
+                  fontSize={{base:"0.6rem",md:"1rem"}}
                   fontFamily=""
                   mt="5%"
                   bg=""
                 >
-                  <Text ml="12">Download Lenskart App to buy</Text>
+                  <Text >Download Lenskart App to buy</Text>
                   <Text ml="4%">Eyeglasses, Sunglasses and Contact Lenses</Text>
                 </Box>
               </Box>
             </Box>
           </Box>
           <Box border="1px" borderColor="gray.200" w="100%"></Box>
-          <Box display="flex" gap="16%" mt="2%" cursor="pointer">
-            <Box
+          <Flex  gap="16%" mt="2%" cursor="pointer">
+            <Flex
               color="#FFFFFF"
               fontSize="14px"
               display="flex"
+              flexWrap={"wrap"}
               bg=""
               w="40%"
               gap="8%"
@@ -172,19 +152,23 @@ const Footer = () => {
               <Box>T & C</Box>
               <Box>Privacy</Box>
               <Box>Desclaimer</Box>
-            </Box>
+            </Flex>
             <Box
               color="#FFFFFF"
               display="flex"
+              flexWrap={"wrap"}
+
               bg=""
               w="30%"
               gap="10%"
               ml="13%"
               pl="10%"
             >
-              <Box fontSize="18px" fontWeight="bold">
+              <Box fontSize={{base:"0.8rem",md:"1rem"}} fontWeight="bold">
                 FOLLOW US AT
               </Box>
+              <Flex gap={"0.5rem"}>
+
               <Box>
                 <FaFacebookF />
               </Box>
@@ -194,8 +178,9 @@ const Footer = () => {
               <Box>
                 <FaDove />
               </Box>
+              </Flex>
             </Box>
-          </Box>
+          </Flex>
         </Box>
       </Box>
     </Box>
