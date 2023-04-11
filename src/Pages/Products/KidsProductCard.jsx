@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 const KidsProductCard = ({src , rating , userRated , price , name ,size,tags , colors ,mprice , product , id}) => {
   const [iswish , setIsWish]=useState(false)
   const navigate = useNavigate();
-  console.log(colors)
+  // console.log(colors)
 //   let colors
 //   if(color!=false && color!=undefined){
 //     console.log(color)

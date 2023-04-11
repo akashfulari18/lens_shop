@@ -1,14 +1,14 @@
 import * as types from "./product.actionTypes"
 import { getComputerGlassDataAPI, getKidsDataAPI,updateCompItemAPI, updateKidsItemAPI } from "./product.api"
 
-export const getKidsData =()=> async(dispatch)=>{
+export const getKidsData =(getParam)=> async(dispatch)=>{
 
     dispatch({type:types.GET_PRODUCT_LOADING})
 
     try {
-        let data = await getKidsDataAPI()
+        let data = await getKidsDataAPI(getParam)
 
-        dispatch({type:types.GET_KIDS_DATA_SUCCESS,payload:data})
+        dispatch({type:types.GET_KIDS_DATA_SUCCESS,payload:data[0]})
         
     } catch (e) {
         dispatch({type:types.GET_PRODUCT_ERROR})

@@ -29,7 +29,7 @@ const CompProductCard = ({src , rating , userRated , price , name ,size,tags , c
   }
   return (
     < >
-    <Box onClick={()=>veiwPage()} position="relative" border="0.1rem solid" borderColor="gray.300" borderRadius="3%" p="10px" _hover={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} w={{base:"80%",sm:"45%",md:"45%",lg:"30%"}} m="auto">
+    <Box onClick={()=>veiwPage()} position="relative" border="0.1rem solid" borderColor="gray.300" borderRadius="3%" p="10px" _hover={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} w={{base:"90%",sm:"80%",md:"45%",lg:"30%"}} m="auto">
         <Image m="auto" width="80%" src={src} alt='image'/>
         <Box  position="absolute" top="0.5rem" right="0.5rem" onClick={handleWishList} >
         <AiOutlineHeart  color={iswish?"red":"black"} size="2rem"/>

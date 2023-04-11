@@ -24,7 +24,7 @@ const KidsSingleProduct = () => {
 //     .catch(err=>navigate("/cart"))
 //   }
 const fetchSingleProduct=(id)=>{
-    axios(`https://lesn-shop-server.onrender.com/all_kids_glasses?id=${id}`)
+    axios(`https://lesn-shop-server.onrender.com/all_kids_eyeglasess?id=${id}`)
     .then(res=>setData(res.data[0]))
      .catch(err=>console.log(err))
   }

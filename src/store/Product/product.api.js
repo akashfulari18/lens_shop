@@ -3,16 +3,18 @@
 import axios from "axios"
 
 
-export const getKidsDataAPI = async()=>{
+export const getKidsDataAPI = async(getParam)=>{
 
-    let res = await axios.get(`https://lesn-shop-server.onrender.com/all_kids_glasses`)
+    console.log("params",getParam)
+    let res = await axios.get(`https://lesn-shop-server.onrender.com/all_kids_eyeglasess`,getParam)
+    console.log("comp",res?.data[0])
     return res?.data
 }
 
 export const getComputerGlassDataAPI = async(getParam)=>{
     // console.log("comp",getParam)
     let res = await axios.get(`https://lesn-shop-server.onrender.com/all_computer_glasses`,getParam)
-    console.log("comp",res?.data)
+    // console.log("comp",res?.data)
     return res?.data
 }
 

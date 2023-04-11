@@ -87,8 +87,8 @@ params._order = "asc"
   // console.log(params)
 },[filterValues,setSearchParams,sort,order])
   return (
-    <div>
-         <Box w="100%" m={0}>
+    <Box >
+         <Box w="100%" m={0} display={{base:"block",md:"block",lg:"block"}} position={"sticky"} top="10.5rem">
           <Box my="20px" h={"10rem"}>
             <Text fontWeight="bold" mb="3px" color="blackAlpha.600">
               FRAME SIZE
@@ -106,20 +106,6 @@ params._order = "asc"
         
            
           </Box>
-          
-         
-          {/* <VStack mb="20px" alignItems="flex-start">
-            <Text fontWeight="bold" mb="3px" color="blackAlpha.600">
-              FRAME COLOR
-            </Text>
-            <Checkbox colorScheme="green">Black ({285})</Checkbox>
-            <Checkbox colorScheme="green">Blue ({285})</Checkbox>
-            <Checkbox colorScheme="green">White ({285})</Checkbox>
-            <Checkbox colorScheme="green">Gold ({285})</Checkbox>
-            <Checkbox colorScheme="green">Silver ({285})</Checkbox>
-            <Checkbox colorScheme="green">Green ({285})</Checkbox>
-          </VStack> */}
-         
           <Text>Sort By</Text>
           <Select
             border="0px"
@@ -142,7 +128,7 @@ params._order = "asc"
          
           
         </Box>
-    </div>
+    </Box>
   )
 }
 

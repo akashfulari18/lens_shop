@@ -40,17 +40,19 @@ export default function Dropdown() {
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.900")}
+        // borderColor={useColorModeValue("gray.200", "gray.900")}
+        
+        border={"1px solid black"}
         align={"center"}
         position={"fixed"}
-        top={"3rem"}
-        zIndex={13}
+        top={"5rem"}
+        zIndex={16}
 
       >
         <Flex
           flex={{ base: 1, md: "auto" }}
           ml={{ base: -2 }}
-          display={{ base: "flex", md: "none" }}
+          // display={{ base: "flex", md: "flex" }}
          
         >
           <IconButton
@@ -63,13 +65,7 @@ export default function Dropdown() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          {/* <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
-            color={useColorModeValue("gray.800", "white")}
-          >
-            Logo
-          </Text> */}
+          
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
@@ -82,29 +78,7 @@ export default function Dropdown() {
           direction={"row"}
           spacing={6}
         >
-          {/* <Button
-            as={"a"}
-            fontSize={"sm"}
-            fontWeight={400}
-            variant={"link"}
-            href={"#"}
-          >
-            Sign In
-          </Button>
-          <Button
-            as={"a"}
-            display={{ base: "none", md: "inline-flex" }}
-            fontSize={"sm"}
-            fontWeight={600}
-            color={"white"}
-            bg={"pink.400"}
-            href={"#"}
-            _hover={{
-              bg: "pink.300",
-            }}
-          >
-            Sign Up
-          </Button> */}
+          
         </Stack>
       </Flex>
 
@@ -224,7 +198,7 @@ const MobileNav = () => {
     <Stack
       bg={useColorModeValue("white", "gray.800")}
       p={4}
-      display={{ md: "none" }}
+      display={{base:"flex", md: "none" }}
       position={"fixed"}
       top={"6.9rem"}
       zIndex={13}

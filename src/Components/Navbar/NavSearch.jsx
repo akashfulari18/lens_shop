@@ -106,11 +106,12 @@ const NavSearch = () => {
   // console.log("suggestions", suggestions);
 
   return (
-    <div>
+    <div style={{width:"100%"}}>
       <Box
         position="relative"
         h="100%"
         w="100%"
+        m={"auto"}
         borderRadius="5px"
         borderColor="#000042"
         bg="#FFFFFF"
