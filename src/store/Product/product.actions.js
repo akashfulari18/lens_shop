@@ -1,5 +1,5 @@
 import * as types from "./product.actionTypes"
-import { getComputerGlassDataAPI, getKidsDataAPI,updateCompItemAPI, updateKidsItemAPI } from "./product.api"
+import { addToWishlistAPI, getComputerGlassDataAPI, getKidsDataAPI,updateCompItemAPI, updateKidsItemAPI } from "./product.api"
 
 export const getKidsData =(getParam)=> async(dispatch)=>{
 
@@ -8,7 +8,7 @@ export const getKidsData =(getParam)=> async(dispatch)=>{
     try {
         let data = await getKidsDataAPI(getParam)
 
-        dispatch({type:types.GET_KIDS_DATA_SUCCESS,payload:data[0]})
+        dispatch({type:types.GET_KIDS_DATA_SUCCESS,payload:data})
         
     } catch (e) {
         dispatch({type:types.GET_PRODUCT_ERROR})
@@ -87,5 +87,17 @@ export const updateItemKids=(item)=>async(dispatch)=>{
     }
 }
 
+export const addToWishlist=(item)=>async(dispatch)=>{
+    // console.log(item)
+    dispatch({type:types.GET_PRODUCT_LOADING})
+
+    try {
+        let data = await addToWishlistAPI(item)
+        // console.log("data",data)
+        dispatch({type:types.UPDATE_ITEM_KIDS,payload:data})
+    } catch (e) {
+        dispatch({type:types.GET_PRODUCT_ERROR})
+    }
+}
 
     

@@ -187,9 +187,7 @@ const CompGlasses = () => {
             borderColor="gray.400"
           >
             <Text>ALL COMPUTER GLASSES</Text>
-            <Flex alignItems="center">
-              
-            </Flex>
+           
             <Flex>
               <Flex alignItems="center">
                 <TbArrowsUpDown color="green" fontWeight="bold" />
@@ -218,12 +216,11 @@ const CompGlasses = () => {
             <Flex
               m="20px 10px"
               flexWrap={"wrap"}
-              // height="100vh"
               gap={6}
             >
               {compGlassData.map((ele) => (
                 <CompProductCard
-                  id={ele.id}
+               
                   key={ele.id}
                   product={ele}
                   mprice={ele.mPrice}
@@ -236,6 +233,7 @@ const CompGlasses = () => {
                   price={ele.prices[0].price}
                   tags={ele.tags}
                   wishlist={ele.wishlistCount}
+                  
                 />
               ))}
             </Flex>

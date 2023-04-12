@@ -113,13 +113,26 @@ const TopNav = () => {
                   style={{ borderBottom: "2px solid #18CFA8", padding: "5%" }}
                 >
                   <div className={Styles.div2}>
-                    <Avatar name={`${user.firstname} ${user.lastname}`} src="https://bit.ly/broken-link" />
+                    {
+                      !user?<>
+                       <Avatar src="https://bit.ly/broken-link" />
+                    <div className={Styles.div3}>
+                      <h3 style={{ color: "white", marginTop: "10px" }}>
+                        Hi, Guest ... ,Please login.
+                      </h3>
+                      
+                    </div>
+                      </>:<>
+                      <Avatar name={`${user.firstname} ${user.lastname}`} src="https://bit.ly/broken-link" />
                     <div className={Styles.div3}>
                       <h3 style={{ color: "white", marginTop: "10px" }}>
                         Hi, {user.firstname}
                       </h3>
                       
                     </div>
+                    </>
+                    }
+                    
                   </div>
                   
                 </div>
@@ -272,7 +285,10 @@ const TopNav = () => {
                             base: "0.7rem",
                             md: "0.7rem",
                             lg: "1rem",
-                          }}>Wishlist</Text>
+                          }}>
+                         
+                            <Link to="/wishlist">Wishlist</Link>
+                            </Text>
                   </Box>
 
                   <Box display="flex" gap={"0.5rem"} cursor="pointer" position={"relative"}>

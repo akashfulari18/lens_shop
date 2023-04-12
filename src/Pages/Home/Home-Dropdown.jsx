@@ -31,7 +31,7 @@ export default function Dropdown() {
 
   return (
     <Box>
-      <Flex
+      {/* <Flex
         bg={"#fff"}
         // bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
@@ -80,7 +80,7 @@ export default function Dropdown() {
         >
           
         </Stack>
-      </Flex>
+      </Flex> */}
 
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
@@ -95,24 +95,12 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={4}>
+    <Stack direction={"row"} w={"100%"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
-              {/* <Link
-                p={2}
-                href={navItem.href ?? "#"}
-                fontSize={"sm"}
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: "none",
-                  color: linkHoverColor,
-                }}
-              >
-                {navItem.label}
-              </Link> */}
+              
               <Box
                 // border={"1px solid red"}
                 padding={"10px"}
@@ -120,7 +108,7 @@ const DesktopNav = () => {
                 bg={"white"}
               >
                 <Link href={navItem.href ?? "#"}>
-                  <Image src={navItem.label} />
+                  {/* <Image src={navItem.label} /> */}
                   <Text textAlign={"center"}>{navItem.text}</Text>
                 </Link>
               </Box>

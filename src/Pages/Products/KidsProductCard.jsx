@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-const KidsProductCard = ({src , rating , userRated , price , name ,size,tags , colors ,mprice , product , id}) => {
+const KidsProductCard = ({src , rating , userRated , price , name ,size,tags , colors,shape ,mprice , product ,wishlistCount ,id}) => {
   const [iswish , setIsWish]=useState(false)
   const navigate = useNavigate();
   // console.log(colors)
@@ -28,8 +28,8 @@ const KidsProductCard = ({src , rating , userRated , price , name ,size,tags , c
     navigate(`/all_kids_glasses/${id}`)
   }
   return (
-    <GridItem >
-    <Box onClick={()=>veiwPage()} position="relative" border="1px solid" borderColor="gray.300" borderRadius="3%" p="10px" _hover={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}}>
+    < >
+    <Box onClick={()=>veiwPage()} position="relative" border="0.1rem solid" borderColor="gray.300" borderRadius="3%" p="10px" _hover={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} w={{base:"90%",sm:"80%",md:"45%",lg:"30%"}} m={"auto"}>
         <Image m="auto" width="80%" src={src} alt='image'/>
         <Box  position="absolute" top="5px" right="5px" onClick={handleWishList} >
         <AiOutlineHeart  color={iswish?"red":"black"} size="30px"/>
@@ -48,14 +48,14 @@ const KidsProductCard = ({src , rating , userRated , price , name ,size,tags , c
           </Flex>
           </Flex>
           <Text mt="10px" fontWeight="bold" color="#000042">{name} </Text>
+          <Text mt="10px" fontWeight="bold" color="#000042">Wishlist Count:{wishlistCount} </Text>
+          <Text mt="10px" fontWeight="bold" color="#000042">Wishlist Count:{shape} </Text>
           <Text mt="10px" fontWeight="light" color="#000042">Size : {size} . {tags}</Text>
-          <Text mt="10px" fontWeight="bold" color="#000042">₹{price} 
-          {/* <span style={{fontSize:"14px" , fontWeight:"lighter" , textDecoration:"line-through"}}>₹{mprice}</span> */}
-          </Text>
+          <Text mt="10px" fontWeight="bold" color="#000042">₹{price} </Text>
           
         </Box>
     </Box>
-    </GridItem>
+    </>
   )
 }
 

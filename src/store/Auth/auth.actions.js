@@ -5,10 +5,12 @@ import {
 	LOGOUT_USER,
 	UPDATE_TOTAL_PAYABLE,
 } from "./auth.actionTypes";
+import * as types from "../Product/product.actionTypes"
 import axios from "axios";
 import { json } from "react-router-dom";
 
 export function updateUser(user) {
+	
 	return {
 		type: UPDATE_USER,
 		payload: { user },
@@ -156,5 +158,33 @@ export function deleteAllProductsInCart(user) {
 			},
 		});
 		dispatch(updateUser(response.data));
+	};
+}
+
+
+export function addProductToWishlist(user, product) {
+	product.qty = 1;
+	user.wishlist.push(product);
+	return async function (dispatch) {
+		let res= await axios.patch(`https://lesn-shop-server.onrender.com/users/${user.id}`,user)
+		dispatch(updateUser(res.data));
+        //  console.log("res",user)
+		localStorage.setItem("user",JSON.stringify(user))
+	};
+}
+export function removeFromWishlist(product, user) {
+	let temp = [];
+	for (let productInWishlist of user.wishlist) {
+		if (productInWishlist.id == product.id) {
+			continue;
+		}
+		temp.push(productInWishlist);
+	}
+	user.wishlist = temp;
+	return async function (dispatch) {
+		let res= await axios.patch(`https://lesn-shop-server.onrender.com/users/${user.id}`,user)
+		console.log("res",res)
+		dispatch(updateUser(res.data));
+		localStorage.setItem("user",JSON.stringify(user))
 	};
 }

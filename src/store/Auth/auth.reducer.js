@@ -33,6 +33,8 @@ export const reducer = (state = init, { type, payload }) => {
         user: null,
       };
     case UPDATE_USER:
+      // console.log("res",payload.user)
+      
       return {
         ...state,
         user: payload.user,

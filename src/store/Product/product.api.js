@@ -7,7 +7,7 @@ export const getKidsDataAPI = async(getParam)=>{
 
     console.log("params",getParam)
     let res = await axios.get(`https://lesn-shop-server.onrender.com/all_kids_eyeglasess`,getParam)
-    console.log("comp",res?.data[0])
+    console.log("comp",res?.data)
     return res?.data
 }
 
@@ -45,4 +45,10 @@ export const updateCompItemAPI = async(item)=>{
      return res.data
 } 
 
+
+export const addToWishlistAPI = async(item)=>{
+
+    let res  = await axios.patch(`https://lesn-shop-server.onrender.com/${item.id}`,item)
+    return res.data
+}
 
