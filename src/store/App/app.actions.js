@@ -19,8 +19,9 @@ export const getCompProducts =(sortBy="")=> async(dispatch)=>{
 
 export const getKidsProducts =()=> async(dispatch)=>{
     dispatch(appLoading());
-    await axios.get(`https://lesn-shop-server.onrender.com/all_kids_glasses`)
+    await axios.get(`https://lesn-shop-server.onrender.com/all_kids_eyeglasess`)
     .then((res)=>{
+        // console.log("comp",res)
         dispatch({type:GET_KIDS_PRODUCTS,payload:res.data})
     })
     .catch((e)=>{
@@ -38,3 +39,4 @@ export const getKidsProducts =()=> async(dispatch)=>{
 //         dispatch(appFailure())
 //     })
 // }
+

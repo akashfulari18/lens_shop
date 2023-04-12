@@ -20,6 +20,7 @@ import CompSingleProduct from "../Pages/Products/CompSingleProduct";
 import KidsSingleProduct from "../Pages/Products/KidsSingleProduct";
 import Home from "../Pages/Home/Home";
 import PrivateRoute from "../Pages/Signup-Login/PrivateRoute";
+import Wishlist from "../Pages/Wishlist";
 
 const AllRoutes = () => {
   return (
@@ -58,6 +59,14 @@ const AllRoutes = () => {
           element={
             <PrivateRoute>
               <Cart />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/wishlist"
+          element={
+            <PrivateRoute>
+              <Wishlist />
             </PrivateRoute>
           }
         ></Route>

@@ -19,6 +19,7 @@ import {
 import Styles from "./TopNav.module.css";
 import Hover from "./Hover";
 import final_logo from "../../assets/final-logo.png";
+import {Link as RouterLink } from "react-router-dom"
 // import Login from "../Login";
 // import Signup from "../Signup";
 import {
@@ -95,12 +96,8 @@ const TopNav = () => {
   return (
     <div className={Styles.tn_div_1} style={{ width: "100%" }}>
       <div className={Styles.tn_div_2}>
-        <div className={Styles.mobView}>
-          <Button
-            leftIcon={<FiMenu />}
-            colorScheme="teal"
-            onClick={onOpen}
-          ></Button>
+        <Box className={Styles.mobView} display={{base:"flex",md:"none",lg:"none"}}>
+          
           <Drawer
             isOpen={isOpen}
             placement="left"
@@ -108,7 +105,7 @@ const TopNav = () => {
             onClose={onClose}
           >
             <DrawerOverlay />
-            <DrawerContent w="100%" bg="#27394E">
+            <DrawerContent w="100%" bg="white">
               <DrawerCloseButton />
               <DrawerHeader borderBottomWidth="1px">
                 <div
@@ -116,240 +113,64 @@ const TopNav = () => {
                   style={{ borderBottom: "2px solid #18CFA8", padding: "5%" }}
                 >
                   <div className={Styles.div2}>
-                    <Avatar src="https://bit.ly/broken-link" />
+                    {
+                      !user?<>
+                       <Avatar src="https://bit.ly/broken-link" />
                     <div className={Styles.div3}>
                       <h3 style={{ color: "white", marginTop: "10px" }}>
-                        Hi, Specsy
+                        Hi, Guest ... ,Please login.
                       </h3>
-                      <Link color="#CCCCCC" fontSize="50%" mt="5%">
-                        Enjoy Buy 1 Get 1 offer for 365 days
-                      </Link>
+                      
                     </div>
+                      </>:<>
+                      <Avatar name={`${user.firstname} ${user.lastname}`} src="https://bit.ly/broken-link" />
+                    <div className={Styles.div3}>
+                      <h3 style={{ color: "white", marginTop: "10px" }}>
+                        Hi, {user.firstname}
+                      </h3>
+                      
+                    </div>
+                    </>
+                    }
+                    
                   </div>
-                  <Button
-                    bg="#00BAC6"
-                    w="100%"
-                    h="32px"
-                    mt="5%"
-                    color="#FFFFFF"
-                  >
-                    GET GOLD MEMBERSHIP
-                  </Button>
+                  
                 </div>
                 <Box display="flex" flexDirection="column">
-                  <Link
+                  <Box _hover={{backgroundColor:"teal.500",color:"white"}} p={"0 0.5rem"} mt={"1rem"}>
+
+                  <RouterLink
                     color="white"
                     mt="10%"
                     borderBottom="1px solid #526171"
                     pb="5%"
                     fontSize="72%"
-                  >
-                    My Orders
-                  </Link>
-                  <Link
+                    to={"/all_computer_glasses"}
+                    >
+                    Computer Glasses
+                  </RouterLink>
+                    </Box>
+                  <Box _hover={{backgroundColor:"teal.500",color:"white"}} p={"0 0.5rem"}>
+
+                  <RouterLink
                     color="white"
                     mt="6%"
                     borderBottom="1px solid #526171"
                     pb="5%"
                     fontSize="72%"
-                  >
-                    Manage Notification
-                  </Link>
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="3px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Contact Us
-                  </Link>
+                    to={'/all_kids_glasses'}
+                    
+                    >
+                    Kids Glasses
+                  </RouterLink>
+                    </Box>
+                 
                 </Box>
-                <Heading mt="15%" color="white" fontSize="80%">
-                  HIGHLIGHTS
-                </Heading>
-                <Box display="flex" flexDirection="column">
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Check Frame Size
-                  </Link>
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Gold Membership
-                  </Link>
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Try Frames in 3D
-                  </Link>
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Dowloads Apps
-                  </Link>
-                </Box>
-                <Heading mt="15%" color="white" fontSize="80%">
-                  SHOP NOW
-                </Heading>
-                <Box display="flex" flexDirection="column">
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Men
-                  </Link>
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Women
-                  </Link>
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Kids
-                  </Link>
-                </Box>
-                <Heading mt="15%" color="white" fontSize="80%">
-                  Our Services
-                </Heading>
-                <Box display="flex" flexDirection="column">
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Free Home Trail
-                  </Link>
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Home Eye check-up
-                  </Link>
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Store Locator
-                  </Link>
-                </Box>
-                <Heading mt="15%" color="white" fontSize="80%">
-                  International
-                </Heading>
-                <Box display="flex" flexDirection="column">
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Singapore
-                  </Link>
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    USA
-                  </Link>
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    UAE
-                  </Link>
-                </Box>
-                <Heading mt="15%" color="white" fontSize="80%">
-                  FAQ's & POLICIES
-                </Heading>
-                <Box display="flex" flexDirection="column">
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Frequently Asked Questions
-                  </Link>
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Cancellation & Return Policy
-                  </Link>
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Cobrowsing
-                  </Link>
-                </Box>
-                <Box mt="15%">
-                  <Link
-                    color="white"
-                    mt="6%"
-                    borderBottom="1px solid #526171"
-                    pb="5%"
-                    fontSize="72%"
-                  >
-                    Logout
-                  </Link>
-                </Box>
-                <Accordion allowMultiple></Accordion>
+               {/* <Accordion allowMultiple></Accordion> */}
               </DrawerHeader>
             </DrawerContent>
           </Drawer>
-        </div>
+        </Box>
         <Box bg="#FFFFFF" >
           <Box
             display="flex"
@@ -357,6 +178,19 @@ const TopNav = () => {
             justifyContent={"space-between"}
             p="1rem 2rem"
           >
+            <Box>
+            <Button
+            leftIcon={<FiMenu />}
+            backgroundColor="teal.800"
+            color={"white"}
+            w={"1.5rem"}
+            _hover={{backgroundColor:"teal.800"}}
+            textAlign={"center"}
+            
+            onClick={onOpen}
+            display={{base:"flex",md:"none",lg:"none"}}
+          ></Button>
+            </Box>
             <Box
               w="10%"
               cursor="pointer"
@@ -379,7 +213,7 @@ const TopNav = () => {
             <Box display={{base:"none",md:"block",lg:"block"}} p="0.6%" bg="" w="40%" ml="1%" className={Styles.searchBox}>
               <NavSearch />
             </Box>
-            <Box fontSize="1rem" fontFamily="sans-serif" w="40%">
+            <Box fontSize="1rem" fontFamily="sans-serif" w="-1%">
               <Box display="flex" justifyContent="flex-end" gap={"2rem"}>
                 <Box display="flex" alignItems={"center"}>
                   <Flex gap="0.5rem">
@@ -451,7 +285,10 @@ const TopNav = () => {
                             base: "0.7rem",
                             md: "0.7rem",
                             lg: "1rem",
-                          }}>Wishlist</Text>
+                          }}>
+                         
+                            <Link to="/wishlist">Wishlist</Link>
+                            </Text>
                   </Box>
 
                   <Box display="flex" gap={"0.5rem"} cursor="pointer" position={"relative"}>
@@ -473,7 +310,7 @@ const TopNav = () => {
               </Box>
             </Box>
           </Box>
-          <Box margin={"auto"} display={{base:"flex",md:"none",lg:"none"}} border={"1px solid white"} p="0.6%" bg="" w="70%" className={Styles.searchBox}>
+          <Box margin={"auto"} display={{base:"flex",md:"none",lg:"none"}} border={"1px solid white"} m={"auto"} p="0.6%" bg="" w="50%" className={Styles.searchBox}>
               <NavSearch />
             </Box>
           <HStack
