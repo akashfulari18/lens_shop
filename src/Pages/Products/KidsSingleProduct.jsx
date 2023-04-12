@@ -28,6 +28,8 @@ const fetchSingleProduct=(id)=>{
     .then(res=>setData(res.data[0]))
      .catch(err=>console.log(err))
   }
+
+  const price = data?.prices?.[0]?.price
   useEffect(() => {
   fetchSingleProduct(id)
   }, [])
@@ -47,7 +49,7 @@ const fetchSingleProduct=(id)=>{
           {data.color_options?.length>3?data.color_options?.length-3:""}
           </Box> */}
           </Flex>
-          <Text my="10px" fontWeight={'bold'} fontSize="x-large">₹{data.price}</Text>
+          <Text my="10px" fontWeight={'bold'} fontSize="x-large">₹{price}</Text>
           {/* <Button p={7} m="10px 20px" w="90%" color="white" bgColor="#00bac6" onClick={addToCart}>BUY</Button> */}
           <Button p={7} m="10px 20px" w="90%">TRY ON</Button>
           <Box position="absolute" top="5px" right="5px"><AiOutlineHeart size={40}/></Box>

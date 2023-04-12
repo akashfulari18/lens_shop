@@ -14,7 +14,7 @@ const CompSingleProduct = () => {
   const dispatch = useDispatch();
   const toast =useToast()
   const navigate = useNavigate()
-  // console.log(user)
+  console.log(data?.prices?.[0]?.price)
   const {id} = useParams()
 //   console.log(id)
   const addToCart=()=>{
@@ -38,7 +38,9 @@ const CompSingleProduct = () => {
      .catch(err=>console.log(err))
   }
   // console.log(data)
-  useEffect(() => {
+  const price = data?.prices?.[0]?.price
+
+    useEffect(() => {
   fetchSingleProduct(id)
   }, [])
   return (
@@ -57,7 +59,7 @@ const CompSingleProduct = () => {
           {data.color_options?.length>3?data.color_options?.length-3:""}
           </Box> */}
           </Flex>
-          <Text my="10px" fontWeight={'bold'} fontSize="x-large">₹{data.price}</Text>
+          <Text my="10px" fontWeight={'bold'} fontSize="x-large">₹{price}</Text>
           <Button p={7} m="10px 20px" w="90%" color="white" bgColor="#00bac6" onClick={()=>{addToCart();navigate('/cart')}}>BUY</Button>
           <Button p={7} m="10px 20px" w="90%">TRY ON</Button>
           <Box position="absolute" top="5px" right="5px"><AiOutlineHeart size={40}/></Box>
