@@ -3,7 +3,8 @@ import { updateProductQty, deleteProduct } from "../store/Auth/auth.actions";
 import { useDispatch } from "react-redux";
 
 export default function CartProduct({ product, user, flexDirection }) {
-	const { product_name, image_url, price, qty } = product;
+	const { product_name, image_url, prices:{0:{price}}, qty } = product;
+	console.log("PRODUCT",product)
 	const { id: userId } = user;
 	const dispatch = useDispatch();
 
