@@ -70,6 +70,7 @@ export function logoutUser() {
 
 export function addProductToCart(user, product) {
 	product.qty = 1;
+	product.price = product.prices[0].price
 	user.cart.push(product);
 	return async function (dispatch) {
 		let response = await axios({
