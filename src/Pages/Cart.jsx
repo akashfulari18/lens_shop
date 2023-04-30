@@ -102,7 +102,7 @@ export default function Cart() {
 function getCartPrice(cart) {
 	let total = 0;
 	for (let item of cart) {
-		total += item.price * item.qty;
+		total += item.prices[0].price * item.qty;
 	}
 	return total;
 }
