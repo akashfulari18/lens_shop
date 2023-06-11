@@ -195,7 +195,7 @@ export default function Loginpage() {
         `https://lesn-shop-server.onrender.com/admin`
       );
       let admin = AdRes?.data[0];
-      console.log("admin",Adres)
+      console.log("admin",AdRes)
       let data = await res.json()
       // console.log(data);
       let Auth = false;
