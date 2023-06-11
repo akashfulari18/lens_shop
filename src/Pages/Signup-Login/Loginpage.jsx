@@ -195,9 +195,9 @@ export default function Loginpage() {
         `https://lesn-shop-server.onrender.com/admin`
       );
       let admin = AdRes?.data[0];
-      // console.log("admin",admin)
-      let data = await res.json();
-      console.log(data);
+      console.log("admin",Adres)
+      let data = await res.json()
+      // console.log(data);
       let Auth = false;
       for (let i in data) {
         if (data[i].email === email && data[i].Password === Password) {
@@ -211,7 +211,8 @@ export default function Loginpage() {
           // console.log("aasd",data[i]);
           updateIsAuth(data[i]);
           break;
-        } else if (admin?.email === email && admin?.password === Password) {
+        } else if (admin.email === email && admin.password === Password) {
+          console.log("inside else if")
           navigate("/admin_dashboard");
           return;
         }
@@ -247,89 +248,7 @@ export default function Loginpage() {
   };
 
   return (
-    // <Flex
-    //   bg={"rgb(247,250,252)"}
-    //   justifyContent={"center"}
-    //   alignItems={"center"}
-    // >
-    //   <Stack spacing={6} mx={"auto"} px={6}>
-    //     <Stack align={"center"}>
-    //       <Heading
-    //         mt={"-30px"}
-    //         fontSize={"xl"}
-    //         fontWeight={"700"}
-    //         textAlign={"center"}
-    //       >
-    //         Enter details to login/sign-up
-    //       </Heading>
-    //     </Stack>
-
-    //     <Box>
-    //       <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
-    //         <Heading fontSize={"2xl"} fontWeight={"normal"}>
-    //           Sign In
-    //         </Heading>
-    //         <FormControl id="email">
-    //           {/* <FormLabel color={"green"} fontSize={"md"}>
-    //               Enter Email ID
-    //             </FormLabel> */}
-    //           <Input
-    //             placeholder="Email*"
-    //             value={email}
-    //             onChange={(e) => setemail(e.target.value)}
-    //             type="email"
-    //           />
-    //         </FormControl>
-
-    //         <FormControl id="password">
-    //           {/* <FormLabel color={"green"} fontSize={"md"}>
-    //               {" "}
-    //               Enter Password
-    //             </FormLabel> */}
-    //           <Input
-    //             placeholder="Password*"
-    //             value={Password}
-    //             onChange={(e) => setPassword(e.target.value)}
-    //             type="password"
-    //           />
-    //         </FormControl>
-
-    //         <Stack spacing={10}>
-    //           <Stack
-    //             direction={{ base: "column", sm: "row" }}
-    //             align={"start"}
-    //             justify={"space-between"}
-    //           >
-    //             <Checkbox color={"green"} fontSize={"md"}>
-    //               Remember me
-    //             </Checkbox>
-    //             <Link color={"green"} fontSize={"sm"}>
-    //               Forgot password?
-    //             </Link>
-    //           </Stack>
-    //           {load ? (
-    //             <Button isLoading colorScheme="teal" variant="solid">
-    //               Email
-    //             </Button>
-    //           ) : (
-    //             <Button
-    //               onClick={login}
-    //               size="md"
-    //               bg={"green.600"}
-    //               color={"white"}
-    //               _hover={{
-    //                 bg: "green.700",
-    //               }}
-    //             >
-    //               Log in
-    //             </Button>
-    //           )}
-    //         </Stack>
-    //       </Stack>
-    //     </Box>
-    //   </Stack>
-    // </Flex>
-
+    
     <Stack
       minH={"100vh"}
       direction={{ base: "column", md: "row" }}
